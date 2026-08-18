@@ -1,0 +1,50 @@
+{
+  "artifact": "DEC_VALIDITY_GATE_V1_FREEZE",
+  "artifact_kind": "operational_instrument_freeze_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record freezes the structural validity gate before it is used for population-level scientific classification.",
+  "position_in_chain": "frozen OCR dec_extractor_v1 -> dec_validity_gate_v1 -> FK4(B1950) to FK5(J2000) -> D2 eligibility",
+  "why_a_separate_layer": {
+    "trigger": "The 84-page production pilot revealed SYNTACTICALLY_VALID_OCR_PIPELINE_OUTPUT_WITH_INVALID_COORDINATE_VALUE: 23 rows of 5610 transcribed, 0.41 percent, carried arcminute components of 60 or more.",
+    "why_the_extractor_was_not_changed": "Editing the frozen extractor would have made its already-produced pilot outputs attributable to code that never ran, and would have moved the instrument while it was being used. The correction is therefore downstream and additive.",
+    "what_this_preserves": "The raw extractor output survives unchanged in every record, so a later reviewer can see exactly what the OCR produced and exactly what the gate did with it."
+  },
+  "the_binding_rule": {
+    "statement": "The gate may REJECT a value from scientific use. It may NEVER repair, infer, round, truncate or otherwise alter one.",
+    "worked_example": "An arcminute component of 64 is not read as 04, 06 or 44. It is rejected, the original reading is preserved, and the row is sent to human review.",
+    "why": "A repaired digit is indistinguishable from a correct one in the output. A rejected digit is visible. The whole point of the chain is that failures stay visible."
+  },
+  "decision_table": {
+    "no value from the extractor": "UNREADABLE",
+    "value not parseable as two two-digit groups": "MANUAL_REVIEW_REQUIRED",
+    "arcminute component 60 or greater": "MANUAL_REVIEW_REQUIRED",
+    "degree component outside the declared plausible band": "MANUAL_REVIEW_REQUIRED",
+    "otherwise": "STRUCTURALLY_ADMISSIBLE"
+  },
+  "declared_parameters": {
+    "ARCMIN_MAX": 60,
+    "ARCMIN_MAX_basis": "DERIVATION. Sixty arcminutes make a degree, so a minute component of 60 or more cannot be a sexagesimal coordinate. This is not a judgement call.",
+    "DEGREE_BAND": "-35 to -20 degrees inclusive",
+    "DEGREE_BAND_basis": "CONTROLLER_CHOICE. No derivation fixes it. It is wide enough to contain every declination setting observed across the bracketed population with a large margin, and narrow enough to catch readings such as -76 or -97 that cannot belong to this material. Marked as a choice so it can never be read as derived."
+  },
+  "what_STRUCTURALLY_ADMISSIBLE_does_not_mean": [
+    "It does not mean the value is the one printed on the page.",
+    "It does not mean the row is D2 eligible.",
+    "It does not remove the requirement for source-image verification of any record that is provisionally eligible, near a sealed B1 boundary, structurally invalid or OCR-conflicted.",
+    "It does not substitute for the sealed epoch transform."
+  ],
+  "known_limits": {
+    "silent_errors_remain_possible": "A misread that happens to be a possible coordinate passes the gate. For example a 6 read as 5 in the arcminute tens place yields a plausible value. The gate catches impossible values only, and cannot bound the rate of plausible-but-wrong ones.",
+    "consequence": "The population-level transcription audit and the source-image verification of boundary records are what address plausible-but-wrong values. The gate is a floor, not a guarantee.",
+    "measured_effect_on_the_pilot": "Applied to the pilot output the gate would move 23 rows from TRANSCRIBED to MANUAL_REVIEW_REQUIRED on arcminute grounds, plus a small number of rows whose degree component lies outside the declared band."
+  },
+  "hashes": {
+    "dec_validity_gate_v1_py_sha256": "PENDING_OWNER_COMPUTATION",
+    "how_to_compute": "Get-FileHash tools\\dec_validity_gate_v1.py -Algorithm SHA256, recorded here before the gate is used for population-level classification."
+  },
+  "immutability_rule": "This gate version is never modified in place. Any change is a new version with its own freeze record, so that classifications remain attributable to the exact gate that produced them.",
+  "commit_intent": "research: add frozen structural validity gate after pilot revealed invalid coordinate outputs"
+}

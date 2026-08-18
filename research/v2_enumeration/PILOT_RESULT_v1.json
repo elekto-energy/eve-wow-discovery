@@ -1,0 +1,57 @@
+{
+  "artifact": "PILOT_RESULT_v1",
+  "artifact_kind": "operational_production_pilot_result",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record reports the complete 84-page production pilot of the frozen extractor.",
+  "instrument": {
+    "extractor": "tools/dec_extractor_v1.py",
+    "sha256": "82bbef167f74b3726472d1fc41f4c8c2f33c5b69110422b3ec3ce1858a0b90f9",
+    "git_commit": "8aa653e",
+    "modified_during_pilot": "NO",
+    "identity_proof": "The analyst reconstructed the frozen file in the working environment and its SHA-256 matched the owner's disk digest exactly, so the code that produced these outputs is the committed instrument and not a similar copy."
+  },
+  "page_selection": {
+    "record": "research/v2_enumeration/PILOT_PAGE_SELECTION_v1.json",
+    "preregistered": "YES, before extraction",
+    "pages": 84,
+    "rule": "Six data pages per run at fixed fractional positions 5, 22, 39, 56, 73 and 90 percent of run length, across all fifteen B3-eligible runs.",
+    "substitutions": "NONE. No page was swapped."
+  },
+  "results": {
+    "pages_processed": 84,
+    "rows_detected": 7502,
+    "technical_failures": 0,
+    "total_seconds": 2787,
+    "seconds_per_page": 33.2,
+    "states": {
+      "TRANSCRIBED": {"rows": 5610, "percent": 74.8},
+      "MANUAL_REVIEW_REQUIRED": {"rows": 1011, "percent": 13.5},
+      "UNREADABLE": {"rows": 881, "percent": 11.7}
+    },
+    "comparison_with_validation": "The development validation measured 78.4 percent transcribed on a mid-page band of 315 rows. The pilot measures 74.8 percent across whole pages. Whole pages include the header and footer regions, which are sparser, so a slightly lower rate is expected. The instrument behaves consistently with its validation.",
+    "review_queue_implied": "13.5 percent review plus 11.7 percent unreadable is roughly one row in four. Scaled to the full population that is a large queue in absolute terms, which is why the contact-sheet review path and the boundary-verification rule matter more than raising the transcription rate."
+  },
+  "new_production_failure_mode": {
+    "id": "SYNTACTICALLY_VALID_OCR_PIPELINE_OUTPUT_WITH_INVALID_COORDINATE_VALUE",
+    "definition": "The extractor emits a value that passes its own normalisation rule, and therefore reaches the TRANSCRIBED state, while being impossible as a sexagesimal coordinate.",
+    "observed_examples": "Arcminute components of 60 or more: -25 64, -26 60, -26 64, -26 66, -26 87, -26 88, -27 61, -27 62, -27 63, -27 68, -27 91, -27 93, -27 98, -33 68, -38 84.",
+    "counts": {"distinct_invalid_values": 15, "invalid_rows": 23, "share_of_transcribed_rows_percent": 0.41},
+    "also_observed_out_of_range_degrees": "Degree components outside the survey band appear at very low frequency: -28 twice, -33, -35 five times, -38, -43, -57, -76 and -97 once each. These are syntactically well formed but lie far outside any plausible observing declination for this material. They are recorded here as a related symptom and are handled by the same downstream gate rather than by a new rule invented for them.",
+    "supersedes": "The empirical statement in DEC_EXTRACTOR_V1_VALIDATION.json that the observed failure mode was abstention rather than error. That statement was true of its own 36-page truth set and is NOT rewritten. It is superseded as a description of population behaviour.",
+    "why_the_validation_set_missed_it": "The truth set was 36 pages read in a mid-page band. At a rate near four errors per thousand transcribed rows, a set that size can easily contain none. This is a lesson about validation-set size rather than about the extractor.",
+    "response_taken": "The frozen extractor was NOT modified. A separate downstream structural validity gate was added instead, so that raw production output remains attributable to the exact frozen instrument."
+  },
+  "value_distribution_note": {
+    "distinct_transcribed_values": 93,
+    "dominant_degree_components": "-26 on 3228 rows, -27 on 2010 rows, -25 on 359 rows",
+    "not_interpreted": "These values are NOT interpreted scientifically. The pilot decides nothing about eligibility, no epoch transform has been applied, and no page or row has any standing until the full population is processed, the gate applied, and the boundary-verification rule satisfied."
+  },
+  "operational_conclusion": {
+    "instrument_stable": "YES. No technical failures, consistent throughput, state distribution consistent with validation across all fifteen runs.",
+    "throughput": "33.2 seconds per page in the analyst environment. The full B3-eligible population of roughly 1000 pages is therefore about nine hours of continuous extraction.",
+    "decision": "Production moves to the owner's Windows machine, running the same committed extractor under the declared environment, with checkpointed resumable batches. The purpose is operational scale and independent reproduction, not a different analytical method."
+  }
+}
