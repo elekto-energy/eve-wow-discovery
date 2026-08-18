@@ -2,8 +2,9 @@
   "artifact": "DEC_VALIDITY_GATE_V1_FREEZE",
   "artifact_kind": "operational_instrument_freeze_record",
   "project": "043_wow_discovery",
-  "record_version": 1,
+  "record_version": 2,
   "created_utc": "2026-08-18",
+  "supersedes": "record_version 1 of this file, which carried PENDING_OWNER_COMPUTATION in place of the authoritative hash",
   "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
   "status_semantics": "No field named status. This record freezes the structural validity gate before it is used for population-level scientific classification.",
   "position_in_chain": "frozen OCR dec_extractor_v1 -> dec_validity_gate_v1 -> FK4(B1950) to FK5(J2000) -> D2 eligibility",
@@ -42,9 +43,14 @@
     "measured_effect_on_the_pilot": "Applied to the pilot output the gate would move 23 rows from TRANSCRIBED to MANUAL_REVIEW_REQUIRED on arcminute grounds, plus a small number of rows whose degree component lies outside the declared band."
   },
   "hashes": {
-    "dec_validity_gate_v1_py_sha256": "PENDING_OWNER_COMPUTATION",
-    "how_to_compute": "Get-FileHash tools\\dec_validity_gate_v1.py -Algorithm SHA256, recorded here before the gate is used for population-level classification."
+    "dec_validity_gate_v1_py_sha256": "99921043119101a5867f4f6e9a7a2e059189708919d73581f78285e0649f47b1",
+    "computed_by": "Owner, Get-FileHash on the project copy, 2026-08-18. PowerShell prints uppercase; the value is recorded here in lowercase and is the same digest.",
+    "committed_in": "git commit e17c7d6, research: add frozen structural validity gate after pilot revealed invalid coordinate outputs",
+    "line_ending_caveat": "The digest is of the bytes as they exist on the owner's disk. The repository carries .gitattributes disabling end-of-line conversion, so a clone reproduces the same bytes and therefore the same digest."
   },
-  "immutability_rule": "This gate version is never modified in place. Any change is a new version with its own freeze record, so that classifications remain attributable to the exact gate that produced them.",
-  "commit_intent": "research: add frozen structural validity gate after pilot revealed invalid coordinate outputs"
+  "immutability_rule": {
+    "statement": "This gate version is never modified in place. Any change is a new version with its own freeze record, so that classifications remain attributable to the exact gate that produced them.",
+    "scope_note": "This freeze record itself was corrected once, from record_version 1 to 2, solely to insert the authoritative hash that could not be computed by the analyst. The gate code did not change."
+  },
+  "commit_intent": "research: record authoritative gate hash and enable the production integrity check"
 }

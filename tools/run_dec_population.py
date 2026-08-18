@@ -35,7 +35,6 @@ import argparse
 import hashlib
 import json
 import os
-import re
 import sys
 import time
 import urllib.request
@@ -48,7 +47,7 @@ BASE = "http://naapo.org/~rchilders/N50CH_data/scans/jpg"
 
 EXPECTED_TOOL_SHA256 = {
     "dec_extractor_v1.py": "82bbef167f74b3726472d1fc41f4c8c2f33c5b69110422b3ec3ce1858a0b90f9",
-    "dec_validity_gate_v1.py": "PENDING_OWNER_COMPUTATION",
+    "dec_validity_gate_v1.py": "99921043119101a5867f4f6e9a7a2e059189708919d73581f78285e0649f47b1",
 }
 
 # The fifteen B3-eligible runs, from PHASE_A_RUN_INVENTORY_v1.json.
@@ -95,7 +94,7 @@ def fetch(url, dest, tries=3):
                 data = r.read()
             open(dest, "wb").write(data)
             return len(data)
-        except Exception as e:
+        except Exception:
             if attempt == tries - 1:
                 raise
             time.sleep(5 * (attempt + 1))
@@ -145,6 +144,7 @@ def main():
     todo = [p for p in pages if p[2] not in done]
     print("population %d pages, already done %d, remaining %d"
           % (len(pages), len(done), len(todo)))
+    sys.stdout.flush()
 
     sha1_tables = {}
     processed = 0
@@ -159,7 +159,7 @@ def main():
         rec_common = {"run": run, "folder": folder, "page": stem, "source_url": url,
                       "transport": "PLAIN_HTTP_NO_TLS"}
         try:
-            nbytes = fetch(url, local)
+            fetch(url, local)
         except Exception as e:
             with open(fail_path, "a") as f:
                 f.write(json.dumps(dict(rec_common, failure="DOWNLOAD",
@@ -206,6 +206,7 @@ def main():
                     "source_authenticity": "UNESTABLISHED",
                     "extractor": "dec_extractor_v1",
                     "extractor_sha256": EXPECTED_TOOL_SHA256["dec_extractor_v1.py"],
+                    "gate_sha256": EXPECTED_TOOL_SHA256["dec_validity_gate_v1.py"],
                     "raw_reads": r["raw_reads"],
                     "normalised": r["normalised"],
                     "extractor_state": r["state"],
@@ -225,6 +226,7 @@ def main():
             el = time.time() - t0
             print("  %d pages this run, %.1f s/page, %d of %d total"
                   % (processed, el / processed, len(done), len(pages)))
+            sys.stdout.flush()
 
     el = time.time() - t0
     print("finished this invocation: %d pages in %.0f s (%.1f s/page)"
