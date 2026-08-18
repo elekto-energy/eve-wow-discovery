@@ -1,0 +1,108 @@
+{
+  "artifact": "D2_ENUMERATION_PLAN_v1",
+  "artifact_kind": "operational_work_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is deliberately NOT sealed. It is a working plan for executing an already sealed instruction.",
+  "authority_and_limits": {
+    "what_this_is": "An operational plan for executing the D2 enumeration pass under the bounds already sealed in D2_AMENDMENT_v1.",
+    "what_this_is_not": "It is not a new methodological layer, it adds no bound, and it may not alter D2_AMENDMENT_v1 or its sealed semantics in any way.",
+    "precedence": "If anything in this plan appears to conflict with the sealed amendment or the sealed protocol, the sealed record governs and this plan is wrong and must be corrected.",
+    "governing_records": {
+      "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+      "d2_amendment_canonical": "aca7a27817c40239078e025dcbb0981ab3f70a124fbbb50feeb28544c91e9931",
+      "discovery_protocol_canonical": "88563848c68afa3d494945e251d7597f55c274e0c1d8de76ecbbb818cd0e7706",
+      "wow_v2_genesis_seal": "17c4258d924675ddce4c39f056e63572086adab07a8b3551cce736871b6fb895",
+      "wow_v1_closure_pin": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae"
+    }
+  },
+  "step_1_structural_start_rule": {
+    "rule": "Page selection is driven by archive structure only, never by observed signal content.",
+    "structural_anchor": "The publisher documentation states that the wow folder falls chronologically between pages 013-084 and 013-085. That is a structural statement about sequence position, not an observation of signal content, and it is the anchor for where enumeration begins.",
+    "starting_sequence": "Folder 013 of the archive, in the neighbourhood of pages 013-084 and 013-085, then outward in page order in both directions.",
+    "direction_rule": "Enumeration proceeds outward symmetrically in page order, alternating earlier and later, so that neither side of the anchor is explored preferentially.",
+    "format_finding": "Folder 013 exists in the CR2 tree only; the numbered folders in the PNG tree do not include 013. The immediate structural neighbourhood of the Wow! pages is therefore Canon raw material, while the Wow! folder itself is PNG. This is a structural obstacle recorded here, not a scientific finding.",
+    "tooling_consequence": "CR2 decoding is not available in the current working environment (PIL is present, rawpy is not). Either a raw decoder must be added, or the JPG tree must be examined for coverage of the same sequence, or enumeration must proceed on whichever tree covers the sealed date window. Which of these applies is UNRESOLVED and must be settled before the CR2 sequence is enumerated.",
+    "no_content_selection": "Under no circumstances may a page be chosen, skipped, prioritised or revisited because of what its channel data appears to show."
+  },
+  "step_2_first_full_page_exposure": {
+    "purpose": "To establish page layout and locate the regions containing the observation date, the observing time with its reference, and the declination. Nothing else.",
+    "quantity": "ONE page. If the first page proves illegible or atypical, a further page may be rendered, and each such rendering is logged as its own exposure event.",
+    "logging_requirement": "The full-page rendering is logged as an exposure event in the exposure ledger BEFORE any scientific interpretation is performed, with the page identifier, the reason, and the scope of what became visible.",
+    "hard_limit": "No candidate generation, and no D1, D2 or D3 reasoning, may use anything seen outside the three permitted fields. Anything else that becomes visible during this rendering is recorded as exposed and is INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "why_this_is_necessary": "The permitted fields cannot be masked before their position on the page is known. The sealed amendment anticipates exactly this: where masking is not technically possible, the unmasked view is recorded as an exposure event rather than silently taken."
+  },
+  "step_3_mask_definition": {
+    "output": "Reproducible crop or mask coordinates covering only the three permitted field regions.",
+    "recorded_fields": [
+      "mask_version identifier",
+      "coordinates per permitted field, expressed relative to page dimensions so they survive rescaling",
+      "source page from which the layout was established",
+      "page dimensions of that source page",
+      "known limits, for example whether the layout is expected to hold across folders, formats or paper widths"
+    ],
+    "versioning_rule": "If the layout differs on a later page, a NEW mask version is defined and recorded. A mask is never silently adjusted, and every per-page record states which mask version produced it.",
+    "failure_rule": "If a page cannot be read under any defined mask, it is classified PRESENT_ILLEGIBLE under the sealed B5 classes. It is not opened further in order to make it readable."
+  },
+  "step_4_enumeration_read_scope": {
+    "permitted_fields": [
+      "observation date",
+      "observation time together with its stated time reference",
+      "declination of observation"
+    ],
+    "prohibited_during_enumeration": [
+      "channel values",
+      "intensity values",
+      "frequency content",
+      "signal morphology",
+      "operator annotations and handwritten comments",
+      "any other scientific content of the page"
+    ],
+    "breach_rule": "Reading beyond the permitted fields is a protocol breach and is recorded as one, with what was seen and why. It is recorded rather than concealed, and the affected material becomes INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "operational_practice": "Masked crops are produced mechanically and only the crops are presented for reading. The full page is not displayed during enumeration."
+  },
+  "step_5_per_page_record": {
+    "storage": "One record per page examined, accumulated in research/v2_enumeration/, written to disk as the pass proceeds rather than at the end.",
+    "required_fields": [
+      "source URL",
+      "folder and file identifier",
+      "retrieval timestamp in UTC",
+      "transport security state, for example plain HTTP without TLS",
+      "source-published SHA1 where available, labelled as consistency metadata only",
+      "locally computed SHA-256 of the received bytes",
+      "byte-integrity state, meaning whether the local hash matches the source-published value",
+      "source-authenticity state, recorded separately and normally UNESTABLISHED for this origin",
+      "mask version applied",
+      "whether a full-page or masked view was used",
+      "exposure scope, meaning exactly what became visible",
+      "extracted observation date",
+      "extracted observation time and its reference",
+      "extracted declination",
+      "readability and confidence flag",
+      "D2 inclusion or exclusion decision"
+    ],
+    "inclusion_decision_rule": "The inclusion or exclusion decision is made ONLY against the sealed bounds B1 and B3. No other criterion, and in particular nothing about how interesting a page appears, may enter the decision.",
+    "unreadable_rule": "A page whose permitted fields cannot be read is classified under the sealed B5 classes and is counted in the coverage statistics rather than dropped."
+  },
+  "step_6_stopping_rule": {
+    "rule": "Enumeration continues structurally outward until the sealed D2 date window is bracketed on both sides, meaning at least one page earlier than 1977-08-08 and at least one page later than 1977-08-22 have been identified in the same sequence, or until the relevant archive sequence is exhausted.",
+    "do_not_stop_because": "An interesting record appears.",
+    "do_not_continue_because": "No interesting record has appeared.",
+    "exhaustion": "Exhausting the sequence without bracketing is itself a result and is reported as such, with the coverage achieved stated explicitly."
+  },
+  "step_7_d1_side_effect": {
+    "statement": "The folder and file to observation date mapping produced by this pass may later support D1 by making the comparison population enumerable, which addresses access gap G-4.",
+    "hard_limit": "No D1 scientific analysis and no candidate generation of any kind occurs during this pass. The mapping is a by-product, not a result.",
+    "scope_reminder": "D2 is the control lane. D1 and D3 remain free to draw on the wider archive later, and this pass does not narrow them."
+  },
+  "known_obstacles_before_execution": [
+    "CR2 decoding is unavailable in the current environment while the structural neighbourhood of the Wow! pages is CR2 only.",
+    "Individual PNG pages are tens of megabytes, so the pass must be incremental rather than bulk.",
+    "The folder to date mapping is unknown for every folder except the Wow! folder, so the number of pages to be examined cannot be predicted before the pass begins.",
+    "Archive availability has been intermittent in at least one prior attempt by the controller, so retrieval failures must be recorded rather than retried silently.",
+    "Reuse and licence terms for the archive remain unresolved, which does not block inspection but does block any republication of derived images."
+  ],
+  "what_this_plan_does_not_do": "It opens no page, downloads no scan, defines no mask coordinates and reaches no conclusion. It states how the sealed D2 enumeration will be carried out and what will be recorded when it is."
+}

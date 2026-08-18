@@ -1,0 +1,141 @@
+{
+  "artifact": "MASK_V1",
+  "artifact_kind": "operational_mask_definition",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It defines reproducible crop rectangles for the three permitted enumeration fields.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "exposure_event": "X-6, research/v2_enumeration/EXPOSURE_EVENT_X6_v1.json"
+  },
+  "derived_from": {
+    "page": "013-084",
+    "representation": "DERIVED_JPG_FROM_CR2_SEQUENCE",
+    "locally_computed_sha256": "273b485a25c2e7740165f04f3b0b5ab15015410bf17bec2b9aedf9570c238919",
+    "source_image_dimensions_px": "2216 x 1663"
+  },
+  "coordinate_convention": {
+    "origin": "Top-left pixel of the decoded JPEG is (0,0). X increases rightward, Y increases downward.",
+    "rectangle_format": "left, top, right, bottom in absolute pixels, right and bottom exclusive, as used by PIL Image.crop.",
+    "reference_dimensions": "All rectangles below are stated for a 2216 x 1663 page. All five pages examined so far report exactly these dimensions.",
+    "rescaling_rule": "If a page reports different dimensions, rectangles are scaled proportionally and the scaling is recorded in that page's record. A page whose aspect ratio differs materially is not rescaled but referred for a new mask version."
+  },
+  "page_classes_discovered": {
+    "finding": "The observation date is NOT printed on every page. It appears only on section or run header pages, in a header line reading DECLINATION SETTING and DATE. On ordinary data pages the same top region contains the channel-number table header instead.",
+    "class_HEADER_PAGE": "Top strip contains the DECLINATION SETTING and DATE line. 013-084 is such a page.",
+    "class_DATA_PAGE": "Top strip contains the CHANNEL NUMBER table header. 013-082, 013-083, 013-085 and 013-086 are such pages.",
+    "consequence_for_enumeration": "Date cannot be read from every page independently. It is read from HEADER_PAGE instances and propagated forward by page sequence to the DATA_PAGE instances that follow, until the next HEADER_PAGE. That propagation rule is deterministic and is recorded per page as a derived rather than a directly read value.",
+    "no_silent_enlargement": "The mask was NOT enlarged to search for a date elsewhere on data pages. The layout variation is recorded and handled by the classification rule above."
+  },
+  "rectangles": {
+    "R1_page_class_and_header_strip": {
+      "rect": "300, 60, 1100, 110",
+      "purpose": "Determines page class, and on HEADER_PAGE instances carries both the declination setting and the observation date.",
+      "verified_on": "013-084 shows the DECLINATION SETTING and DATE line. 013-082, 013-083 and 013-085 show the CHANNEL NUMBER header in the same rectangle, which is how the class is determined.",
+      "known_limit": "On 013-084 the label row above the values is partially cut off by the frame edge. The value row is legible. Any page where the value row is cut off is classified PRESENT_ILLEGIBLE rather than guessed."
+    },
+    "R2_declination_column": {
+      "rect": "1235, 60, 1405, 1663",
+      "purpose": "Per-row declination column, headed DECLIN. (1950.0) DD MM.",
+      "verified_on": "013-085 and 013-082 both place the column within this rectangle.",
+      "epoch_note": "The column header states epoch 1950.0. The sealed B1 window is expressed against the WOW v1 sealed J2000 declination, so the sealed epoch rule applies and every comparison must pass through the v1 epoch tool. This rectangle captures the printed value only; no conversion is performed at enumeration time.",
+      "exclusion_check": "The right edge stops before the 2ND LO FREQ. column so that frequency content is not exposed during enumeration."
+    },
+    "R3_eastern_std_time_column": {
+      "rect": "1695, 60, 1840, 1663",
+      "purpose": "Per-row observing time column, headed EASTERN STD TIME HH MM SS.",
+      "verified_on": "013-085 and 013-082 both place the column within this rectangle.",
+      "time_reference": "EST as printed. The sealed B3 window is defined in the reference printed on the record, so EST is recorded as the reference rather than converted.",
+      "exclusion_check": "The left edge stops after the GLCTIC LONG column and the right edge stops before the OBJECT column."
+    }
+  },
+  "second_time_reference_present": {
+    "observation": "A right-ascension column headed RT. ASCEN. (1950.0) HH MM SS is also present, to the left of the declination column. It is a sidereal-time-like quantity and is a permitted B4 comparison variable.",
+    "decision": "It is NOT included in MASK_V1. Enumeration needs date, time with reference, and declination only. Adding it would widen exposure beyond what the enumeration decision requires.",
+    "future_note": "If a later stage needs it, that is a separate mask version with its own record."
+  },
+  "layout_stability_check": {
+    "pages_examined": "013-082, 013-083, 013-084, 013-085, 013-086",
+    "selection_basis": "STRUCTURAL_ONLY - the pages immediately adjacent to the anchor in sequence.",
+    "all_dimensions_identical": "YES, 2216 x 1663 on all five.",
+    "column_rectangles_stable": "YES on the pages checked. R2 and R3 captured the intended columns without adjustment.",
+    "header_rectangle_stable_in_position": "YES, but its CONTENT differs by page class, which is the finding recorded above.",
+    "unresolved": [
+      "Stability across other folders, paper widths and the CR2-derived versus PNG-scanned material is NOT established. The publisher documentation notes at least one folder printed sideways and changes of column ordering and units elsewhere in the archive, so MASK_V1 is asserted for folder 013 only.",
+      "The Wow! PNG folder will require its own mask version because its digitisation provenance differs."
+    ]
+  },
+  "incidental_exposure": {
+    "recorded_per_controller_rule": "During the single full-page view of 013-084 the following became unavoidably visible and is recorded as incidental exposure. It is not analysed and is INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "items": [
+      "A handwritten annotation on the otherwise blank body of the page.",
+      "Two printed lines stating instrument processing parameters: a baseline and RMS smoothing time, a data integration time, and a statement that a change of one in the output corresponds to one sigma.",
+      "The full column header block of the data table, including columns for channel number, right ascension, declination, a second local oscillator frequency, galactic latitude and longitude, Eastern Standard Time and an object field.",
+      "Three data rows at the very bottom of the page, including their frequency and galactic coordinate values.",
+      "The declination setting and date values in the page header."
+    ],
+    "narrowest_scope_note": "During the mask-validation pass on the four adjacent pages, only the masked rectangles were rendered. The column probes additionally showed a small number of declination and time rows, which are permitted fields, plus the leading characters of the adjacent frequency column header on one probe, which is recorded here as minor incidental exposure."
+  },
+  "adjacent_page_retrievals": [
+    {
+      "file_identifier": "013-082",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-082.jpg",
+      "retrieved_utc": "2026-08-18",
+      "transport": "PLAIN_HTTP_NO_TLS",
+      "content_length_bytes": 1051449,
+      "source_published_sha1": "568056e45dd72bf67de0b4dfe8d1a8abe3b552fb",
+      "locally_computed_sha1": "568056e45dd72bf67de0b4dfe8d1a8abe3b552fb",
+      "locally_computed_sha256": "919f87353cfb7fd1c051f0a2d69732aca1b1c5ed5b709c75213b0ec5822f181b",
+      "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM",
+      "source_authenticity": "UNESTABLISHED",
+      "view_used": "MASKED_ONLY",
+      "page_class": "DATA_PAGE"
+    },
+    {
+      "file_identifier": "013-083",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-083.jpg",
+      "retrieved_utc": "2026-08-18",
+      "transport": "PLAIN_HTTP_NO_TLS",
+      "content_length_bytes": 776702,
+      "source_published_sha1": "d5a07fd8cdf376f3fe17e0fce1eb7b1f2448b575",
+      "locally_computed_sha1": "d5a07fd8cdf376f3fe17e0fce1eb7b1f2448b575",
+      "locally_computed_sha256": "dab173c3f6bb23624b3f53837f5c462079a0f00ee6f1a10ad575bb7f8623c105",
+      "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM",
+      "source_authenticity": "UNESTABLISHED",
+      "view_used": "MASKED_ONLY",
+      "page_class": "DATA_PAGE"
+    },
+    {
+      "file_identifier": "013-085",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-085.jpg",
+      "retrieved_utc": "2026-08-18",
+      "transport": "PLAIN_HTTP_NO_TLS",
+      "content_length_bytes": 944084,
+      "source_published_sha1": "d73f44c45f2fae5afbd2f7caf3fbf427812d1221",
+      "locally_computed_sha1": "d73f44c45f2fae5afbd2f7caf3fbf427812d1221",
+      "locally_computed_sha256": "7034ba46e57d2a9ec045f659dbbf5f85e536b01dd8f15b18801dc3fb12ef3ab1",
+      "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM",
+      "source_authenticity": "UNESTABLISHED",
+      "view_used": "MASKED_ONLY",
+      "page_class": "DATA_PAGE"
+    },
+    {
+      "file_identifier": "013-086",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-086.jpg",
+      "retrieved_utc": "2026-08-18",
+      "transport": "PLAIN_HTTP_NO_TLS",
+      "content_length_bytes": 1034768,
+      "source_published_sha1": "ffc6df67fc18de769791448c244601b4b12bc873",
+      "locally_computed_sha1": "ffc6df67fc18de769791448c244601b4b12bc873",
+      "locally_computed_sha256": "de1127b57d3db832dfb949d8de12d5a77a44726b42decb6a53b81dcbc11c7873",
+      "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM",
+      "source_authenticity": "UNESTABLISHED",
+      "view_used": "MASKED_ONLY",
+      "page_class": "DATA_PAGE"
+    }
+  ],
+  "no_analysis_performed": "No D2 analysis, no comparison against the sealed bounds, no inclusion or exclusion decision and no candidate generation has been performed. The values visible in the probes were used only to confirm that the rectangles capture the intended columns.",
+  "next_action_when_authorised": "Begin the enumeration pass proper: classify pages, read the three permitted fields under MASK_V1, write one per-page record each, and continue outward until the sealed date window is bracketed on both sides or the sequence is exhausted."
+}

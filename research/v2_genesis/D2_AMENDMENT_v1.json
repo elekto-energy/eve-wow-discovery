@@ -1,0 +1,133 @@
+{
+  "artifact": "D2_AMENDMENT_v1",
+  "artifact_kind": "sealed_protocol_amendment_comparison_region",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "DRAFT-PENDING-CONTROLLER-REVIEW",
+  "status_semantics": "No field named status. Current lifecycle state lives only in the seal record that covers this file.",
+  "amends": {
+    "artifact": "DISCOVERY_PROTOCOL_v1",
+    "canonical_sha256": "88563848c68afa3d494945e251d7597f55c274e0c1d8de76ecbbb818cd0e7706",
+    "question_amended": "D2 LOCAL CONTEXT",
+    "amendment_authority": "DISCOVERY_PROTOCOL_v1 D2 region_declaration_rule requires the numerical bounds to be specified and sealed in a protocol amendment before any N50CH archive content is inspected. This is that amendment.",
+    "what_is_not_amended": "The frozen text of D1, D2 and D3, the predeclared outcomes, the pipeline, the anti-rescue clause and the prohibitions in force are unchanged. This amendment adds bounds; it removes nothing."
+  },
+  "bound_to": {
+    "wow_v2_genesis_seal": "17c4258d924675ddce4c39f056e63572086adab07a8b3551cce736871b6fb895",
+    "wow_v1_closure_pin": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae",
+    "archive_access_structure_canonical": "34a32faecb83501c4c420c844cd449af10a228786e0481fecdef5c8b1cd227fb"
+  },
+  "value_basis_taxonomy": {
+    "SEALED_DERIVATION": "Mechanically derived from values sealed in WOW v1 before any WOW v2 exposure event.",
+    "ARCHIVE_INSTRUMENT_STRUCTURE": "Derived from the instrument's predeclared structural configuration (channel count and channel width), not from any described feature of any record.",
+    "CONTROLLER_CHOICE": "No derivation exists. The value is a declared choice and is marked as such so that it can never be mistaken for a derived quantity.",
+    "why_this_taxonomy": "Inherited unchanged from the WOW v1 requirement layer, where it exists to prevent analyst choices from masquerading as sealed derivations."
+  },
+  "pre_d2_exposure_non_influence": {
+    "rule": "No bound in this amendment was chosen, widened, narrowed, shifted or otherwise informed by exposure events X-3, X-4 or X-5 recorded in ARCHIVE_ACCESS_STRUCTURE_v1.",
+    "how_this_is_demonstrable": "Every numerical bound below carries a value_basis that is either a WOW v1 sealed value (sealed 2026-08-17 and 2026-08-18, before any archive page was retrieved), the instrument's channel structure, or an explicitly declared controller choice with a content-independent rationale. No bound cites an observed or described feature.",
+    "X-3_handling": "Features described on the publisher index page (galactic plane and point-source LMST times in the 16-17 August 1977 continuum strip chart, and a noise-tube firing of unusual duration) are PRIOR PUBLISHED DESCRIPTION. They may be analysed as prior-known context. They are INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "X-4_handling": "The question posed by M. Abel on 29 December 2017, whether the 3 AM run termination is unusual compared with other runs, is PRIOR PUBLISHED. D1 may independently quantify or answer it. Neither D1 nor D2 nor D3 may claim discovery of the question itself. The page-gap structure documented in the same note is likewise PRIOR PUBLISHED STRUCTURE.",
+    "X-5_handling": "Per-page observations in the CR2 folder notes are PRIOR PUBLISHED OBSERVATION and are INELIGIBLE to support NOVEL_CANDIDATE_FOUND. They may be cited as context and must be cited in the novelty check by any overlapping candidate.",
+    "asymmetry_guard": "The window is symmetric about the Wow! event by construction. A symmetric window cannot be tuned toward a known feature on one side without the tuning being visible as asymmetry."
+  },
+  "scope_limitation": {
+    "statement": "D2 constrains D2 only.",
+    "consequence": "This amendment does not limit the archive breadth available to D1 or to D3. D1 may draw on any instrument epoch and any folder; D3 may draw on the wider archive. Neither inherits the D2 window.",
+    "reverse_consequence": "Material examined under D1 or D3 outside this window does not become D2 evidence, and a D2 finding may not be supported by material outside the window.",
+    "control_lane_and_discovery_lane": "D2 is the control lane; D1 and D3 are the discovery lane. Something unusual three weeks later, six months earlier, or along an entirely unexpected dimension remains findable under D1 or D3. It simply does not become a D2 result."
+  },
+  "bounds": {
+    "B1_declination_sky_window": {
+      "window": "Declination -27d 17m to -26d 37m, epoch as recorded by the instrument at the time of observation.",
+      "value_basis": "SEALED_DERIVATION",
+      "derivation": "WOW v1 sealed position OR-20/OR-21 gives declination -26d 57m with stated uncertainty +/- 20m. The window is that value plus and minus its own sealed uncertainty. No other input.",
+      "epoch_caution": "WOW v1 established a mandatory epoch rule: B1950 and J2000 coordinates may never be compared directly. Archive records state the declination of observation at the epoch of observation. Any comparison against the sealed J2000 value must pass through the v1 epoch tool, and the conversion must be recorded per record.",
+      "unknown_handling": "A record whose observing declination cannot be read without opening channel content is classified DECLINATION_UNKNOWN and excluded from D2, not guessed."
+    },
+    "B2_frequency_channel_window": {
+      "window": "1420.351 MHz to 1420.731 MHz, a span of 380 kHz.",
+      "value_basis": "SEALED_DERIVATION",
+      "derivation": "WOW v1 sealed the finding that three historical frequency values circulate for the Wow! event: 1420.356 MHz (Kraus 1990, stated uncertainty 0.005), 1420.4556 MHz (Ehman 1998, stated uncertainty 0.005, the sealed OR-18 value) and 1420.726 MHz (the A3 revision, RSC-03). The window runs from the lowest value minus its uncertainty to the highest value plus the same uncertainty magnitude.",
+      "independent_confirmation": "The resulting span of 380 kHz reproduces exactly the 380 kHz figure already carried as SEALED_DERIVATION in the WOW v1 requirement layer. The bound is therefore not newly invented here; it is re-derived from the sealed record.",
+      "declared_weakness": "The A3 value carries no stated uncertainty in the sealed record. The magnitude 0.005 MHz was adopted from the two values that do state one. This is a declared assumption, not a sealed quantity, and it affects only the upper edge.",
+      "channel_consequence": "At 10 kHz per channel the window spans 38 channels. Which physical channel numbers those are is NOT asserted here and must be established from the record structure at inspection time.",
+      "v1_rule_inherited": "Every capability or coverage statement made under D2 must state WHICH of the three frequency values it covered. This rule is inherited unchanged from WOW v1."
+    },
+    "B3_time_date_window": {
+      "window": "1977-08-08 00:00 through 1977-08-22 23:59 inclusive, in the time reference printed on the record, that is plus and minus 7 solar days about the Wow! event date of 1977-08-15.",
+      "value_basis": "CONTROLLER_CHOICE",
+      "analytical_boundary_semantics": "B3 is an analytical local-context boundary, not a physical recurrence timescale and not a claim that scientifically relevant events cannot occur outside the window.",
+      "honest_statement": "No derivation from sealed values fixes this width. Seven days is a declared choice, not a derived quantity, and is marked CONTROLLER_CHOICE precisely so it can never be read as derived.",
+      "content_independent_rationale": "The window is symmetric about the event, spans a whole number of days, and was fixed without reference to any described feature, gap or annotation in the archive. Symmetry is the property that makes tuning visible: any later asymmetry would be evident on the face of the record.",
+      "alternatives_considered_and_declared": "Narrower alternative: plus and minus 1 sidereal day, the minimum that captures one drift-scan revisit of the same declination, rejected by the controller as optimising for a specific revisit argument rather than yielding a reasonable local population. Wider alternative: the full contiguous observing run in which the event falls, rejected as too broad for D2, as overlapping the D1 population question, and as making the boundary depend on the archive's actual structure.",
+      "controller_decision": "Plus and minus 7 solar days, approved 2026-08-18, fixed before any scan inspection.",
+      "time_reference_caution": "The time reference printed on archive records may be EST, local mean sidereal time, or both. The window is defined in the printed reference of each record, and the reference actually used must be recorded per record rather than assumed."
+    },
+    "B4_comparison_variables": {
+      "variables": [
+        "observing date as printed on the record",
+        "observing time as printed on the record, together with which time reference it is stated in",
+        "declination of observation as printed on the record",
+        "right ascension or local mean sidereal time as printed on the record",
+        "channel identifier within the 50-channel set",
+        "recorded intensity value per channel, together with the unit in which it is expressed",
+        "page or sequence identifier",
+        "presence and content of operator annotation"
+      ],
+      "value_basis": "SEALED_DERIVATION and ARCHIVE_INSTRUMENT_STRUCTURE",
+      "derivation": "The quantities are those the WOW v1 sealed record itself carries for the Wow! event: frequency channel, intensity per 10 kHz, right ascension, declination, date and duration. The channel identifier and the count of 50 channels come from the instrument's predeclared structure, not from any described record.",
+      "unit_hazard": "The unit in which an intensity is expressed is a comparison variable in its own right, not an attribute to be normalised away. WOW v1 established that a correct number can still be an invalid model input if its semantic type is wrong. A change of unit between records is recorded as a change of unit, never silently converted.",
+      "digitisation_hazard": "ARCHIVE_ACCESS_STRUCTURE_v1 records that the Wow! folder was scanned by a different party with a different imaging configuration from the rest of the archive. Any variable that could be affected by imaging configuration must be compared with that difference stated, or excluded."
+    },
+    "B5_missing_and_unreadable_records": {
+      "classes": [
+        "PRESENT_LEGIBLE - the field can be read from the record",
+        "PRESENT_ILLEGIBLE - the record exists but the field cannot be read reliably",
+        "ABSENT_FROM_ARCHIVE - the record is documented to have existed but is not in the archive",
+        "NOT_DIGITISED - the record may exist physically but is not online",
+        "UNDETERMINED - status not yet established"
+      ],
+      "rules": [
+        "A missing or unreadable record is recorded as such and is never imputed, interpolated or replaced by a neighbouring record.",
+        "The window is never extended to compensate for missing records inside it.",
+        "A D2 result must state how many records in the window fell into each class, so that coverage is visible rather than assumed.",
+        "If the legible fraction is too small to address the question, the correct outcome is INSUFFICIENT_DATA, not a weakened positive claim."
+      ],
+      "value_basis": "SEALED_DERIVATION",
+      "derivation": "Inherited from the WOW v1 G0 schema rule that UNKNOWN is legitimate and that no conservative guess may be substituted for an unknown value."
+    },
+    "B6_wow_record_participation_in_parameter_selection": {
+      "rule": "The Wow! record participates in parameter selection ONLY through values already sealed in WOW v1.",
+      "permitted": "The sealed declination, the three sealed frequency values, the sealed event date and the sealed duration may be used to fix the bounds above. They were sealed before any WOW v2 exposure.",
+      "prohibited": "No bound may be chosen or adjusted by examining the Wow! folder scans themselves, and no parameter may be selected because it makes the Wow! record stand out. The Wow! record is the anchor of the window, never the selector of the comparison variables.",
+      "value_basis": "SEALED_DERIVATION"
+    },
+    "B7_extent_and_stopping_rule": {
+      "extent_definition": "The extent to be inspected is every archive record whose printed observing date falls within B3 and whose printed observing declination falls within B1, wherever in the archive it resides.",
+      "why_extent_is_criterion_not_enumeration": "ARCHIVE_ACCESS_STRUCTURE_v1 gap G-4 records that the mapping from folder number to observing dates is unestablished for every folder except the Wow! folder. Enumerating the extent in advance would require reading dates printed on pages, which is content. The extent is therefore defined by criterion now and enumerated during a bounded enumeration pass.",
+      "enumeration_read_scope": "During the enumeration pass, the ONLY fields that may be read from any record are the printed observing date, the printed observing time with its reference, and the printed declination. No channel value, no intensity, no annotation and no other content may be read during enumeration. Reading beyond this scope is a protocol breach and must be recorded as one.",
+      "enumeration_visual_masking": "Where a record must be viewed to read the permitted fields, the extraction pipeline must crop or mask the remainder of the page before any model or operator sees the image, where technically possible. If masking is not technically possible for a given record, the unmasked view is itself recorded as an exposure event with its scope stated.",
+      "stopping_rule": "Enumeration stops when the window is bracketed on BOTH sides, that is when at least one record earlier than the start of B3 and at least one record later than the end of B3 have been identified in the same record sequence, or when the archive is exhausted. Enumeration does not continue because nothing interesting has been found, and does not stop early because something interesting has been found.",
+      "exhaustion_is_a_result": "Completing the extent without finding anything is a complete D2 execution and is reported as NO_NOVEL_RESULT_FOUND, not as an incomplete search.",
+      "value_basis": "CONTROLLER_CHOICE for the bracketing criterion; the window it brackets is fixed by B1 and B3."
+    }
+  },
+  "download_integrity_requirements": {
+    "controller_correction_adopted": "Source-published SHA1SUM and DIGESTS files retrieved over the same unauthenticated HTTP origin as the objects they describe are NOT an independent integrity or authenticity root. They are SOURCE-PUBLISHED CONSISTENCY METADATA only.",
+    "what_they_do_establish": "That a downloaded object is consistent with what that origin published alongside it, which detects accidental corruption in transfer or storage.",
+    "what_they_do_not_establish": "Authenticity of the object, or that the origin served the same bytes to another party, or that the bytes were not altered before publication. An attacker or a fault able to alter the object over plain HTTP is equally able to alter the checksum served beside it.",
+    "per_object_record_fields": [
+      "exact URL retrieved",
+      "retrieval timestamp",
+      "transport security state, for example plain HTTP without TLS",
+      "source-published SHA1 where available, labelled as consistency metadata",
+      "locally computed SHA-256 of the received bytes",
+      "byte-integrity state, meaning whether the local hash matches the source-published value",
+      "source-authenticity state, recorded SEPARATELY and normally UNESTABLISHED for this origin"
+    ],
+    "scope": "These requirements apply to every archive object downloaded in WOW v2, not only to D2."
+  },
+  "what_this_amendment_does_not_do": "It opens no archive content, resolves no access gap, defines no candidate, and makes no claim about what the archive contains. It fixes the region within which D2 may later look, and the rules under which looking is allowed."
+}

@@ -1,0 +1,128 @@
+{
+  "artifact": "D2_ENUMERATION_PASS_1",
+  "artifact_kind": "operational_enumeration_record",
+  "project": "043_wow_discovery",
+  "record_version": 2,
+  "created_utc": "2026-08-18",
+  "supersedes": "record_version 1 of this file, same path, corrected on controller order the same day",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It reports one incomplete enumeration pass and the state of the fields read under MASK_V1 and MASK_V1a.",
+  "completeness": "PARTIAL. The sealed date window is NOT bracketed on either side, and no page has yet received a formal declination eligibility decision.",
+  "correction_record": {
+    "what_was_wrong": "Record version 1 assigned d2_enumeration_candidate NO to pages 013-082, 013-084 and 013-085 on the grounds that the printed declination lay outside the sealed B1 window by roughly 24 arcminutes, which was argued to exceed any plausible B1950 to J2000 shift.",
+    "why_that_was_wrong": "That argument is a new decision heuristic invented during the pass. The sealed B1 text requires the printed value to pass through the WOW v1 epoch tool with the conversion recorded per record. A margin that feels large enough is not a sealed decision rule, and admitting one would be precisely the shortcut the chain exists to prevent.",
+    "correction_applied": "Those three pages are now UNRESOLVED_EPOCH_TRANSFORM_REQUIRED. No page receives a formal declination decision until the already established v1 transform has actually been run.",
+    "who_caught_it": "Controller review, 2026-08-18. The analyst proposed the heuristic; the controller rejected it. Recorded plainly, in keeping with the WOW v1 detection-provenance discipline.",
+    "generalised_rule_added": "A quantity in one epoch is never compared with a bound in another epoch by arguing that the gap is comfortably large. Either the declared transform is run and recorded, or the state stays UNRESOLVED."
+  },
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "mask_definition": "research/v2_enumeration/MASK_V1.json",
+    "exposure_event": "X-6",
+    "epoch_tool": "042_wow/scripts/wow2_epoch.py, the WOW v1 transform, used read-only and unmodified"
+  },
+  "structural_page_selection_method": {
+    "method": "PAGE_SIZE_FROM_DIRECTORY_LISTING",
+    "role": "CANDIDATE_HEADER_LOCATOR",
+    "role_limit": "NOT a complete header detector. It may be used to propose pages worth classifying and may NEVER be used to assert that all header pages have been found.",
+    "description": "Header pages carry a mostly blank body and are therefore materially smaller than data pages. Candidates were identified from the file sizes published in the Apache directory listing, threshold below 80 percent of the median page size, before any page was opened.",
+    "why_this_is_content_free": "File size is directory metadata. No image was decoded to make the selection.",
+    "median_page_size_kb": 1024,
+    "candidates_flagged": 15,
+    "candidate_page_numbers": "001, 071, 072, 083, 084, 088, 090, 094, 142, 143, 237, 411, 412, 455, 456",
+    "observed_precision": "Of the flagged pages opened, 001, 072, 084, 088, 143, 237, 412 and 456 were HEADER_PAGE instances; 071, 083, 090, 142, 411 and 455 were DATA_PAGE instances. The locator over-selects.",
+    "observed_recall": "UNKNOWN. Whether any header page falls above the size threshold has not been tested. Establishing completeness would require an exhaustive class pass over the folder."
+  },
+  "mask_version_added": {
+    "id": "MASK_V1a",
+    "reason": "On several header pages the value row of the DECLINATION SETTING and DATE line fell below the bottom edge of rectangle R1, so the label was visible but the values were not.",
+    "change": "R1 replaced by R1a with rect 300, 55, 1100, 140 for page-class determination and header reading. R2 and R3 unchanged.",
+    "discipline_note": "The mask was not silently enlarged mid-pass. The variation was recorded, a new version defined, and every per-page record states which version produced it.",
+    "validated_on": "013-001, 013-412 and 013-456, unreadable under R1 and legible under R1a."
+  },
+  "finding_1_three_distinct_declination_quantities": {
+    "severity": "AFFECTS_ELIGIBILITY_SEMANTICS",
+    "observation": "Three different declination quantities are in play and they do not agree. (a) The page header prints a DECLINATION SETTING, for example -25 20. (b) The data table prints a per-row DECLIN. column with epoch stated as 1950.0, for example -26 13 on the same page. (c) The publisher states elsewhere that the true declination observed for the adjacent continuum record was -27 00.",
+    "magnitude": "The header setting and the printed row value differ by roughly 50 arcminutes on the pages examined.",
+    "which_one_the_sealed_bound_governs": "Sealed B4 names the declination of observation AS PRINTED ON THE RECORD, which is the per-row DECLIN. column captured by R2. The header setting is preserved as a separate instrument variable and is never used to decide eligibility.",
+    "unresolved": "Why setting and printed row value differ, and how either relates to the true declination observed, is UNKNOWN and is not resolved here.",
+    "why_it_matters_beyond_this_pass": "A single apparently simple variable turned out to be at least three semantically distinct quantities. A summary that recorded declination equals X would have destroyed that distinction without leaving a trace.",
+    "no_reconciliation_attempted": "Reconciling them would require material outside the permitted enumeration fields."
+  },
+  "finding_2_epoch_barrier_blocks_final_declination_decision": {
+    "severity": "BLOCKS_FINAL_ELIGIBILITY",
+    "observation": "The archive prints declination with epoch 1950.0. The sealed B1 window derives from the WOW v1 sealed J2000 declination.",
+    "consequence": "No printed value may be compared with the sealed window until it passes through the WOW v1 epoch tool, with the conversion recorded per record.",
+    "state_of_all_pages": "Declination eligibility is UNRESOLVED_EPOCH_TRANSFORM_REQUIRED for every page examined, without exception.",
+    "no_margin_exception": "There is no margin large enough to bypass this. See correction_record.",
+    "how_it_will_be_resolved": "By running 042_wow/scripts/wow2_epoch.py unmodified on the printed values and recording its declared provenance string with each converted value. No new transform is written."
+  },
+  "pages_examined": [
+    {"page": "013-001", "class": "HEADER_PAGE", "mask": "MASK_V1a", "declination_setting_printed": "-25 0", "date_read": "9 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "row_declination_read": "NOT_READ_THIS_PASS", "est_time_read": "NOT_READ_THIS_PASS", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-071", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "note": "class only; permitted fields not read this pass", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-072", "class": "HEADER_PAGE", "mask": "MASK_V1", "declination_setting_printed": "-25 20", "date_read": "11 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-082", "class": "DATA_PAGE", "mask": "MASK_V1", "row_declination_read": "-26 13 (1950.0), constant across the rows exposed", "est_time_read": "increasing in 12-second steps across the rows exposed", "readability": "LEGIBLE", "date_origin": "DERIVED_FROM_PRECEDING_HEADER", "source_header_page": "013-072", "propagation_span": "013-073 to 013-083 inclusive, pending confirmation that no intervening header page exists", "derived_date": "11 AUG 77", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED", "prior_state_corrected_from": "NO"},
+    {"page": "013-083", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-084", "class": "HEADER_PAGE", "mask": "MASK_V1", "declination_setting_printed": "-25 20", "date_read": "11 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "row_declination_read": "-26 13 (1950.0) in the three rows at the page foot", "est_time_read": "18 00 21, 18 00 33, 18 00 45 in those rows", "value_set_preserved": "The ordered set of row values is preserved rather than reduced to one representative value.", "readability": "LEGIBLE", "exposure_note": "Page of exposure event X-6, the single authorised full-page view.", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED", "prior_state_corrected_from": "NO"},
+    {"page": "013-085", "class": "DATA_PAGE", "mask": "MASK_V1", "row_declination_read": "-26 13 (1950.0) across the rows exposed", "est_time_read": "18 00 21 onward in 12-second steps across the rows exposed", "date_origin": "DERIVED_FROM_PRECEDING_HEADER", "source_header_page": "013-084", "propagation_span": "013-085 to 013-087 inclusive, pending confirmation", "derived_date": "11 AUG 77", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED", "prior_state_corrected_from": "NO"},
+    {"page": "013-086", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-088", "class": "HEADER_PAGE", "mask": "MASK_V1", "declination_setting_printed": "-25 20", "date_read": "11 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-090", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-142", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-143", "class": "HEADER_PAGE", "mask": "MASK_V1", "declination_setting_printed": "-25 20", "date_read": "12 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-237", "class": "HEADER_PAGE", "mask": "MASK_V1", "declination_setting_printed": "-25 40", "date_read": "13 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-411", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-412", "class": "HEADER_PAGE", "mask": "MASK_V1a", "declination_setting_printed": "-26 0", "date_read": "16 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE_UNDER_V1a_ONLY", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+    {"page": "013-455", "class": "DATA_PAGE", "mask": "MASK_V1", "readability": "LEGIBLE", "d2_enumeration_candidate": "UNRESOLVED"},
+    {"page": "013-456", "class": "HEADER_PAGE", "mask": "MASK_V1a", "declination_setting_printed": "-26 0", "date_read": "17 AUG 77", "date_origin": "READ_DIRECTLY_FROM_HEADER", "readability": "LEGIBLE_UNDER_V1a_ONLY", "d2_enumeration_candidate": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"}
+  ],
+  "date_to_page_mapping_established": {
+    "9 AUG 77": "013-001",
+    "11 AUG 77": "013-072, 013-084, 013-088",
+    "12 AUG 77": "013-143",
+    "13 AUG 77": "013-237",
+    "16 AUG 77": "013-412",
+    "17 AUG 77": "013-456",
+    "gaps_in_this_mapping": "No header page has yet been read carrying 10, 14 or 15 AUG 77. The locator is not exhaustive, so absence here is not absence in the folder.",
+    "declination_setting_progression_observed": "-25 0 at 9 AUG, -25 20 from 11 to 12 AUG, -25 40 at 13 AUG, -26 0 at 16 and 17 AUG. The survey setting steps southward over time.",
+    "consequence_for_the_sealed_window": "Whether and where the printed row declination enters the sealed B1 band is NOT established, and cannot be established before the epoch transform is applied. Any inference from the setting progression alone would repeat the mistake corrected above."
+  },
+  "epoch_transform_work_order": {
+    "tool": "042_wow/scripts/wow2_epoch.py",
+    "modification": "NONE. The tool is used exactly as sealed in WOW v1.",
+    "why_the_analyst_cannot_run_it": "The tool requires astropy and numpy, which are present in the owner's venv_gpu environment and absent from the analyst's working environment. Reimplementing the transform elsewhere would be a new method and is therefore refused.",
+    "required_runs": [
+      "First: the tool's own selftest, so that the transform is validated against the sealed OR-20 to OR-21 conversion in this session before any value is converted.",
+      "Then: one conversion per distinct printed declination value encountered. For this pass that is the single value -26 13 in epoch 1950.0. Right ascension is required as an input by the tool; the printed RT. ASCEN. (1950.0) value of the corresponding row is used and is recorded as an enumeration input rather than as a comparison variable."
+    ],
+    "recording_requirement": "The provenance string the tool prints, naming the astropy and numpy versions and the FK4 to FK5 frames, is recorded verbatim alongside every converted value.",
+    "decision_rule_after_conversion": "The converted J2000 declination is compared against the sealed B1 window of -27 17 to -26 37. Only then may a page move from UNRESOLVED_EPOCH_TRANSFORM_REQUIRED to YES or NO."
+  },
+  "summary": {
+    "pages_examined": 17,
+    "header_page_count": 8,
+    "data_page_count": 9,
+    "unreadable_count": 0,
+    "ambiguous_count": 3,
+    "ambiguous_detail": "013-001, 013-412 and 013-456 were unreadable under MASK_V1 and required MASK_V1a. Counted as ambiguous with respect to mask version, not as unreadable pages.",
+    "date_span_reached": "9 AUG 77 to 17 AUG 77 within folder 013",
+    "sealed_window": "1977-08-08 to 1977-08-22",
+    "bracketed_on_earlier_side": "NO. Earliest date read is 9 AUG 77, inside the window.",
+    "bracketed_on_later_side": "NO. Latest date read is 17 AUG 77, inside the window.",
+    "declination_coverage_observed_within_mask": "Printed row declination -26 13 in epoch 1950.0 on every data page whose R2 rectangle was read. Header settings from -25 0 to -26 0. Whether any of this lies inside the sealed B1 band is UNDETERMINED pending the epoch transform.",
+    "d2_enumeration_candidate_yes": 0,
+    "d2_enumeration_candidate_no": 0,
+    "d2_enumeration_candidate_unresolved_epoch_transform_required": 9,
+    "d2_enumeration_candidate_unresolved_other": 8,
+    "exposure_incidents": "One authorised full-page view, X-6, already recorded. During this pass only masked rectangles were rendered. One composite view showed a small number of adjacent data digits above and below the header line on some strips, recorded as minor incidental exposure and INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "signal_interpretation_performed": "NONE",
+    "frequency_inspection_performed": "NONE",
+    "candidate_generation_performed": "NONE"
+  },
+  "what_is_needed_to_complete_the_pass": [
+    "Run the sealed epoch transform and record it per value, so declination states can leave UNRESOLVED_EPOCH_TRANSFORM_REQUIRED.",
+    "Extend enumeration earlier than 8 AUG 77 and later than 22 AUG 77 to satisfy the sealed bracketing rule, which requires folders adjacent to 013.",
+    "Either accept the size locator as a locator only, or run an exhaustive class pass if header completeness is later required.",
+    "Determine structurally, not by extrapolation, where printed row declinations inside the sealed band reside."
+  ]
+}

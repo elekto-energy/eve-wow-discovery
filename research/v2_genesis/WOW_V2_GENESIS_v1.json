@@ -1,0 +1,37 @@
+{
+  "artifact": "WOW_V2_GENESIS_v1",
+  "artifact_kind": "successor_project_genesis_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "DRAFT-PENDING-CONTROLLER-REVIEW",
+  "status_semantics": "No field named status. Current lifecycle state lives only in the seal record that covers this file.",
+  "purpose": "To bind the WOW v2 discovery track cryptographically to the closed WOW v1 method study without granting v2 any ability to modify it.",
+  "genesis": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae",
+  "genesis_semantics": "This is the WOW v1 closure pin identity: the canonical SHA-256 of the pin_payload in research/wow1_final/WOW1_CLOSURE_PIN.json of project 042_wow. WOW v2 chains to it as parent.",
+  "genesis_derivation": {
+    "rule": "No hash is copied from conversation or memory when it can be re-derived from the artifact.",
+    "derivation_1": "Owner ran scripts/wow1_closure_pin.py (verify-only) inside a fresh clone of https://github.com/elekto-energy/eve-wow-v1 checked out at tag wow-v1.0 (commit e80d5c4) on 2026-08-18. All seven chain gates PASSED, all five bound document canonical hashes matched, and the tool printed wow1_closure_pin_hash 679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae.",
+    "derivation_2": "Independently, the pin_payload was read from disk and canonicalized with the established WOW canonicalization (json.dumps sort_keys=True separators=(',',':') ensure_ascii=True, then SHA-256), reproducing the same value and matching the wow1_closure_pin_hash field stored in the record.",
+    "both_agree": "YES"
+  },
+  "v1_reference": {
+    "repository": "https://github.com/elekto-energy/eve-wow-v1",
+    "tag": "wow-v1.0",
+    "commit": "e80d5c4",
+    "phase_marker": "CLOSED_COMPLETE_AS_METHOD_STUDY",
+    "external_anchors": "Public gist ce684172f700759ec9df328d83d4556e (files wow1-anchor.txt and WOW1_CLOSURE_2026-08-18.md) plus two OpenTimestamps commitments dated 2026-08-17 and 2026-08-18.",
+    "attestation_state": "PENDING. Until the OpenTimestamps commitments are Bitcoin-attested, only integrity and reproducibility may be claimed, never existence no later than a given date."
+  },
+  "immutability_rule": {
+    "statement": "WOW v2 may reference WOW v1 artifacts and may re-derive their identities. WOW v2 may never modify, supersede, re-seal or re-interpret any WOW v1 sealed or pinned artifact, and may never move the wow-v1.0 tag.",
+    "if_v1_appears_wrong": "A defect discovered in a WOW v1 artifact is recorded as a WOW v2 finding against the frozen v1 state. The v1 chain is not edited. The correct response is a new record in v2, never a rewrite in v1.",
+    "scope_exclusions": "No G0 work, no facility capability verification, no network solver work, no regression tests for the v1 solver, and no v1 verification debt is closed inside WOW v2."
+  },
+  "naming_rule": {
+    "hazard": "In WOW v1 the token WOW-2 denotes the retrospective evidence layer (WOW-2 pin 877eedfe...). Using WOW-2 for this successor project would collide with that meaning.",
+    "resolution": "This project is named WOW V2 or WOW DISCOVERY in prose and WOW_V2 in artifact identifiers. The token WOW-2 continues to mean the v1 retrospective layer and nothing else."
+  },
+  "v2_purpose": "To determine whether EVE can identify a genuinely novel, testable scientific candidate, relationship, inconsistency, prediction, or previously untested proposition concerning the Wow! Signal itself. This is not an extension of G0 or of network verification.",
+  "controller_order_of_record": "START WOW V2 - DISCOVERY TRACK, issued 2026-08-18. First task limited to: re-derive the v1 closure hash, create this genesis record, and create and seal DISCOVERY_PROTOCOL_v1 before any N50CH archive data is opened. Stop after genesis and protocol are prepared and report canonical hashes for controller review."
+}

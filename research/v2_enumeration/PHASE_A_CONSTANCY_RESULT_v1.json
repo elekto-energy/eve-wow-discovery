@@ -1,0 +1,78 @@
+{
+  "artifact": "PHASE_A_CONSTANCY_RESULT_v1",
+  "artifact_kind": "operational_constancy_test_result",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It reports the 45 preregistered declination readings and the constancy result.",
+  "bound_to": {
+    "sampling_rule": "research/v2_enumeration/PHASE_A_SAMPLING_RULE_v1.json",
+    "run_inventory": "research/v2_enumeration/PHASE_A_RUN_INVENTORY_v1.json",
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7"
+  },
+  "headline_result": {
+    "finding": "RUN-LEVEL DECLINATION REPRESENTATION FAILS. The printed per-row DECLIN. (1950.0) value is NOT constant within an observing run. Every one of the fifteen in-window runs shows variation among its three preregistered samples, or has an unreadable or ambiguous sample, or both.",
+    "constancy_sample_pass": 0,
+    "constancy_sample_fail_or_ambiguous": 15,
+    "consequence": "All fifteen runs are classified ROW_LEVEL_REQUIRED. No run-level declination value may be used, and none is extrapolated.",
+    "why_this_matters": "The run-level representation was proposed by the analyst as an efficient route to complete coverage and was explicitly required by the controller to be tested rather than assumed. The test rejected it. Had it been assumed, every subsequent eligibility decision would have rested on a false premise, and the error would have been invisible in the output.",
+    "observed_variation_range": "Within-run spans among sampled pages range from 1 to 16 arcminutes. The sealed B1 window is 40 arcminutes wide, so variation of this size is not negligible relative to the eligibility question."
+  },
+  "readings": {
+    "count": 45,
+    "method": "Masked visual reading of rectangle DEC 1222,700,1340,830 on each sample page, presented in five composites. OCR was not used for these values because it failed validation on this field.",
+    "integrity": "All 45 sample pages hashed locally and matched the folder SHA1SUM. Consistency metadata only; source authenticity UNESTABLISHED.",
+    "per_run": [
+      {"run": "R-03", "header": "012-455", "setting": "-25 0", "date": "8 AUG 77", "samples": [{"page": "012-456", "dec_b1950": "-25 56"}, {"page": "012-504", "dec_b1950": "-26 03"}, {"page": "012-552", "dec_b1950": "-25 56"}], "span_arcmin": 7, "class": "CONSTANCY_SAMPLE_FAIL"},
+      {"run": "R-04", "header": "013-001", "setting": "AMBIGUOUS", "date": "9 AUG 77", "samples": [{"page": "013-002", "dec_b1950": "-25 52"}, {"page": "013-036", "dec_b1950": "-26 08"}, {"page": "013-071", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 16, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-05", "header": "013-072", "setting": "-25 20", "date": "11 AUG 77", "samples": [{"page": "013-073", "dec_b1950": "-26 12"}, {"page": "013-078", "dec_b1950": "-26 11"}, {"page": "013-083", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 1, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-06", "header": "013-084", "setting": "-25 20", "date": "11 AUG 77", "samples": [{"page": "013-085", "dec_b1950": "-26 13"}, {"page": "013-086", "dec_b1950": "-26 14"}, {"page": "013-087", "dec_b1950": "-26 14"}], "span_arcmin": 1, "class": "CONSTANCY_SAMPLE_FAIL"},
+      {"run": "R-07", "header": "013-088", "setting": "-25 20", "date": "11 AUG 77", "samples": [{"page": "013-089", "dec_b1950": "-26 15"}, {"page": "013-115", "dec_b1950": "-26 27"}, {"page": "013-142", "dec_b1950": "-26 20"}], "span_arcmin": 12, "class": "CONSTANCY_SAMPLE_FAIL"},
+      {"run": "R-08", "header": "013-143", "setting": "-25 20", "date": "12 AUG 77", "samples": [{"page": "013-144", "dec_b1950": "-26 20 on upper rows and -26 19 on lower rows, ambiguous as a single page value"}, {"page": "013-190", "dec_b1950": "-26 21"}, {"page": "013-236", "dec_b1950": "-26 17"}], "span_arcmin": 4, "class": "UNREADABLE_OR_AMBIGUOUS"},
+      {"run": "R-09", "header": "013-237", "setting": "-25 40", "date": "13 AUG 77", "samples": [{"page": "013-238", "dec_b1950": "-26 36"}, {"page": "013-324", "dec_b1950": "-26 37"}, {"page": "013-411", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 1, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-10", "header": "013-412", "setting": "-26 0", "date": "16 AUG 77", "samples": [{"page": "013-413", "dec_b1950": "-26 58"}, {"page": "013-434", "dec_b1950": "-26 51"}, {"page": "013-455", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 7, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-11", "header": "013-456", "setting": "-26 0", "date": "17 AUG 77", "samples": [{"page": "013-457", "dec_b1950": "-27 02"}, {"page": "013-462", "dec_b1950": "-26 59"}, {"page": "013-467", "dec_b1950": "-26 56"}], "span_arcmin": 6, "class": "CONSTANCY_SAMPLE_FAIL"},
+      {"run": "R-12", "header": "014-001", "setting": "-26 0", "date": "17 AUG 77", "samples": [{"page": "014-002", "dec_b1950": "-26 52"}, {"page": "014-029", "dec_b1950": "-27 07"}, {"page": "014-057", "dec_b1950": "-27 01 on upper rows and -27 00 on lower rows, ambiguous as a single page value"}], "span_arcmin": 15, "class": "UNREADABLE_OR_AMBIGUOUS"},
+      {"run": "R-13", "header": "014-058", "setting": "-26 20", "date": "18 AUG 77", "samples": [{"page": "014-059", "dec_b1950": "-27 14"}, {"page": "014-102", "dec_b1950": "-27 23"}, {"page": "014-146", "dec_b1950": "-27 17"}], "span_arcmin": 9, "class": "CONSTANCY_SAMPLE_FAIL"},
+      {"run": "R-14", "header": "014-148", "setting": "-26 20", "date": "19 AUG 77", "samples": [{"page": "014-149", "dec_b1950": "-27 16"}, {"page": "014-184", "dec_b1950": "-27 14"}, {"page": "014-219", "dec_b1950": "-27 28"}], "span_arcmin": 14, "class": "CONSTANCY_SAMPLE_FAIL", "note": "This sample page also showed two lines of non-tabular text beginning AT-87.4 within the masked strip. Recorded as incidental exposure, not interpreted."},
+      {"run": "R-15", "header": "014-220", "setting": "-26 20", "date": "20 AUG 77", "samples": [{"page": "014-221", "dec_b1950": "-27 14"}, {"page": "014-258", "dec_b1950": "-27 22"}, {"page": "014-296", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 8, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-16", "header": "014-297", "setting": "-26 20", "date": "21 AUG 77", "samples": [{"page": "014-298", "dec_b1950": "-27 11"}, {"page": "014-331", "dec_b1950": "-27 24"}, {"page": "014-365", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 13, "class": "CONSTANCY_SAMPLE_FAIL_AND_UNREADABLE"},
+      {"run": "R-17", "header": "014-366", "setting": "-26 40", "date": "22 AUG 77", "samples": [{"page": "014-367", "dec_b1950": "-27 31"}, {"page": "014-368", "dec_b1950": "-27 31"}, {"page": "014-369", "dec_b1950": "BLANK_OR_ILLEGIBLE"}], "span_arcmin": 0, "class": "UNREADABLE_OR_AMBIGUOUS"}
+    ]
+  },
+  "distinct_b1950_values_observed": {
+    "list": "-25 52, -25 56, -26 03, -26 08, -26 11, -26 12, -26 13, -26 14, -26 15, -26 17, -26 19, -26 20, -26 21, -26 27, -26 36, -26 37, -26 51, -26 52, -26 56, -26 58, -26 59, -27 00, -27 01, -27 02, -27 07, -27 11, -27 14, -27 16, -27 17, -27 22, -27 23, -27 24, -27 28, -27 31",
+    "count": 34,
+    "consequence_for_the_transform": "There is no small set of run-level values to convert. Because the row value varies within runs, the transform must be applied at row or page level once transcription exists. The transform was therefore NOT applied to these values in this block."
+  },
+  "why_no_transform_was_run_in_this_block": {
+    "reason": "The controller order applies the transform only to runs classified CONSTANCY_SAMPLE_PASS. There are none. Applying it to a fail-run value would be the extrapolation the order forbids.",
+    "no_pass_runs": "CONFIRMED",
+    "what_this_does_not_mean": "It does not mean the sealed D2 region is empty. It means eligibility cannot be decided at run level."
+  },
+  "boundary_proximity_observed_without_deciding": {
+    "statement": "Several sampled B1950 values sit in the region that would, after a shift of the magnitude measured in the earlier transform run, fall near or inside the sealed B1 window. The sealed window is expressed in J2000 and no conversion of these values has been performed, so no eligibility statement is made here.",
+    "controller_rule_10_applies": "Any run whose transformed value would fall inside B1, or near enough to the boundary to possibly join the scientific D2 dataset, must receive final declination verification before its signal fields are opened. Since no run passed constancy, that verification is row-level work and is not yet done.",
+    "explicitly_not_claimed": "No page, row or run is asserted to be D2 eligible or ineligible on declination grounds by this record."
+  },
+  "classification_summary": {
+    "D2_SPATIAL_ELIGIBLE": 0,
+    "D2_SPATIAL_INELIGIBLE": 0,
+    "ROW_LEVEL_REQUIRED": 15,
+    "UNRESOLVED": 0,
+    "D2_INELIGIBLE_BY_DATE": 4,
+    "note_on_the_four": "R-01, R-02, R-18 and R-19 lie outside the sealed date window and are ineligible on the sealed conjunction regardless of declination. No spatial work was done on them and none is required.",
+    "R-04_setting_state": "The header DECLINATION SETTING of R-04 remains AMBIGUOUS and was not used, resolved or allowed to influence anything."
+  },
+  "incidental_exposure_this_block": [
+    "Sample page 014-219 showed two lines of non-tabular text beginning AT-87.4 inside the masked declination strip. Recorded, not interpreted, INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "Several sample pages were blank in the masked region, which reveals only that the region carried no printed value there."
+  ],
+  "no_signal_inspection": "No frequency, channel, intensity or signal field was inspected in this block.",
+  "what_phase_a_has_established": {
+    "positive": "A validated run inventory over the full bracketed population, a measured negative recall test for the header locator, and a tested rejection of the run-level declination representation.",
+    "negative": "D2 spatial eligibility cannot be determined without row-level or page-level declination transcription across the fifteen in-window runs, which spans roughly 1000 pages.",
+    "consequence_for_the_project": "The transcription pipeline that was deferred is now on the critical path. Phase A cannot be closed with an eligible-record set until it exists, and its accuracy must be measured before any eligibility decision rests on it."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "artifact": "PHASE_A_SAMPLING_RULE_v1",
+  "artifact_kind": "operational_pre_registration",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is written BEFORE any sampled value is viewed, as required by the controller order.",
+  "written_before_viewing_sampled_values": "YES",
+  "purpose": "To fix, in advance, how observing runs are delimited and how within-run declination constancy is tested, so that neither can be chosen after seeing the values.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "enumeration_summary": "research/v2_enumeration/D2_ENUMERATION_SUMMARY_v1.json"
+  },
+  "population": {
+    "definition": "The complete bracketed population established by the enumeration pass: JPG folders 012, 013 and 014, being 552, 467 and 445 pages respectively, 1464 pages in total.",
+    "why_these_three": "They are the folders required to bracket the sealed date window on both sides, per the sealed stopping rule."
+  },
+  "run_boundary_rule": {
+    "definition": "An observing run begins at a HEADER_PAGE, being a page whose top strip carries the DECLINATION SETTING and DATE line, and continues through all following pages until the page before the next HEADER_PAGE, or the end of the folder.",
+    "page_classes_recognised": ["HEADER_PAGE", "DATA_PAGE", "JOB_LISTING_PAGE", "UNDETERMINED"],
+    "class_detection_method": "Keyword presence in the MASK_V1b rectangle 300,55,1100,180, detected by OCR and confirmed visually where the OCR result is not decisive. Keyword DECLINATION indicates HEADER_PAGE; CHANNEL NUMBER indicates DATA_PAGE; JOB or PAGE with drive fields indicates JOB_LISTING_PAGE.",
+    "candidate_locator": "Page file size below 80 percent of the folder median, taken from the published directory listing. A header page has a mostly blank body and therefore less ink and a smaller JPEG, so the locator has a physical basis, but it remains a LOCATOR and not a proof of completeness.",
+    "recall_test_declared_in_advance": "A random sample of pages ABOVE the size threshold will be classified by the same method. If any of them proves to be a HEADER_PAGE, the locator is declared insufficient and the run inventory is marked INCOMPLETE. Sample size 24, drawn 8 per folder by a fixed pseudorandom seed, selected before any of those pages is viewed."
+  },
+  "within_run_constancy_test": {
+    "what_is_tested": "Whether the printed per-row DECLIN. (1950.0) value is constant across the pages of a run, so that a single run-level value is a tested representation rather than an assumption.",
+    "sampling_rule": "Three DATA_PAGEs per run, chosen structurally and not by content: the FIRST data page of the run, the MIDDLE data page by page index, and the LAST data page of the run. If a run contains fewer than three data pages, all of its data pages are sampled.",
+    "what_is_read": "Rectangle R2 only, cropped tightly to the declination field at x 1228 to 1332 as established from the ink-density column profile, and limited to a small number of consecutive rows per sample.",
+    "pass_criterion": "The run is RUN_LEVEL_REPRESENTATION_VALIDATED only if all sampled pages of that run show the same printed declination value in degrees and arcminutes.",
+    "fail_criterion": "If any sampled page differs, or if any sample is illegible or ambiguous, the run is marked ROW_LEVEL_REQUIRED and its declination is NOT extrapolated.",
+    "no_post_hoc_adjustment": "The sampling positions are fixed by this rule. A page may not be swapped for another because its value is inconvenient, and a fourth sample may not be added to break a disagreement."
+  },
+  "transform_and_comparison": {
+    "transform": "The already established WOW v1 tool 042_wow/scripts/wow2_epoch.py, unmodified, FK4(equinox=B1950, obstime=B1950) to FK5(equinox=J2000).",
+    "who_runs_it": "The owner, from venv_v2. The analyst has no astropy and refuses to reimplement the transform.",
+    "comparison": "The converted J2000 declination is compared mechanically against the sealed B1 window of -27d 17m to -26d 37m.",
+    "classification_vocabulary": ["D2_SPATIAL_ELIGIBLE", "D2_SPATIAL_INELIGIBLE", "ROW_LEVEL_REQUIRED", "UNRESOLVED"]
+  },
+  "prohibitions_during_phase_a": [
+    "No frequency, channel, intensity or signal value is inspected.",
+    "No page is selected, skipped or resampled because of its apparent content.",
+    "Enumeration does not stop at the first eligible run.",
+    "The header DECLINATION SETTING is recorded but never used to decide eligibility, because the sealed B4 names the printed per-row value."
+  ]
+}

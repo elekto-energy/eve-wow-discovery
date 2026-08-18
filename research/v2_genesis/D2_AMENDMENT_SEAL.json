@@ -1,0 +1,23 @@
+{
+  "seal_payload": {
+    "schema": "wow-v2-d2-amendment-seal",
+    "schema_version": "1",
+    "decision": "WOW_V2_D2_COMPARISON_REGION_SEALED",
+    "decision_semantics": "The D2 comparison region is fixed as of this seal. No N50CH archive content had been opened at sealing time. The bounds may not be widened, narrowed, shifted or adapted in response to observed archive content. Any search outside the sealed region is a separate exploratory analysis and is never reported as a D2 result.",
+    "genesis": "17c4258d924675ddce4c39f056e63572086adab07a8b3551cce736871b6fb895",
+    "genesis_semantics": "WOW v2 genesis seal identity, re-derived from disk at seal time. It in turn chains to the WOW v1 closure identity.",
+    "wow_v1_closure_pin": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae",
+    "discovery_protocol_canonical": "88563848c68afa3d494945e251d7597f55c274e0c1d8de76ecbbb818cd0e7706",
+    "documents": [
+      {
+        "name": "D2_AMENDMENT_v1.json",
+        "path": "research/v2_genesis/D2_AMENDMENT_v1.json",
+        "raw_sha256": "a172e1bced48bce7ee168470259d656cf7fdf517a63fcb3e16c20c187de6d949",
+        "canonical_sha256": "aca7a27817c40239078e025dcbb0981ab3f70a124fbbb50feeb28544c91e9931"
+      }
+    ]
+  },
+  "wow_v2_d2_amendment_seal_hash": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+  "sealed_utc": "2026-08-18T16:10:33Z",
+  "status": "SEALED"
+}

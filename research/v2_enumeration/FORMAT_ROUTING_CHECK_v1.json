@@ -1,0 +1,78 @@
+{
+  "artifact": "FORMAT_ROUTING_CHECK_v1",
+  "artifact_kind": "operational_work_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It documents a structure-and-metadata-level check performed under the controller order of 2026-08-18.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "enumeration_plan": "research/v2_enumeration/D2_ENUMERATION_PLAN_v1.json"
+  },
+  "scope_declaration": {
+    "what_was_examined": "Apache directory listings and one published SHA1SUM text file. Filenames, file counts, sizes, modification times and path structure only.",
+    "image_content_opened": "NONE during this check. No JPG and no CR2 image was decoded or rendered while the routing question was decided.",
+    "why_this_matters": "The routing decision had to be made from structure alone, so that the choice of which sequence to enumerate could not be influenced by anything visible in the scans."
+  },
+  "findings": {
+    "F-1_jpg_tree_is_complete": {
+      "observation": "The jpg tree contains 174 folders: all 167 numbered folders from folder.001 through folder.167 with NO gaps, plus seven named folders (cb, ddd, list1, list2, sp, tests, wow).",
+      "consequence": "The jpg tree is a superset of both the cr2 numeric folder set and the png numeric folder set.",
+      "gap_resolved": "This resolves access gap G-3 from ARCHIVE_ACCESS_STRUCTURE_v1. The twelve numbered folders 073-078 and 151-156 that were absent from both the cr2 and png trees ARE present in the jpg tree. They were never missing from the archive; they were missing from the two trees inspected in the first pass.",
+      "correction_note": "ARCHIVE_ACCESS_STRUCTURE_v1 recorded the absence as UNKNOWN in cause and warned it must not be assumed. That caution was correct and the record is now corrected rather than reinterpreted."
+    },
+    "F-2_folder_013_present_in_jpg": {
+      "observation": "folder.013 exists in the jpg tree and in the cr2 tree, and does not exist in the png tree.",
+      "consequence": "The structurally sealed start path can be followed in JPG without leaving the sequence."
+    },
+    "F-3_unambiguous_page_level_mapping": {
+      "method": "Page stems were extracted from both directory listings and compared as sets. No image was opened.",
+      "jpg_page_count": 467,
+      "cr2_page_count": 467,
+      "stem_sets_identical": "YES - the set of 013-NNN stems is exactly the same in both trees, differing only in extension.",
+      "anchor_pages_present_in_both": "013-084 and 013-085 are present in both trees.",
+      "conclusion": "The JPG representation of the 013 sequence maps one to one onto the CR2 objects by filename stem, with no missing, extra or renamed pages. The mapping is UNAMBIGUOUS."
+    },
+    "F-4_published_checksums_exist_per_folder": {
+      "observation": "Both jpg/folder.013 and cr2/folder.013 publish a SHA1SUM file. The jpg one lists 467 entries, one per page.",
+      "integrity_classification": "SOURCE-PUBLISHED CONSISTENCY METADATA ONLY, per the sealed integrity rule. Same unauthenticated HTTP origin as the objects it describes; it is not an authenticity root."
+    }
+  },
+  "routing_decision": {
+    "outcome": "AN UNAMBIGUOUS JPG REPRESENTATION OF THE SAME STRUCTURAL SEQUENCE EXISTS.",
+    "decision": "Enumeration uses the JPG representation of the sealed structural sequence.",
+    "classification": "DERIVED_JPG_FROM_CR2_SEQUENCE",
+    "cr2_source_relationship_preserved": "Every JPG page enumerated corresponds by identical filename stem to a CR2 object at scans/cr2/folder.NNN/NNN-PPP.cr2. The CR2 object remains the higher-fidelity source and may be retrieved later for any page where the JPG proves insufficient.",
+    "what_was_not_done": "No unrelated PNG folder was substituted. No CR2 decoder was installed, because the condition requiring it was not met.",
+    "wow_folder_caveat": "The Wow! PNG folder will require its own mask version later, because its digitisation provenance and imaging configuration differ from the rest of the archive. That is recorded in the sealed amendment as a comparison hazard and is not resolved here."
+  },
+  "layout_page_selection": {
+    "page": "013-084.jpg",
+    "why_this_page": "It is the first structurally eligible page of the sealed start path: the publisher-documented boundary page immediately preceding the Wow! folder in sequence. It was chosen by sequence position alone.",
+    "selection_basis": "ARCHIVE_STRUCTURE_ONLY",
+    "not_selected_because": "Nothing about its content was known, seen or considered at selection time."
+  },
+  "retrieval_record": {
+    "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-084.jpg",
+    "folder_identifier": "jpg/folder.013",
+    "file_identifier": "013-084.jpg",
+    "retrieved_utc": "2026-08-18T16:19:47Z",
+    "http_status": "200",
+    "transport_security_state": "PLAIN_HTTP_NO_TLS",
+    "content_type": "image/jpeg",
+    "content_length_bytes": 688927,
+    "server_last_modified": "Wed, 03 Jan 2018 19:10:02 GMT",
+    "source_published_sha1": "e80eafa3eb6b02eba44bbd631c3cd99fd63a88ea",
+    "source_published_sha1_semantics": "CONSISTENCY_METADATA_ONLY",
+    "locally_computed_sha1": "e80eafa3eb6b02eba44bbd631c3cd99fd63a88ea",
+    "locally_computed_sha256": "273b485a25c2e7740165f04f3b0b5ab15015410bf17bec2b9aedf9570c238919",
+    "byte_integrity_state": "CONSISTENT_WITH_SOURCE_PUBLISHED_SHA1",
+    "source_authenticity_state": "UNESTABLISHED",
+    "source_authenticity_reason": "The checksum was served by the same unauthenticated HTTP origin as the object. A party able to alter the object is equally able to alter the checksum beside it.",
+    "image_dimensions_px": "2216 x 1663",
+    "image_mode": "RGB",
+    "content_rendered_at_time_of_this_record": "NO - the file has been retrieved and hashed only. The single registered layout exposure is the next action."
+  },
+  "next_action": "Perform the ONE registered full-page layout exposure on 013-084.jpg, log it as an exposure event before any interpretation, and derive mask version 1 coordinates for the observation date, the observing time with its reference, and the declination."
+}

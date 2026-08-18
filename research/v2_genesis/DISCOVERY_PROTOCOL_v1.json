@@ -1,0 +1,102 @@
+{
+  "artifact": "DISCOVERY_PROTOCOL_v1",
+  "artifact_kind": "sealed_discovery_protocol",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "DRAFT-PENDING-CONTROLLER-REVIEW",
+  "status_semantics": "No field named status. Current lifecycle state lives only in the seal record that covers this file.",
+  "bound_to": {
+    "wow_v2_genesis": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae",
+    "genesis_semantics": "WOW v1 closure pin identity. See WOW_V2_GENESIS_v1.json."
+  },
+  "why_this_is_sealed_first": "If discovery data is opened before the questions are frozen, an interesting feature can be found first and the question invented afterwards to fit it. That is the discovery-phase form of the failure the v1 chain exists to prevent. The three questions below are frozen now, before any archive content is inspected.",
+  "frozen_questions": [
+    {
+      "id": "D1",
+      "name": "POPULATION",
+      "question": "Is the Wow! event structurally unusual relative to other N50CH events from comparable instrument epochs?",
+      "what_would_answer_it": "A comparison of the Wow! event against a population of other recorded events on the same instrument and comparable configuration, using properties that the archive actually records.",
+      "unusual_semantics": "Structurally unusual means unusual in recorded properties. It does not mean unexplained, and it does not mean anomalous in origin."
+    },
+    {
+      "id": "D2",
+      "name": "LOCAL CONTEXT",
+      "question": "Determine whether the predeclared local comparison region around the Wow! observation contains other records with properties relevant to assessing the Wow! event's local temporal, spectral, spatial, or signal-morphology context.",
+      "region_declaration_rule": "The numerical bounds defining the comparison region in observation date/time, frequency/channel space, and sky/declination position MUST be specified and sealed in a protocol amendment before any N50CH archive content is inspected. Those bounds may not be widened, narrowed, shifted, or otherwise adapted in response to observed archive content.",
+      "outside_region_rule": "Any later search outside the sealed region is a separate exploratory analysis and may not be represented as part of D2. It is recorded and reported as EXPLORATORY, with its own provenance.",
+      "amendment_minimum_contents": [
+        "time/date window",
+        "frequency/channel window",
+        "declination/sky window",
+        "which record fields constitute comparison variables",
+        "handling of missing or unreadable records",
+        "whether the Wow! record itself participates in parameter selection - normally permitted ONLY through values already sealed in WOW v1",
+        "stopping rule and the archive extent to be inspected"
+      ],
+      "why_the_stopping_rule": "Without a declared extent and stopping rule, inspection can continue until something interesting appears, which converts search effort into an apparent finding. The extent is declared before opening, and exhausting it is a legitimate result.",
+      "why_bounds_are_not_fixed_here": "No defensible basis for specific numerical widths exists before the archive structure is known. Freezing arbitrary numbers now would be a false precision; freezing the rule that the numbers are declared before inspection is the property that actually protects the result."
+    },
+    {
+      "id": "D3",
+      "name": "CROSS-RECORD ANOMALY",
+      "question": "Does the wider archive expose a relationship involving frequency, sky position, temporal structure, beam behaviour, or event morphology that is not already explicit in the known Wow! literature?",
+      "what_would_answer_it": "A relationship statable as a testable proposition, together with an explicit check that it is not already stated in the known literature.",
+      "novelty_caveat": "Novelty here means not identified in the defined published-literature novelty search. It can never mean never previously discovered by anyone."
+    }
+  ],
+  "predeclared_outcomes": {
+    "NOVEL_CANDIDATE_FOUND": "At least one candidate survived the literature and novelty check. A candidate is a proposition to be tested, not a discovery claim.",
+    "NO_NOVEL_RESULT_FOUND": "Candidate generation produced nothing that survived the novelty check, or produced nothing at all. This is a legitimate and reportable outcome, not a failure of the process.",
+    "INSUFFICIENT_DATA": "The archive material available did not have the capacity to address the frozen questions. Distinct from NO_NOVEL_RESULT_FOUND: this states the evidence lacked capability, not that the answer was negative."
+  },
+  "outcome_symmetry_rule": "NO_NOVEL_RESULT_FOUND is reported with the same prominence as NOVEL_CANDIDATE_FOUND. No re-run with new questions may be used to convert a null into a positive; new questions require a new sealed protocol version and are reported as such.",
+  "pipeline": {
+    "ordered_stages": [
+      "1. DISCOVERY DATA: open and inventory archive material.",
+      "2. CANDIDATE GENERATION: derive candidates from the data against the frozen questions.",
+      "3. CANDIDATE SEAL: freeze the candidate set before any literature check.",
+      "4. LITERATURE AND NOVELTY CHECK: test each sealed candidate against known literature.",
+      "5. RESULT: report one of the predeclared outcomes."
+    ],
+    "hard_rule": "Literature searched after candidate generation may be used ONLY to accept or reject a candidate, NEVER to modify, refine, reword or rescue it. A candidate that must be changed to survive the literature check is rejected, and the rejection is recorded.",
+    "anti_rescue_clause": "Inherited from the v1 requirement layer: if a candidate needs an escape clause introduced after the check, the candidate was mis-specified. That is recorded as a defect, not used as a repair."
+  },
+  "inherited_failure_modes": {
+    "source": "EVE_FAILURE_MODES_v1.json, canonical 3dbf127bf66389c77ff9bdb507c0c20553603f20af24963f20747d2a4c85845a, sealed in WOW v1 and referenced here without modification.",
+    "FM-1_EPOCH_COLLAPSE": "Applies directly to D1: instrument capability and configuration differ across epochs, so an event population must carry its epoch axis and must never be marginalised into a single capability state.",
+    "FM-2_REQUIREMENT_INFLATION": "Applies to candidate acceptance: no criterion stricter than the frozen question may be imposed on a candidate, and no global evidence requirement may be pushed down onto every component.",
+    "FM-3_CONFIDENCE_INJECTION": "Applies to D1 and D3: no probability, significance or confidence figure may be attached to a candidate unless a probabilistic model was declared and sealed before the data were examined. Absent such a model, report structure and bounds, never a confidence number.",
+    "working_state_extensions_not_sealed_in_v1": "FM-4 VISIBILITY OMISSION, a third FM-2 occurrence, and the internal modes DUAL-AUTHORING DIVERGENCE, EQUAL CATEGORICAL COVERAGE IS NOT EQUAL EVIDENTIAL CAPABILITY and SCALARIZATION LOSS exist in the controller working state but were never sealed as a v1 disk artifact. They are applied as working guidance in v2 and are NOT presented as sealed v1 content."
+  },
+  "exposure_ledger": {
+    "principle": "Inherited from the v1 eligibility register: what has already been seen, and when, is declared rather than assumed away. Published material can never be truly blind.",
+    "entries": [
+      {
+        "id": "X-1",
+        "item": "NAAPO N50CH archive index page (Russ Childers Argus data page)",
+        "exposure": "PARTIAL_EXPOSURE_LISTING_ONLY",
+        "exposure_detail": "Before this protocol was drafted, the controller viewed the page and reported that it links an N50CH_data archive including a folder of scans around the time of the Wow! Signal, and that the directory itself timed out when opened. What was seen is the existence of the archive and folder naming, not any scan content.",
+        "consequence": "The existence and location of the archive are NOT blind. The archive CONTENT remains unopened, so the material can still serve prospectively for discovery even though the existence of the data source is not blind."
+      },
+      {
+        "id": "X-2",
+        "item": "PHL at UPR Arecibo Wow! project page",
+        "exposure": "PARTIAL_EXPOSURE_CITATION_ONLY",
+        "exposure_detail": "The controller reported that the page states the team is transcribing 1970s and 1990s material and has identified further features not yet included in their latest publication pending further verification. No parameters and no findings were obtained.",
+        "consequence": "Recorded as context only. It establishes that unpublished work exists in adjacent material, which bears on the novelty check: a candidate may be novel with respect to published literature while already known to that team. Any novelty statement is scoped to not identified in the defined published-literature novelty search, never to never previously discovered by anyone.",
+        "verification_state": "UNVERIFIED_BY_EVE. Both X-1 and X-2 are controller-reported observations of external web pages. They have not been independently fetched or verified within this session and are recorded as leads, not as established facts."
+      }
+    ]
+  },
+  "prohibitions_in_force": [
+    "No N50CH archive data may be downloaded or inspected before this protocol is sealed.",
+    "No N50CH archive data may be inspected before the D2 comparison-region amendment is sealed.",
+    "No G0, facility capability, or network solver work occurs in WOW v2.",
+    "No WOW v1 artifact is modified, superseded or re-sealed, and the wow-v1.0 tag is never moved.",
+    "No candidate is modified after the candidate seal.",
+    "No discovery claim is made from a candidate. A candidate is a proposition awaiting test.",
+    "No ET prior. Inherited Day-1 honesty lock 2 from WOW v1 applies unchanged to v2."
+  ],
+  "next_step_after_seal": "Resolve and record the exact N50CH archive location and access method, then declare and seal the D2 comparison-region amendment with the minimum contents listed under D2, and only then open archive material. Each step is a separate controller-approved action."
+}

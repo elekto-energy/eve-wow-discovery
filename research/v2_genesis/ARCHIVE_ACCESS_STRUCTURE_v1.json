@@ -1,0 +1,226 @@
+{
+  "artifact": "ARCHIVE_ACCESS_STRUCTURE_v1",
+  "artifact_kind": "archive_access_and_structure_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "DRAFT-PENDING-CONTROLLER-REVIEW",
+  "status_semantics": "No field named status. Current lifecycle state lives only in the seal record that covers this file.",
+  "bound_to": {
+    "wow_v2_genesis_seal": "17c4258d924675ddce4c39f056e63572086adab07a8b3551cce736871b6fb895",
+    "discovery_protocol_canonical": "88563848c68afa3d494945e251d7597f55c274e0c1d8de76ecbbb818cd0e7706",
+    "wow_v1_closure_pin": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae"
+  },
+  "scope_of_this_record": "Access and structure only, under the controller order of 2026-08-18. Establishes where the N50CH archive is, how it is accessed, and how it is organised. No observation content was opened.",
+  "no_observation_content_declaration": {
+    "statement": "No JPG, PNG, CR2 or other scan image was opened, rendered, downloaded, thumbnailed or OCRed. No signal, channel or intensity value was extracted from any scan. No D1, D2 or D3 test was performed. The future D2 comparison region was not adapted using anything recorded here.",
+    "what_was_retrieved": "HTML index pages, one HTML content page, and three plain-text documentation files served by the archive host.",
+    "image_bytes_retrieved": 0
+  },
+  "source_urls_and_retrievals": [
+    {
+      "id": "R-1",
+      "url": "https://argus.naapo.org/~rchilders/",
+      "retrieved_utc": "2026-08-18",
+      "final_url": "https://argus.naapo.org/~rchilders/",
+      "redirect_note": "Requested without trailing slash resolves to the same page with trailing slash.",
+      "content_type": "text/html",
+      "kind": "publisher index and narrative page",
+      "page_states_modified": "July 14, 2025",
+      "content_exposure_flag": "YES - see exposure_events X-3"
+    },
+    {
+      "id": "R-2",
+      "url": "http://naapo.org/~rchilders/N50CH_data/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex",
+      "server": "Apache/2.2.22 (Ubuntu) Server at naapo.org Port 80",
+      "content_exposure_flag": "NO"
+    },
+    {
+      "id": "R-3",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex",
+      "content_exposure_flag": "NO"
+    },
+    {
+      "id": "R-4",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/png/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex",
+      "content_exposure_flag": "NO"
+    },
+    {
+      "id": "R-5",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/png/folder.wow/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex listing image filenames and sizes only",
+      "content_exposure_flag": "NO - filenames, sizes and modification times only; no image was opened"
+    },
+    {
+      "id": "R-6",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/cr2/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex",
+      "content_exposure_flag": "NO"
+    },
+    {
+      "id": "R-7",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/doc/",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/html;charset=UTF-8",
+      "kind": "Apache autoindex",
+      "content_exposure_flag": "NO"
+    },
+    {
+      "id": "R-8",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/doc/README",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/plain",
+      "size_bytes": 571,
+      "kind": "digitisation process documentation",
+      "content_exposure_flag": "NO - camera and scanning process only"
+    },
+    {
+      "id": "R-9",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/doc/png-folder-notes",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/plain",
+      "size_bytes": 1843,
+      "kind": "folder-level documentation",
+      "content_exposure_flag": "YES - see exposure_events X-4"
+    },
+    {
+      "id": "R-10",
+      "url": "http://naapo.org/~rchilders/N50CH_data/scans/doc/cr2-folder-notes",
+      "retrieved_utc": "2026-08-18",
+      "content_type": "text/plain",
+      "size_bytes": 2765,
+      "kind": "folder-level documentation",
+      "content_exposure_flag": "YES - see exposure_events X-5"
+    }
+  ],
+  "host_and_path_notes": {
+    "two_hostnames": "The publisher index is served from argus.naapo.org over HTTPS; the archive tree itself is served from naapo.org over HTTP. Both expose the same ~rchilders user directory. Whether they are the same filesystem is NOT established here.",
+    "third_hostname_mentioned": "ohioargus.org appears in publisher documentation for unrelated continuum and LOBES datasets. Not retrieved.",
+    "transport": "The archive tree is served over plain HTTP on port 80. Integrity of any future download must therefore rest on the published checksum files, not on transport security."
+  },
+  "directory_hierarchy": {
+    "root": "http://naapo.org/~rchilders/N50CH_data/",
+    "level_1": "scans/ (only child)",
+    "level_2": [
+      "DIGESTS (file, 9.2K, 28-Oct-2019)",
+      "bin/",
+      "cr2/",
+      "doc/",
+      "jpg/",
+      "old/",
+      "png/"
+    ],
+    "not_inspected": "bin/, jpg/ and old/ were not retrieved in this pass and remain unresolved access gaps.",
+    "cr2_children": "116 folders: folder.001 through folder.034, folder.050 through folder.060, folder.079 through folder.084, folder.091 through folder.132, folder.139 through folder.150, folder.157 through folder.162, plus folder.cb, folder.list1, folder.list2, folder.sp, folder.tests.",
+    "png_children": "46 folders: folder.035 through folder.049, folder.061 through folder.072, folder.085 through folder.090, folder.133 through folder.138, folder.163 through folder.167, plus folder.ddd and folder.wow."
+  },
+  "counts": {
+    "cr2_folder_count": 116,
+    "cr2_numbered_folder_count": 111,
+    "png_folder_count": 46,
+    "png_numbered_folder_count": 44,
+    "numbered_folders_online_total": 155,
+    "numbered_folders_stated_in_README": 167,
+    "numbered_folders_absent_online": 12,
+    "absent_folder_ranges": "073 through 078 and 151 through 156",
+    "absence_semantics": "Derived purely by comparing the two online listings against the README statement of 167 folders. Whether these twelve are lost, unscanned, withheld, or simply stored elsewhere is UNKNOWN and must not be assumed.",
+    "png_image_count_stated_in_notes": 15436,
+    "png_greyscale_count_stated_in_notes": 2811,
+    "folder_wow_png_file_count": 74,
+    "folder_wow_checksum_file": "SHA1SUM (3.9K, 08-Jan-2018)"
+  },
+  "file_types": {
+    "png": "Flatbed-scanner era output, organised under scans/png/.",
+    "cr2": "Canon raw camera output, organised under scans/cr2/. README documents a Canon PowerShot G10 with manual focus, F/3.2, ISO 200, 1/60 s.",
+    "jpg": "Directory exists under scans/jpg/ but was not retrieved.",
+    "text": "DIGESTS, SHA1SUM and the three doc/ files are plain text.",
+    "checksums_published": "SHA1SUM per folder (seen in folder.wow), plus a scans-level DIGESTS file. Both were listed but not downloaded."
+  },
+  "size_information": {
+    "folder_wow_png_sizes": "Individual files range from about 38M to 50M, with one outlier at about 100M (wow-034.png). Sizes are as reported by the server index, not measured.",
+    "folder_wow_approximate_total": "Roughly 3.2 GB across 74 files, estimated from the listed per-file sizes. Not verified by download.",
+    "whole_archive_size": "UNKNOWN. Not derivable from the pages retrieved."
+  },
+  "date_coverage_derivable_without_opening_files": {
+    "source": "scans/doc/png-folder-notes, a documentation file, not a scan.",
+    "wow_folder_boundary_data": "The notes state that the wow folder falls chronologically between pages 013-084 and 013-085, and give EST times and paper-manufacturer serial numbers at the boundary: 013-084 at 03:03:38 serial 161100; wow-001 at 13:20:05 serial 161130; wow-074 at 09:13:24 serial 161203; 013-085 at 09:14:51 serial 161208.",
+    "gap_structure_stated_by_publisher": "The notes state that thirty pages are missing between 013-084 and wow-001, and five pages between wow-074 and 013-085, and that the five are probably mostly blank.",
+    "server_modification_times": "folder.wow PNG files carry server modification times of 02-Nov-2017; its SHA1SUM 08-Jan-2018; the png tree 02-Jan-2018; the cr2 tree 07-Nov-2019.",
+    "caution": "All of the above is publisher-stated metadata. None of it has been verified against the scans, and it must not be treated as measured data."
+  },
+  "provenance_note_on_wow_folder": {
+    "publisher_statement": "Both documentation files state that the Wow! artifact is owned and was scanned by the Ohio History Connection (also written as Ohio Historical Connection), and that its imaging configuration differs from the rest of the archive.",
+    "consequence_for_D1": "The Wow! pages and the comparison population were produced by different imaging pipelines. Any property compared across them may be an artefact of digitisation rather than of the original record. This is the D1 analogue of the WOW v1 finding that a correct number can still be an invalid model input if its semantic type is wrong."
+  },
+  "exposure_events": [
+    {
+      "id": "X-3",
+      "source": "R-1 publisher index page",
+      "what_was_exposed": "The page carries the publisher's own descriptions of features seen in the 1420 MHz continuum strip chart covering roughly one day following the Wow! event, at declination -27d 00m, from 16 August 1977 06h20m LMST to 17 August 1977 07h40m LMST. It names LMST times at which the galactic plane and several point sources appear, and mentions a noise-tube firing of unusual duration.",
+      "why_this_matters": "This is content-derived description of the temporal region a future D2 comparison will concern, and it was read before the D2 amendment exists. It is prior published description, not our observation.",
+      "handling_rule": "These statements are recorded as PRIOR PUBLISHED DESCRIPTION. They may not be presented as v2 findings, and any overlapping v2 candidate must cite this page in the novelty check. The D2 region must not be drawn to include or exclude these features on the basis of having read them."
+    },
+    {
+      "id": "X-4",
+      "source": "R-9 png-folder-notes",
+      "what_was_exposed": "Folder-level condition notes, greyscale and scan-quality remarks, the wow-folder boundary times and serial numbers, the stated thirty-page and five-page gaps, and an explicit open question by M. Abel dated 29 December 2017: whether the 3 AM run termination preceding the Wow! pages is unusual compared with other runs.",
+      "why_this_matters": "The publisher has already posed, in public, a comparison question of the same shape as D1, and has already documented the gap structure around the Wow! pages. Neither can be claimed as a v2 discovery.",
+      "handling_rule": "Recorded as PRIOR STATED QUESTION and PRIOR STATED STRUCTURE. A v2 candidate touching run-termination timing or the surrounding page gaps must cite this note in the novelty check and can at most contribute an answer, never the question."
+    },
+    {
+      "id": "X-5",
+      "source": "R-10 cr2-folder-notes",
+      "what_was_exposed": "Per-folder anomaly notes including mis-filed 1978 records, unit and column changes, printer failures, a stray frame, folders with poor legibility, and item-level remarks such as a note that folder 025 page 005 shows an interesting narrowband signal and that page 013-387 is marked as 14 August 1977 continued while the date has rolled to 15 August 1977.",
+      "why_this_matters": "These are content-level observations about specific pages, read before any archive content was opened by us. Some of them concern exactly the kind of morphology and record-keeping anomaly D3 asks about.",
+      "handling_rule": "Recorded as PRIOR PUBLISHED OBSERVATION. Any v2 candidate overlapping these notes must cite them in the novelty check. They may be used as structural context for planning access, never as a v2 finding."
+    }
+  ],
+  "unresolved_access_gaps": [
+    {
+      "id": "G-1",
+      "gap": "scans/bin/, scans/jpg/ and scans/old/ were not retrieved. Their contents, counts and relationship to the png and cr2 trees are unknown."
+    },
+    {
+      "id": "G-2",
+      "gap": "The scans-level DIGESTS file and the per-folder SHA1SUM files were listed but not downloaded, so no published checksum has been verified."
+    },
+    {
+      "id": "G-3",
+      "gap": "Twelve numbered folders (073-078 and 151-156) are absent from both online trees while the README states 167 folders. Reason unknown."
+    },
+    {
+      "id": "G-4",
+      "gap": "Per-folder file counts and date coverage are known only for folder.wow. For all other folders the mapping from folder number to observing dates is unestablished, so the comparison population for D1 cannot yet be enumerated."
+    },
+    {
+      "id": "G-5",
+      "gap": "Whether the png and cr2 trees overlap in coverage, and whether either is a subset of the other, is not established. The numbered folder ranges are disjoint between the two trees, which suggests partition rather than duplication, but this is inference from names only."
+    },
+    {
+      "id": "G-6",
+      "gap": "The relationship between argus.naapo.org and naapo.org, and whether either mirrors the other, is not established."
+    },
+    {
+      "id": "G-7",
+      "gap": "The controller previously reported that the archive directory timed out. In this pass all listed retrievals succeeded. Whether availability is intermittent is not established, so no assumption of stable access is warranted."
+    },
+    {
+      "id": "G-8",
+      "gap": "No licence or reuse terms for the archive were located. The Wow! folder is stated to be owned by the Ohio History Connection. Rights for redistribution or derived publication are UNRESOLVED and must be settled before any scan is republished."
+    }
+  ],
+  "what_this_record_does_not_establish": "It does not establish what the scans contain, whether any event other than the Wow! event is present anywhere in the archive, or whether the archive can answer D1, D2 or D3. Those remain open and are addressed only after the D2 amendment is sealed."
+}

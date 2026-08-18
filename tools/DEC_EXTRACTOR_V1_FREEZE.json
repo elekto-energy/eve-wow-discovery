@@ -1,0 +1,68 @@
+{
+  "artifact": "DEC_EXTRACTOR_V1_FREEZE",
+  "artifact_kind": "operational_instrument_freeze_record",
+  "project": "043_wow_discovery",
+  "record_version": 2,
+  "created_utc": "2026-08-18",
+  "supersedes": "record_version 1 of this file, which carried PENDING_OWNER_COMPUTATION in place of the authoritative hashes",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record freezes the measuring instrument before it is run over the population it will screen.",
+  "why_this_record_exists": {
+    "principle": "The extractor decides which observation rows are allowed into the scientific analysis. An instrument that selects the data must be fixed, and its performance measured, BEFORE it sees the data it will select from.",
+    "timeline_this_creates": [
+      "D2 rules sealed",
+      "extraction pipeline built",
+      "accuracy measured on an independently chosen truth set",
+      "extractor code and dependencies frozen and committed",
+      "only then the bulk population opened",
+      "eligible records determined",
+      "signal analysis"
+    ],
+    "what_a_reviewer_can_check": "The code that decided inclusion, its measured performance, the commit from before it was run over the population, and then the results it produced."
+  },
+  "frozen_artifacts": {
+    "code": "tools/dec_extractor_v1.py",
+    "configuration": "Embedded in the code as frozen constants: COL 1222 to 1340, DARK_THR 30, ROW_FRAC 0.08, ROW_MIN 6, ROW_MAX 40, three OCR variants with scale and cut and psm as listed, whitelist of digits space and minus, CONSENSUS_MIN 2.",
+    "normalisation_rule": "Two two-digit groups, or one four-digit group split into degrees and arcminutes. Anything else is discarded, never repaired.",
+    "consensus_rule": "TRANSCRIBED requires at least two of the three variants to agree after normalisation.",
+    "permitted_states": ["TRANSCRIBED", "MANUAL_REVIEW_REQUIRED", "UNREADABLE"],
+    "validation_set_and_result": "tools/DEC_EXTRACTOR_V1_VALIDATION.json"
+  },
+  "environment_manifest": {
+    "note": "The measured validation was produced in the analyst working environment. The versions below are the ones under which the reported accuracy holds.",
+    "python": "3.12.3",
+    "pillow": "12.1.1",
+    "numpy": "2.4.4",
+    "pytesseract": "0.3.13",
+    "tesseract": "5.3.4",
+    "platform": "Linux container",
+    "reproduction_caveat": "Tesseract output can vary between engine versions. A rerun under different versions must repeat the validation before its results are treated as comparable, in the same way the WOW v1 epoch tool re-ran its selftest under a changed numpy."
+  },
+  "hashes": {
+    "dec_extractor_v1_py_sha256": "82bbef167f74b3726472d1fc41f4c8c2f33c5b69110422b3ec3ce1858a0b90f9",
+    "dec_extractor_v1_validation_json_sha256": "ca2fd5660d811fbc96887d1b84dc44488815abd38eed1bec31a781b203ae957d",
+    "computed_by": "Owner, Get-FileHash on the project copies, 2026-08-18. PowerShell prints uppercase; the values are recorded here in lowercase and are the same digest.",
+    "working_copy_sha256": "334c7cc83c8a99f80674020de94e4c99202a1159d19174a65a5b8c0b3377e6ea",
+    "working_copy_note": "SHA-256 of the analyst working copy from which the project file was authored. The project copy adds the frozen docstring, so its digest differs. Both are recorded so neither can be mistaken for the other.",
+    "line_ending_caveat": "These digests are of the bytes as they exist on the owner's disk. The repository carries .gitattributes with the rule that disables end-of-line conversion, so a clone reproduces the same bytes and therefore the same digests."
+  },
+  "measured_validation_summary": {
+    "truth_pages": 36,
+    "agreements": 35,
+    "incorrect_values": 0,
+    "no_consensus_pages": 1,
+    "row_transcribed_rate_percent": "78.4",
+    "failure_mode": "ABSTENTION_NOT_ERROR"
+  },
+  "immutability_rule": {
+    "statement": "This version is never modified in place. Any improvement is a NEW version with its own freeze record and its own validation.",
+    "reason": "The bulk results this version produces must remain attributable to the exact code that produced them. Editing it later would silently reattribute past output to code that never ran.",
+    "scope_note": "This freeze record itself was corrected once, from record_version 1 to 2, solely to insert the authoritative hashes that could not be computed by the analyst. No frozen artifact changed."
+  },
+  "execution_instructions": {
+    "single_page": "python tools/dec_extractor_v1.py PAGE.jpg",
+    "output": "JSON per page: one entry per detected row with row geometry, the raw output of all three OCR variants, the normalised outputs, the consensus state and the final value or null.",
+    "what_it_never_outputs": "Any channel, intensity, frequency, galactic or object field."
+  },
+  "commit_intent": "research: freeze validated D2 declination extractor before bulk transcription"
+}

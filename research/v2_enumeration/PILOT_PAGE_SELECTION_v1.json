@@ -1,0 +1,55 @@
+{
+  "artifact": "PILOT_PAGE_SELECTION_v1",
+  "artifact_kind": "operational_pre_registration",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record fixes the production-pilot page set BEFORE the frozen extractor is run over it.",
+  "written_before_extraction": "YES",
+  "purpose": "To fix which pages form the production pilot, so that the pilot cannot later be reported as representative after being chosen to look representative.",
+  "bound_to": {
+    "extractor_freeze": "tools/DEC_EXTRACTOR_V1_FREEZE.json",
+    "extractor_code_sha256": "82bbef167f74b3726472d1fc41f4c8c2f33c5b69110422b3ec3ce1858a0b90f9",
+    "run_inventory": "research/v2_enumeration/PHASE_A_RUN_INVENTORY_v1.json"
+  },
+  "selection_rule": {
+    "statement": "Six DATA_PAGEs are drawn from each of the fifteen B3-eligible runs, at fixed fractional positions through the run: 5, 22, 39, 56, 73 and 90 percent of the run length, rounded to the nearest page index and de-duplicated.",
+    "why_fractional_positions": "Fixed fractions spread the sample through every run regardless of run length, so short and long runs are both represented and no part of a run is systematically favoured.",
+    "independence": "The positions depend only on run boundaries, which were established before any declination value in those pages was read. They do not depend on declination, on scanning quality, or on anything scientifically interesting.",
+    "no_substitution": "A selected page is never swapped for another. A page that fails to download or fails to process is reported as a technical failure, not replaced.",
+    "target_size": "Approximately 90 pages, within the 50 to 100 page band the controller specified, spanning all fifteen runs."
+  },
+  "what_the_pilot_measures": [
+    "actual throughput in pages per unit time",
+    "TRANSCRIBED, MANUAL_REVIEW_REQUIRED and UNREADABLE counts and rates",
+    "whether the state distribution is stable across runs and therefore across scanning quality",
+    "the real size of the manual review queue implied for the full population",
+    "technical failures"
+  ],
+  "what_the_pilot_does_not_do": [
+    "It does not decide eligibility.",
+    "It does not apply the epoch transform.",
+    "It does not inspect frequency, channel or signal fields.",
+    "Its declination values are not interpreted scientifically. A value that looks interesting has no standing until the full population is processed and the boundary verification rule has been applied."
+  ],
+  "selected_pages_by_run": {
+    "R-03": ["012-461", "012-477", "012-493", "012-510", "012-526", "012-542"],
+    "R-04": ["013-006", "013-017", "013-029", "013-041", "013-052", "013-064"],
+    "R-05": ["013-074", "013-075", "013-077", "013-079", "013-081", "013-082"],
+    "R-06": ["013-085", "013-086", "013-087"],
+    "R-07": ["013-092", "013-101", "013-110", "013-119", "013-128", "013-137"],
+    "R-08": ["013-149", "013-164", "013-180", "013-196", "013-212", "013-228"],
+    "R-09": ["013-247", "013-276", "013-306", "013-335", "013-365", "013-394"],
+    "R-10": ["013-415", "013-422", "013-429", "013-437", "013-444", "013-451"],
+    "R-11": ["013-458", "013-459", "013-461", "013-463", "013-465", "013-466"],
+    "R-12": ["014-005", "014-014", "014-024", "014-033", "014-043", "014-052"],
+    "R-13": ["014-063", "014-078", "014-093", "014-108", "014-123", "014-138"],
+    "R-14": ["014-153", "014-165", "014-176", "014-188", "014-200", "014-212"],
+    "R-15": ["014-225", "014-238", "014-250", "014-263", "014-276", "014-289"],
+    "R-16": ["014-301", "014-313", "014-324", "014-336", "014-347", "014-359"],
+    "R-17": ["014-367", "014-368", "014-369"]
+  },
+  "total_selected_pages": 84,
+  "overlap_note": "Runs R-06, R-11 and R-17 are short, so some selected pages coincide with pages already read manually during the constancy block. That overlap is a consequence of the fixed rule and is left in place rather than engineered away; where it occurs it provides an incidental comparison between extractor and manual reading."
+}

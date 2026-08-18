@@ -1,0 +1,121 @@
+{
+  "artifact": "D2_ENUMERATION_SUMMARY_v1",
+  "artifact_kind": "operational_enumeration_summary",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It closes the D2 enumeration pass against the sealed stopping rule and states exactly what was and was not established.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "enumeration_plan": "research/v2_enumeration/D2_ENUMERATION_PLAN_v1.json",
+    "mask_definition": "research/v2_enumeration/MASK_V1.json",
+    "pass_1_record": "research/v2_enumeration/D2_ENUMERATION_PASS_1.json",
+    "transform_record": "research/v2_enumeration/D2_EPOCH_TRANSFORM_RESULT_v1.json"
+  },
+  "sealed_stopping_rule_status": {
+    "rule": "Enumeration stops when the sealed date window 1977-08-08 to 1977-08-22 is bracketed on BOTH sides, or the sequence is exhausted.",
+    "earlier_boundary_crossed": "YES. Page 012-243 carries DECLINATION SETTING -24 40 and DATE 5 AUG 77, which is earlier than 8 AUG 77.",
+    "later_boundary_crossed": "YES. Page 014-385 carries DECLINATION SETTING -26 40 and DATE 23 AUG 77, which is later than 22 AUG 77.",
+    "conclusion": "THE SEALED STOPPING RULE IS SATISFIED. The pass terminated because the window is bracketed, not because content was or was not interesting.",
+    "did_not_stop_for_interest": "CONFIRMED. No page was skipped, prioritised or lingered on because of what it appeared to contain.",
+    "did_not_continue_for_lack_of_interest": "CONFIRMED. Enumeration was not extended in search of something noteworthy."
+  },
+  "date_to_page_mapping": {
+    "5 AUG 77": "012-243",
+    "8 AUG 77": "012-455",
+    "9 AUG 77": "013-001",
+    "11 AUG 77": "013-072, 013-084, 013-088",
+    "12 AUG 77": "013-143",
+    "13 AUG 77": "013-237",
+    "16 AUG 77": "013-412",
+    "17 AUG 77": "013-456, 014-001",
+    "18 AUG 77": "014-058",
+    "23 AUG 77": "014-385",
+    "dates_not_yet_located": "10, 14, 15, 19, 20, 21 and 22 AUG 77. The locator is not exhaustive, so their absence from this mapping is not evidence that no header page carries them.",
+    "notable_absence_note": "15 AUG 77 is the Wow! event date and no header page carrying it has been located in this pass. This is a statement about what the pass looked at, not about the archive."
+  },
+  "declination_setting_progression": {
+    "sequence": "-24 40 at 5 AUG, -25 0 at 8 AUG, -25 20 from 11 to 12 AUG, -25 40 at 13 AUG, -26 0 at 16 to 17 AUG, -26 20 at 18 AUG, -26 40 at 23 AUG.",
+    "pattern": "The survey setting steps southward in 20 arcminute increments every two to three days.",
+    "warning": "This is the HEADER SETTING, which finding 1 of the pass record established is NOT the printed per-row declination and NOT the true declination observed. It may not be used to decide eligibility."
+  },
+  "where_the_sealed_declination_band_lies": {
+    "established": "NOT ESTABLISHED. No page examined in this pass has a printed per-row declination that converts inside the sealed B1 window.",
+    "only_row_value_read": "-26 13 in epoch 1950.0, converting to -26d 25m 28.9s in J2000, which lies 11.52 arcmin north of the window.",
+    "extrapolation_explicitly_refused": "One could combine the roughly 50 arcminute offset observed between setting and printed row value with the setting progression to guess which dates carry row declinations inside the band. That would be extrapolation from two quantities whose relationship is not understood, and it is exactly the class of shortcut this project has already had to correct once. It is therefore recorded as a refused inference, not as a result.",
+    "what_would_settle_it": "Reading the R2 rectangle on pages across the window and converting each printed value through the declared transform. That work is not done."
+  },
+  "page_classes_and_layout_variants": {
+    "HEADER_PAGE": "Top strip carries DECLINATION SETTING and DATE. Carries the only directly readable date.",
+    "DATA_PAGE": "Top strip carries the CHANNEL NUMBER table header. Date must be propagated from a preceding header page and is recorded as derived.",
+    "JOB_LISTING_PAGE": "New variant found this pass on 014-147. The top strip carries PAGE 1 and a job-control listing with drive and cartridge fields. It is neither a header page nor an observation data page. Its role is machine-operations output rather than observation record.",
+    "consequence_of_the_new_variant": "Page-class determination cannot assume two classes. A page that is neither must be classified as JOB_LISTING_PAGE or as UNDETERMINED rather than forced into one of the first two.",
+    "mask_versions_required": {
+      "MASK_V1": "R1 300,60,1100,110 plus R2 and R3. Sufficient for most folder 013 pages.",
+      "MASK_V1a": "R1a 300,55,1100,140. Required where the header value row sat below R1.",
+      "MASK_V1b": "R1b 300,55,1100,180. Required where the value row sat lower still, including 014-058, 014-385 and 012-243, the two pages that satisfy the stopping rule.",
+      "discipline": "No mask was silently enlarged. Each variant was recorded as a new version and every page record states which version produced its reading.",
+      "scope": "All three versions are asserted for folders 012, 013 and 014 in the JPG tree only. Nothing is claimed for other folders, other formats or the Wow! PNG folder."
+    }
+  },
+  "summary_counts": {
+    "folders_examined": 3,
+    "folder_page_totals_from_listings": "012 has 552 pages, 013 has 467, 014 has 445",
+    "pages_retrieved_and_hashed": 31,
+    "pages_read_under_a_mask": 31,
+    "header_pages_identified": 13,
+    "data_pages_identified": 17,
+    "job_listing_pages_identified": 1,
+    "unreadable_pages": 0,
+    "pages_requiring_a_later_mask_version": 6,
+    "byte_integrity_failures": 0,
+    "byte_integrity_note": "Every retrieved page matched the source-published SHA1 for its folder. Under the sealed integrity rule that establishes consistency with what the origin published, not authenticity.",
+    "source_authenticity_state_for_all_objects": "UNESTABLISHED",
+    "d2_enumeration_candidate_yes": 0,
+    "d2_enumeration_candidate_no": 3,
+    "d2_enumeration_candidate_unresolved": 28,
+    "date_span_covered": "5 AUG 77 to 23 AUG 77, which fully brackets the sealed window",
+    "signal_interpretation_performed": "NONE",
+    "frequency_inspection_performed": "NONE",
+    "channel_values_read": "NONE",
+    "candidate_generation_performed": "NONE"
+  },
+  "what_NO_means_here": {
+    "statement": "NO means outside the sealed B1 window under the protocol. It does NOT mean physically incapable of being relevant to the Wow! position.",
+    "why_this_distinction_is_kept": "The sealed window is an analytical boundary derived from one sealed positional uncertainty. A page just outside it is outside the agreed comparison region, which is a procedural fact about this study and not a statement about the sky.",
+    "margin_note_retained": "The three NO decisions rest 11.52 arcmin outside the edge, a margin smaller than the 20 arcmin sealed uncertainty that generated the window. No tolerance is invented and the decisions stand, but a reader can see how close to the boundary they are."
+  },
+  "exposure_incidents_this_pass": {
+    "authorised_full_page_views": "One, X-6 on 013-084, already recorded.",
+    "all_other_views": "Masked rectangles only.",
+    "incidental_exposure_observed": [
+      "Composite strips showed a small number of adjacent data digits above and below the header line on several pages.",
+      "Page 012-110 carries a hand-drawn red circle around a printed value, visible within the masked strip. It is recorded as an annotation observed incidentally. It is not interpreted, and it is INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+      "Page 014-147 exposed job-control listing text, which is machine-operations output rather than observation content."
+    ],
+    "eligibility_consequence": "All incidental exposure listed here and in the earlier records is ineligible to support a novel candidate. It may be cited as prior-known context only."
+  },
+  "correction_history_of_this_pass": {
+    "instances_where_controller_review_stopped_an_overclaim_or_shortcut": 6,
+    "denominator": "UNDEFINED. The number of controller review opportunities in the project has not been counted, so this is an observed pattern and NOT a rate or a frequency.",
+    "how_it_would_become_a_statistic": "By defining and counting the population of reviewable analyst decisions across the project, then classifying each before its outcome was known. Until then no rate, no significance and no causal claim may be attached.",
+    "inherited_framing": "This is the same discipline WOW v1 applied to its own four incidents, which were recorded as an observed directional pattern and explicitly not as established bias.",
+    "worked_example_from_this_pass": {
+      "shortcut_version": "Raw B1950 declination compared against a J2000 window, with a heuristic NO justified by the gap feeling large enough.",
+      "correct_version": "Printed B1950 value passed through the declared FK4(B1950) to FK5(J2000) transform, which moved it 12.48 arcmin, then formally compared against the sealed window, giving NO by 11.52 arcmin.",
+      "why_it_is_instructive": "The final classification was the same, but reached for the right reason, and the transform proved large enough to have reversed the answer in a nearby case. A shortcut that happens to agree with the correct method is still not the correct method."
+    }
+  },
+  "d1_side_effect_produced": {
+    "artefact": "A partial folder and page to observation date mapping across folders 012, 013 and 014, covering 5 to 23 AUG 77.",
+    "relevance": "This is the beginning of what access gap G-4 required for the D1 comparison population to be enumerable.",
+    "hard_limit_observed": "No D1 analysis and no candidate generation was performed. The mapping is a by-product of the D2 pass, not a D1 result."
+  },
+  "state_at_pause": {
+    "d2_enumeration": "COMPLETE against the sealed stopping rule.",
+    "d2_analysis": "NOT STARTED. Frequency, channel and signal content remain unopened.",
+    "d1_and_d3": "NOT STARTED.",
+    "next_step_if_resumed": "Read the R2 rectangle across the bracketed window, convert each printed declination through the declared transform, and only then determine whether any page is eligible under B1. That is the step that would tell us whether the sealed D2 region contains any record at all."
+  }
+}

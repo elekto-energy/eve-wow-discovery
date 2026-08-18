@@ -1,0 +1,61 @@
+{
+  "artifact": "EXPOSURE_EVENT_X6_v1",
+  "artifact_kind": "operational_exposure_event_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is written BEFORE the rendering it describes, so that the exposure is registered rather than reported afterwards.",
+  "exposure_id": "X-6",
+  "written_before_rendering": "YES. This record was created and written to disk before the page was rendered. No interpretation of the page had occurred at the time of writing.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "enumeration_plan": "research/v2_enumeration/D2_ENUMERATION_PLAN_v1.json",
+    "format_routing_check": "research/v2_enumeration/FORMAT_ROUTING_CHECK_v1.json"
+  },
+  "authority": "Controller order of 2026-08-18 authorising exactly one full-page rendering for layout establishment.",
+  "object": {
+    "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-084.jpg",
+    "source_path": "scans/jpg/folder.013/013-084.jpg",
+    "file_identifier": "013-084",
+    "representation": "DERIVED_JPG_FROM_CR2_SEQUENCE",
+    "corresponding_cr2_identifier": "scans/cr2/folder.013/013-084.cr2",
+    "cr2_relationship_basis": "Identical filename stem in both trees, established from directory listings only. The jpg and cr2 folder.013 stem sets are identical at 467 pages each.",
+    "retrieved_utc": "2026-08-18T16:19:47Z",
+    "transport": "PLAIN_HTTP_NO_TLS",
+    "http_status": "200",
+    "content_length_bytes": 688927,
+    "image_dimensions_px": "2216 x 1663",
+    "source_published_sha1": "e80eafa3eb6b02eba44bbd631c3cd99fd63a88ea",
+    "locally_computed_sha1": "e80eafa3eb6b02eba44bbd631c3cd99fd63a88ea",
+    "locally_computed_sha256": "273b485a25c2e7740165f04f3b0b5ab15015410bf17bec2b9aedf9570c238919",
+    "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM",
+    "source_authenticity": "UNESTABLISHED",
+    "source_authenticity_reason": "The checksum was served by the same unauthenticated HTTP origin as the object it describes."
+  },
+  "exposure": {
+    "exposure_scope": "FULL_PAGE_LAYOUT_ESTABLISHMENT",
+    "selection_basis": "STRUCTURAL_ONLY",
+    "selection_detail": "013-084 is the publisher-documented boundary page immediately preceding the Wow! folder in sequence. It was chosen by sequence position before any image content was seen.",
+    "candidate_generation_allowed": "NO",
+    "permitted_interpretation": [
+      "locate the page region containing the observation date",
+      "locate the page region containing the observing time and its stated reference",
+      "locate the page region containing the declination",
+      "judge whether those regions are stable enough to define a reproducible mask or crop"
+    ],
+    "prohibited_interpretation": [
+      "channel values",
+      "signal strength",
+      "signal morphology",
+      "unusual peaks",
+      "frequency content",
+      "annotations",
+      "handwritten comments",
+      "any scientific feature unrelated to the three enumeration fields"
+    ],
+    "incidental_exposure_rule": "Scientific content that is unavoidably visible during this full-page view is recorded as incidental exposure. It is not analysed, and it is INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "incidental_exposure_observed": "TO_BE_COMPLETED_AFTER_RENDERING"
+  },
+  "next_action_at_time_of_writing": "Render the page, then record incidental exposure, then define MASK_V1 coordinates."
+}

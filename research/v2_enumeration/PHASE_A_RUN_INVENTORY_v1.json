@@ -1,0 +1,80 @@
+{
+  "artifact": "PHASE_A_RUN_INVENTORY_v1",
+  "artifact_kind": "operational_run_inventory",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It reports the run inventory and locator validation of Phase A. The declination sampling step is not yet executed.",
+  "bound_to": {
+    "sampling_rule": "research/v2_enumeration/PHASE_A_SAMPLING_RULE_v1.json",
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7"
+  },
+  "execution_state": {
+    "step_1_run_boundaries": "DONE",
+    "step_2_to_7_declination_reading_and_constancy_test": "NOT YET EXECUTED",
+    "step_8_transform": "NOT YET EXECUTED",
+    "step_9_10_comparison_and_classification": "NOT YET EXECUTED"
+  },
+  "population_and_integrity": {
+    "folders": "JPG folders 012, 013, 014, being 552, 467 and 445 pages, 1464 in total",
+    "pages_retrieved_this_step": 69,
+    "byte_integrity_failures": 0,
+    "integrity_method": "Every page hashed locally with SHA1 and compared with the folder SHA1SUM published by the origin. Consistency metadata only; source authenticity UNESTABLISHED for all objects.",
+    "views_used": "Masked MASK_V1b strips only, presented as composites. No full-page view was taken during this step."
+  },
+  "locator_validation": {
+    "candidate_locator": "Page file size below 80 percent of folder median, from the published listing",
+    "candidates": 45,
+    "recall_test_declared_in_advance": "24 pages above the threshold, 8 per folder, chosen by fixed seed 20260818 before any of them was viewed",
+    "recall_test_result": "PASS. All 24 sampled pages above the threshold are DATA_PAGE instances. No HEADER_PAGE was found above the threshold.",
+    "what_this_licenses": "The locator may be relied on for this population with a measured negative result on a 24-page sample. It does not become a proof of completeness; the recall estimate is a sample, not an exhaustive check.",
+    "ocr_attempt_and_outcome": "Automated OCR keyword classification of the header strip was attempted first and FAILED, returning UNDETERMINED for 36 of 45 candidates including pages already known visually to be headers. Classification was therefore done by masked visual reading, which is treated as the reliable method for this material. Recorded so that no later reader assumes the classification was automated."
+  },
+  "run_inventory": {
+    "printed_header_pages_found": 19,
+    "runs": [
+      {"run": "R-01", "header_page": "012-182", "declination_setting_printed": "-24 40", "date": "2 AUG 77", "run_pages": "012-183 to 012-242", "in_sealed_date_window": "NO"},
+      {"run": "R-02", "header_page": "012-243", "declination_setting_printed": "-24 40", "date": "5 AUG 77", "run_pages": "012-244 to 012-454", "in_sealed_date_window": "NO"},
+      {"run": "R-03", "header_page": "012-455", "declination_setting_printed": "-25 0", "date": "8 AUG 77", "run_pages": "012-456 to 012-552", "in_sealed_date_window": "YES"},
+      {"run": "R-04", "header_page": "013-001", "declination_setting_printed": "AMBIGUOUS: read as -25 0 at full scale and as -25 20 on the downscaled composite. Not resolved; a full-scale re-read is required.", "date": "9 AUG 77", "run_pages": "013-002 to 013-071", "in_sealed_date_window": "YES"},
+      {"run": "R-05", "header_page": "013-072", "declination_setting_printed": "-25 20", "date": "11 AUG 77", "run_pages": "013-073 to 013-083", "in_sealed_date_window": "YES"},
+      {"run": "R-06", "header_page": "013-084", "declination_setting_printed": "-25 20", "date": "11 AUG 77", "run_pages": "013-085 to 013-087", "in_sealed_date_window": "YES", "note": "This is the page of exposure event X-6 and the boundary page adjacent to the Wow! folder."},
+      {"run": "R-07", "header_page": "013-088", "declination_setting_printed": "-25 20", "date": "11 AUG 77", "run_pages": "013-089 to 013-142", "in_sealed_date_window": "YES"},
+      {"run": "R-08", "header_page": "013-143", "declination_setting_printed": "-25 20", "date": "12 AUG 77", "run_pages": "013-144 to 013-236", "in_sealed_date_window": "YES"},
+      {"run": "R-09", "header_page": "013-237", "declination_setting_printed": "-25 40", "date": "13 AUG 77", "run_pages": "013-238 to 013-411", "in_sealed_date_window": "YES"},
+      {"run": "R-10", "header_page": "013-412", "declination_setting_printed": "-26 0", "date": "16 AUG 77", "run_pages": "013-413 to 013-455", "in_sealed_date_window": "YES"},
+      {"run": "R-11", "header_page": "013-456", "declination_setting_printed": "-26 0", "date": "17 AUG 77", "run_pages": "013-457 to 013-467", "in_sealed_date_window": "YES"},
+      {"run": "R-12", "header_page": "014-001", "declination_setting_printed": "-26 0", "date": "17 AUG 77", "run_pages": "014-002 to 014-057", "in_sealed_date_window": "YES"},
+      {"run": "R-13", "header_page": "014-058", "declination_setting_printed": "-26 20", "date": "18 AUG 77", "run_pages": "014-059 to 014-147", "in_sealed_date_window": "YES", "note": "014-147 is a JOB_LISTING_PAGE and is not observation data."},
+      {"run": "R-14", "header_page": "014-148", "declination_setting_printed": "-26 20", "date": "19 AUG 77", "run_pages": "014-149 to 014-219", "in_sealed_date_window": "YES"},
+      {"run": "R-15", "header_page": "014-220", "declination_setting_printed": "-26 20", "date": "20 AUG 77", "run_pages": "014-221 to 014-296", "in_sealed_date_window": "YES"},
+      {"run": "R-16", "header_page": "014-297", "declination_setting_printed": "-26 20", "date": "21 AUG 77", "run_pages": "014-298 to 014-365", "in_sealed_date_window": "YES"},
+      {"run": "R-17", "header_page": "014-366", "declination_setting_printed": "-26 40", "date": "22 AUG 77", "run_pages": "014-367 to 014-369", "in_sealed_date_window": "YES"},
+      {"run": "R-18", "header_page": "014-370", "declination_setting_printed": "-26 40", "date": "23 AUG 77", "run_pages": "014-371 to 014-384", "in_sealed_date_window": "NO"},
+      {"run": "R-19", "header_page": "014-385", "declination_setting_printed": "-26 40", "date": "23 AUG 77", "run_pages": "014-386 to 014-445", "in_sealed_date_window": "NO"}
+    ],
+    "runs_inside_sealed_date_window": 15,
+    "runs_outside_sealed_date_window": 4,
+    "additional_pages_of_other_classes": [
+      {"page": "012-001", "class": "HEADER_PAGE_HANDWRITTEN_VARIANT", "content": "A handwritten date line reading SAT JULY 16 1977 rather than the printed DECLINATION SETTING and DATE form.", "consequence": "A fourth page class exists. Folder 012 therefore begins in July 1977, well before the sealed window. No printed declination setting is available on this page.", "declination": "NOT AVAILABLE"},
+      {"page": "014-147", "class": "JOB_LISTING_PAGE", "content": "Machine job-control listing."},
+      {"page": "014-350", "class": "UNDETERMINED", "content": "A nearly blank strip showing only a faint 0 00. Not classifiable from the masked view. Left UNDETERMINED rather than forced into a class."}
+    ]
+  },
+  "conjunction_note_on_eligibility": {
+    "rule": "Sealed D2 eligibility requires BOTH B1 declination and B3 date. A run whose date lies outside the sealed window is D2 ineligible on B3 regardless of its declination.",
+    "consequence": "Runs R-01, R-02, R-18 and R-19 are D2_SPATIAL_INELIGIBLE_BY_DATE_CONJUNCTION without needing a declination read. This is the sealed conjunction, not a shortcut: no declination value could make them eligible.",
+    "what_still_requires_reading": "The 15 runs inside the sealed date window require the printed per-row declination to be read and tested for within-run constancy, then transformed and compared."
+  },
+  "warning_against_the_available_extrapolation": {
+    "temptation": "The header settings step from -24 40 to -26 40 across the window, and the one row value read so far sat about 50 arcminutes south of its run's setting. Combining the two would predict which runs fall inside B1.",
+    "refusal": "That inference is refused. The relationship between setting and printed row value is not understood, and this project has already had to correct one shortcut of exactly this shape today. The row values will be read.",
+    "recorded_as": "REFUSED_INFERENCE"
+  },
+  "next_execution_block": {
+    "work": "For each of the 15 runs inside the sealed date window, sample the first, middle and last DATA_PAGE per the pre-registered rule, read rectangle R2 at full scale, test within-run constancy, then hand the distinct printed values to the sealed transform.",
+    "estimated_reads": "45 masked declination snippets, deliverable as 3 to 4 composites.",
+    "no_new_methodology_required": "The sampling rule, the mask and the transform are all already fixed."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "artifact": "D2_EPOCH_TRANSFORM_RESULT_v1",
+  "artifact_kind": "operational_transform_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It records one application of the WOW v1 epoch transform and the eligibility decisions that follow from it.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "enumeration_record": "research/v2_enumeration/D2_ENUMERATION_PASS_1.json",
+    "sealed_b1_window": "Declination -27d 17m to -26d 37m, derived in the sealed amendment from the WOW v1 J2000 position and its own sealed uncertainty."
+  },
+  "tool": {
+    "path": "042_wow/scripts/wow2_epoch.py",
+    "modification": "NONE. The WOW v1 tool was used exactly as sealed.",
+    "reimplementation": "REFUSED. Computing the transform in another implementation would have been a new method.",
+    "executed_by": "Owner, from a dedicated v2 environment.",
+    "environment": "D:\\EVE11\\Projects\\043_wow_discovery\\venv_v2",
+    "why_a_new_environment": "astropy was no longer present in the environment that produced the WOW v1 result. venv_gpu was deliberately not modified."
+  },
+  "environment_drift_finding": {
+    "severity": "METHOD_LEVEL",
+    "observation": "The WOW v1 record documents this transform as run with astropy 8.0.1 and numpy 2.4.4. At the time of this run astropy was absent from the originating environment and numpy there had moved to 2.2.6. The transform could not be re-executed on the machine that produced the sealed result until a new environment was built.",
+    "distinction_established": "Cryptographic reproducibility and computational reproducibility are different properties. The WOW v1 chain demonstrated the first: every hash still verifies and a fresh clone re-derives all nine identities. It did not demonstrate the second: the ability to re-run a computation that produced a sealed value.",
+    "how_it_was_restored": "A dedicated environment was created for WOW v2 and the unmodified v1 tool was run from it.",
+    "validation_before_use": "The tool's own selftest was run first. It reproduced the sealed OR-20 to OR-21 conversion with a worst separation of 0.20 arcmin against a tolerance of 1.00 arcmin. That figure is identical to the 0.20 arcmin recorded in WOW v1, despite the numpy version differing.",
+    "recorded_provenance_this_run": "astropy 8.0.1 / numpy 2.5.2 ; FK4(equinox=B1950, obstime=B1950) -> FK5(equinox=J2000)",
+    "residual_gap": "Bit-identical re-execution of the original v1 run is not established and is not claimed. What is established is that the declared transform, run under a different numpy, reproduces the sealed validation case to the same stated precision."
+  },
+  "conversion": {
+    "input_ra_b1950": "14h45m10s",
+    "input_ra_role": "TOOL_INPUT_ONLY. The right ascension column is not part of MASK_V1 and is not a D2 comparison variable. It was read from the rows already exposed on 013-084 and is recorded as an enumeration input.",
+    "input_dec_b1950": "-26d13m00s",
+    "input_dec_source": "The printed per-row DECLIN. column, epoch stated as 1950.0, captured by rectangle R2. Constant across every row exposed on the pages read.",
+    "output_ra_j2000": "14h48m05.74s",
+    "output_dec_j2000": "-26d25m28.9s",
+    "output_dec_j2000_degrees": "-26.424701",
+    "provenance_string": "astropy 8.0.1 / numpy 2.5.2 ; FK4(equinox=B1950, obstime=B1950) -> FK5(equinox=J2000)"
+  },
+  "comparison_against_sealed_b1": {
+    "sealed_window_degrees": "-26.616667 to -27.283333",
+    "converted_value_degrees": "-26.424701",
+    "inside_window": "NO",
+    "distance_to_nearest_edge": "11.52 arcmin north of the -26d 37m edge",
+    "decision_basis": "FORMAL. The declared transform was run and recorded, and the converted value was compared with the sealed window. No margin argument was used."
+  },
+  "quantitative_vindication_of_the_correction": {
+    "what_the_rejected_heuristic_claimed": "That the printed value lay outside the window by roughly 24 arcmin, which exceeded any plausible B1950 to J2000 shift in this sky region.",
+    "what_the_transform_actually_did": "The shift moved the declination 12.48 arcmin southward, toward the window, closing 52 percent of the 24 arcmin raw gap and leaving 11.52 arcmin.",
+    "why_this_matters": "The heuristic was not merely procedurally improper, it was quantitatively unsafe. It treated as comfortable a gap of which the transform consumed more than half. Had the raw gap been about 13 arcmin or less, the same reasoning would have produced the opposite answer with the same confident wording.",
+    "detection_provenance": "Controller review rejected the heuristic before the transform was run, without knowing the magnitude of the shift. The analyst proposed it. The correction protected correctness, not only procedure.",
+    "recorded_as": "A concrete instance in support of the WOW v1 observation that errors in this project have run in one direction, toward conclusions stronger than the material supported, and have been caught by controller review rather than autonomously."
+  },
+  "eligibility_decisions": {
+    "rule_applied": "A page is eligible on declination only if its printed per-row declination, converted through the declared transform, falls inside the sealed B1 window.",
+    "pages_now_decided": [
+      {"page": "013-082", "printed_dec_b1950": "-26 13", "converted_dec_j2000": "-26d25m28.9s", "d2_enumeration_candidate": "NO", "reason": "Converted declination lies 11.52 arcmin north of the sealed window.", "previous_state": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+      {"page": "013-084", "printed_dec_b1950": "-26 13", "converted_dec_j2000": "-26d25m28.9s", "d2_enumeration_candidate": "NO", "reason": "Same, on the rows exposed at the page foot.", "previous_state": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"},
+      {"page": "013-085", "printed_dec_b1950": "-26 13", "converted_dec_j2000": "-26d25m28.9s", "d2_enumeration_candidate": "NO", "reason": "Same.", "previous_state": "UNRESOLVED_EPOCH_TRANSFORM_REQUIRED"}
+    ],
+    "pages_still_unresolved": "The remaining fourteen pages examined have no printed per-row declination read, either because only the page class was determined or because they are header pages whose R2 rectangle was not read. They stay UNRESOLVED for want of a read field, not for want of a transform.",
+    "declared_limitation_of_these_NO_decisions": {
+      "statement": "The sealed amendment fixes a hard window and does not seal any tolerance for the uncertainty of an individual printed record. These NO decisions therefore rest on the printed value taken at face value.",
+      "why_it_is_recorded": "The margin of 11.52 arcmin is smaller than the 20 arcmin sealed positional uncertainty that generated the window itself. A per-record uncertainty of comparable size, if one were ever established, could bear on pages this close to the edge.",
+      "what_is_NOT_being_done": "No tolerance is invented here, and the decision is not softened. The decision stands as NO under the sealed rule. The limitation is recorded so that a later reader can see what the decision does and does not rest on."
+    }
+  },
+  "no_analysis_performed": "No signal interpretation, no frequency inspection, no candidate generation. The transform was applied to a positional field only."
+}

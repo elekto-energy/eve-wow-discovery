@@ -1,0 +1,55 @@
+{
+  "artifact": "DEC_EXTRACTOR_V1_VALIDATION",
+  "artifact_kind": "operational_validation_set_and_result",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record holds the truth set and the measured result used to validate dec_extractor_v1 before bulk execution.",
+  "truth_set_provenance": {
+    "origin": "The 36 legible page values read manually during the Phase A constancy block, recorded in PHASE_A_CONSTANCY_RESULT_v1.json.",
+    "selection_rule": "The preregistered first, middle and last DATA_PAGE of each in-window run, fixed in PHASE_A_SAMPLING_RULE_v1.json before any value was viewed.",
+    "independence": "The selection rule is independent of D2 eligibility and of any pipeline behaviour. The truth values existed before the extractor was written.",
+    "reading_method": "Masked visual reading of the declination crop, presented in composites.",
+    "declared_weakness": "The truth values were read by eye. An error in a truth value would appear below as agreement rather than as a detected fault."
+  },
+  "truth_set": {
+    "012-456": "-25 56", "012-504": "-26 03", "012-552": "-25 56",
+    "013-002": "-25 52", "013-036": "-26 08", "013-073": "-26 12",
+    "013-078": "-26 11", "013-085": "-26 13", "013-086": "-26 14",
+    "013-087": "-26 14", "013-089": "-26 15", "013-115": "-26 27",
+    "013-142": "-26 20", "013-190": "-26 21", "013-236": "-26 17",
+    "013-238": "-26 36", "013-324": "-26 37", "013-413": "-26 58",
+    "013-434": "-26 51", "013-457": "-27 02", "013-462": "-26 59",
+    "013-467": "-26 56", "014-002": "-26 52", "014-029": "-27 07",
+    "014-059": "-27 14", "014-102": "-27 23", "014-146": "-27 17",
+    "014-149": "-27 16", "014-184": "-27 14", "014-219": "-27 28",
+    "014-221": "-27 14", "014-258": "-27 22", "014-298": "-27 11",
+    "014-331": "-27 24", "014-367": "-27 31", "014-368": "-27 31"
+  },
+  "measurement_scope": {
+    "band": "The mid-page rows y 690 to 840, being the band from which the manual truth was read.",
+    "page_value_rule": "The page value produced by the extractor is the most frequent TRANSCRIBED row value within that band. Pages with no TRANSCRIBED row in the band yield no value."
+  },
+  "result": {
+    "pages_measured": 36,
+    "agreements": 35,
+    "agreement_rate_percent": "97.2",
+    "incorrect_values": 0,
+    "pages_without_consensus": 1,
+    "pages_without_consensus_list": ["014-029"],
+    "row_states_in_measured_band": {
+      "TRANSCRIBED": 247,
+      "MANUAL_REVIEW_REQUIRED": 42,
+      "UNREADABLE": 26,
+      "total_rows": 315
+    },
+    "row_transcribed_rate_percent": "78.4",
+    "failure_mode": "ABSTENTION_NOT_ERROR. The extractor produced no incorrect value on this set. Where it is unsure it declines, which is visible in the output, rather than emitting a plausible wrong digit, which would not be."
+  },
+  "what_this_does_not_establish": [
+    "Accuracy across the full population. All 36 pages come from folders 012, 013 and 014.",
+    "Accuracy on damaged pages, faint printing, sideways printing or the other layout variants documented in the archive notes.",
+    "Accuracy near the sealed B1 boundary specifically, which matters more than the average. Every record inside or near the boundary receives direct source-image verification regardless of extractor confidence."
+  ]
+}

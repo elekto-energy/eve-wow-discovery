@@ -1,0 +1,29 @@
+{
+  "seal_payload": {
+    "schema": "wow-v2-genesis-seal",
+    "schema_version": "1",
+    "decision": "WOW_V2_DISCOVERY_PROTOCOL_SEALED",
+    "decision_semantics": "The three discovery questions D1, D2 and D3 and the three predeclared outcomes are frozen as of this seal. No N50CH archive data had been opened at sealing time. Any later question or window is a new sealed version, never an edit of this one.",
+    "genesis": "679e3e48d7ac2ce8653d8e385248388883284828549151e99f00ba1df823c3ae",
+    "genesis_semantics": "WOW v1 closure pin identity, re-derived from the v1 pin record on disk at seal time.",
+    "v1_repository": "https://github.com/elekto-energy/eve-wow-v1",
+    "v1_tag": "wow-v1.0",
+    "documents": [
+      {
+        "name": "DISCOVERY_PROTOCOL_v1.json",
+        "path": "research/v2_genesis/DISCOVERY_PROTOCOL_v1.json",
+        "raw_sha256": "b325fb0b8eeae293367ae428b5f10c52c9e7ee5b77e762cad11f287c22e58378",
+        "canonical_sha256": "88563848c68afa3d494945e251d7597f55c274e0c1d8de76ecbbb818cd0e7706"
+      },
+      {
+        "name": "WOW_V2_GENESIS_v1.json",
+        "path": "research/v2_genesis/WOW_V2_GENESIS_v1.json",
+        "raw_sha256": "d2750f28952de159a2e5c2f2f3ad752fd1151f9d90562a7cc8f8b747d2f0a46e",
+        "canonical_sha256": "af3a58c7a879b0837cd1e4b29382c8c4f6375ae6420168dbd3c4ba316a8c87ae"
+      }
+    ]
+  },
+  "wow_v2_genesis_seal_hash": "17c4258d924675ddce4c39f056e63572086adab07a8b3551cce736871b6fb895",
+  "sealed_utc": "2026-08-18T15:45:36Z",
+  "status": "SEALED"
+}

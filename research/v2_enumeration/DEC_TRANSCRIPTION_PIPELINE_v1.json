@@ -1,0 +1,56 @@
+{
+  "artifact": "DEC_TRANSCRIPTION_PIPELINE_v1",
+  "artifact_kind": "operational_pipeline_and_accuracy_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record is not sealed. It documents the DECLIN.-only transcription pipeline and its measured accuracy.",
+  "bound_to": {
+    "d2_amendment_seal": "d33f79c526f00794688dc2fc81681851f7e2016439c25e6d8c8a51b13443ddb7",
+    "constancy_result": "research/v2_enumeration/PHASE_A_CONSTANCY_RESULT_v1.json",
+    "sampling_rule": "research/v2_enumeration/PHASE_A_SAMPLING_RULE_v1.json"
+  },
+  "scope_declaration": {
+    "reads": "The printed DECLIN. (1950.0) field only.",
+    "does_not_read": "Channel numbers, intensity values, second local oscillator frequency, galactic coordinates, object field, annotations.",
+    "not_a_general_ocr_system": "Per controller order, this solves one field reproducibly rather than attempting general archive OCR."
+  },
+  "method_declared": {
+    "step_1_column_window": "x 1222 to 1340, fixed earlier from the ink-density column profile, stopping before the second local oscillator frequency column.",
+    "step_2_paper_level": "Paper level estimated per pixel row as the median of the window, so the scan's varying illumination cannot set the threshold. This replaced an absolute threshold that failed: the scans are beige paper photographed under uneven light, and a global cut classified the whole page as ink.",
+    "step_3_row_bands": "Rows located from the darkness profile; bands between 6 and 40 pixels tall are kept.",
+    "step_4_three_ocr_variants": "Each row is binarised at three different cuts, upscaled 3 or 4 times, and read by tesseract with page-segmentation modes 7 and 8 and a digit-and-minus whitelist.",
+    "step_5_consensus": "A value is TRANSCRIBED only when at least two variants agree after normalisation. Disagreement yields MANUAL_REVIEW_REQUIRED. Absence of ink yields UNREADABLE.",
+    "no_forcing": "No uncertain reading is ever coerced into a number. The three states are the only permitted outcomes.",
+    "normalisation_rule": "A reading is accepted only if it parses as two two-digit groups, or one four-digit group split as degrees and arcminutes. Anything else is discarded rather than repaired."
+  },
+  "measured_accuracy": {
+    "truth_set": "The 36 legible page values read manually during the Phase A constancy block, before this pipeline existed.",
+    "truth_set_independence": "The truth pages were selected by the preregistered first, middle and last rule for constancy testing, which is independent of D2 eligibility. They were not chosen to favour the pipeline.",
+    "pages_measured": 36,
+    "agreement_with_manual_truth": 35,
+    "agreement_rate": "97.2 percent",
+    "wrong_values_produced": 0,
+    "no_consensus_pages": 1,
+    "no_consensus_page_list": "014-029",
+    "row_level_states_in_the_measured_band": {"TRANSCRIBED": 247, "MANUAL_REVIEW_REQUIRED": 42, "UNREADABLE": 26, "total_rows": 315},
+    "row_transcribed_rate": "78.4 percent",
+    "interpretation": "On this truth set the pipeline produced no incorrect value. Its failure mode is abstention rather than error: roughly one row in five, and one page in thirty-six, declines to produce a value. That is the failure direction a verification chain wants, because abstention is visible and a silent wrong digit is not.",
+    "what_this_does_not_establish": "A 36-page truth set does not establish accuracy across the whole population, and every page in it came from folders 012 to 014. It also does not establish accuracy on pages with damage, faint printing or the layout variants documented elsewhere in the archive. The rate is a measurement on this sample, not a guarantee."
+  },
+  "known_limits": [
+    "The truth values themselves were read by eye from masked composites and could contain an error, which would appear here as agreement rather than as a detected fault.",
+    "The measured band was the mid-page rows used for the constancy test, not whole pages.",
+    "Accuracy near the sealed B1 boundary matters more than average accuracy, which is why the controller order requires direct verification against the source image for every record near the boundary regardless of pipeline confidence."
+  ],
+  "code_identity": {
+    "path_in_working_environment": "dec_pipeline.py, version 1 as described above",
+    "portability_note": "The pipeline runs in the analyst working environment, which is not the owner's machine. If it is to become part of the reproducible record it must be placed under the project and its dependency versions recorded, in the same way the WOW v1 epoch tool records astropy and numpy."
+  },
+  "next_step_not_yet_executed": {
+    "work": "Run the pipeline over all DATA_PAGE records of the fifteen B3-eligible runs, roughly 1000 pages, and produce row-level values with their states.",
+    "then": "Verify against the source image every record that appears inside B1, lies near a B1 boundary, or carries conflicting readings, then apply the sealed transform and compare mechanically.",
+    "estimated_cost_note": "Measured throughput in the working environment is roughly nine rows per second per page band of nine rows, so a full page of about ninety rows takes on the order of a minute. A thousand pages is therefore hours of compute rather than minutes, and must be run in batches with intermediate results written to disk."
+  }
+}
