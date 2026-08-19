@@ -1,0 +1,79 @@
+{
+  "artifact": "RA_EXTRACTOR_V1_FREEZE",
+  "artifact_kind": "operational_instrument_freeze_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record freezes the RA extractor and its validity gate before they are run over the population.",
+  "position_in_chain": "frozen DEC v1 (82bbef16) + DEC gate v1 (99921043) already produced 82525 declination rows. This freeze covers the RA instruments, whose output is paired to those rows strictly by (page, row_index) and never by value.",
+  "why_this_instrument_exists": {
+    "trigger": "The sealed WOW v1 epoch tool demonstrated, on its own output, that the B1950 to J2000 declination shift depends on right ascension: same declination -26d45m shifted -12.49 arcmin at RA 14h45m and +16.16 arcmin at RA 23h00m, a spread of 28.65 arcmin across 72 percent of the 40 arcmin sealed B1 window, with a change of sign between 17h and 19h25m.",
+    "method_rule_recorded": "Epoch transforms are coordinate-pair transforms. Declination may never be epoch-transformed independently of the row-bound right ascension unless the sealed transform tool has demonstrated independence over the relevant domain.",
+    "consequence": "Right ascension is mandatory per row. A single offset would move rows into and out of the sealed region incorrectly."
+  },
+  "frozen_artifacts": {
+    "extractor": "tools/ra_extractor_v1.py",
+    "gate": "tools/ra_validity_gate_v1.py",
+    "validation_record": "tools/RA_EXTRACTOR_V1_VALIDATION.json",
+    "verification_script": "tools/verify_ra_freeze.py"
+  },
+  "hashes": {
+    "ra_extractor_v1_py_sha256": "897f6a0b2b4f4b48a540d5427240e63f8ce94c954df2d8b097d984cad48aaa95",
+    "ra_validity_gate_v1_py_sha256": "2c9140285ae687f5f5af41f76ad6bc0e02a836e1aabcc5720a72e0e325e19412",
+    "ra_extractor_v1_validation_json_sha256": "e658cf215048ec0a3bcd55a7e9d1e2f321ff3f07973ecd90fd54239aa507a6ab",
+    "computed_by": "Owner, Get-FileHash on the project copies, 2026-08-18. PowerShell prints uppercase; recorded here in lowercase, same digests.",
+    "line_ending_caveat": "Digests are of the bytes on the owner's disk. The repository carries .gitattributes disabling end-of-line conversion, so a clone reproduces the same bytes."
+  },
+  "measured_validation_summary": {
+    "pairing": "GEOMETRIC_ROW_Y_ONLY. No value matching, no cadence, no nearest neighbour.",
+    "truth_values": 91,
+    "unpaired": 0,
+    "correct": 65,
+    "incorrect": 0,
+    "manual_review_required": 22,
+    "unreadable": 2,
+    "structurally_invalid": 2,
+    "coverage_percent": 73.6,
+    "accuracy_conditional_on_numeric_output_percent": 97.0,
+    "accuracy_conditional_on_gate_passing_value_percent": 100.0,
+    "failure_mode": "ABSTENTION_AND_REJECTION_NOT_SILENT_ERROR. Both wrong readings were caught by the structural gate."
+  },
+  "invalidated_prior_result": {
+    "value": "90.2 percent",
+    "state": "INVALIDATED_VALIDATION_RESULT",
+    "reason": "non-geometric value-based alignment introduced row-shift ambiguity",
+    "detail": "An earlier scoring pass aligned truth to extractor output by matching values, which produced three apparent incorrect readings on one page that were in fact a one-row shift. The error was in the scoring harness, not the extractor.",
+    "rule": "This figure is preserved as a discarded method and must never be reused in any report, summary or external communication.",
+    "why_it_is_recorded": "The measuring harness had the same hidden assumption the pairing rule forbids. Recording the discarded path is part of the evidence, not an embarrassment to be removed."
+  },
+  "environment_manifest": {
+    "validation_environment": "analyst Linux container",
+    "python": "3.12.3",
+    "pillow": "12.1.1",
+    "numpy": "2.4.4",
+    "pytesseract": "0.3.13",
+    "tesseract": "5.3.4",
+    "owner_environment": "Windows, venv_v2, tesseract 5.4.0.20240606, Pillow 12.3.0",
+    "engine_version_difference": "The validation figures above were measured under tesseract 5.3.4. The owner's machine runs 5.4.0. Tesseract output can differ between engine versions."
+  },
+  "open_precondition": {
+    "id": "PENDING_OWNER_ENGINE_CONFIRMATION",
+    "what_is_open": "Confirmation that the project copy, run under the owner's tesseract 5.4.0, reproduces the validated per-row values.",
+    "why_it_is_open": "The archive host was unreachable at freeze time (WinError 10060 timeout against naapo.org), so no page could be retrieved for the check. This matches access gap G-7, which records that archive availability is intermittent.",
+    "what_is_already_established": "Code identity is fixed by the hashes above. What remains unconfirmed is engine-version behaviour, not code.",
+    "how_to_close_it": "When the archive responds, run venv_v2\\Scripts\\python.exe tools\\verify_ra_freeze.py. It fetches two pages from the truth set, checks byte integrity against the published SHA1SUM, runs the project file and compares row_y by row_y against the validated values.",
+    "binding_rule": "The RA population run may proceed after this freeze commit, but any population result carries this open precondition until the check passes. If the check shows different values, that is a finding to investigate and the population output must be re-attributed, not quietly accepted."
+  },
+  "immutability_rule": {
+    "statement": "These versions are never modified in place. Any improvement is a NEW version with its own freeze record and its own validation.",
+    "reason": "Population results must remain attributable to the exact code that produced them."
+  },
+  "known_limits": [
+    "Nine pages and 91 values is a small validation set.",
+    "The gate rejects impossible values only. A wrong reading that happens to be a possible right ascension would pass, and the rate of such cases is not bounded by this measurement.",
+    "Page 012-456 yields materially fewer transcriptions because of digit merging in OCR, not layout or localisation. It is preserved as a singular unresolved case and was not optimised for.",
+    "Coverage of 73.6 percent means roughly a quarter of rows produce no value and go to review or unreadable. That is the intended behaviour, not a defect, but it sets the size of the manual queue."
+  ],
+  "commit_intent": "research: freeze validated RA extractor and gate before population extraction"
+}

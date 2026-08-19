@@ -1,0 +1,68 @@
+{
+  "artifact": "RA_EXTRACTOR_V1_VALIDATION",
+  "artifact_kind": "operational_validation_set_and_result",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-18",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record holds the truth set and the measured result used to validate ra_extractor_v1 before any population run.",
+  "instrument_under_test": {
+    "extractor": "tools/ra_extractor_v1.py",
+    "gate": "tools/ra_validity_gate_v1.py",
+    "frozen_at_time_of_validation": "NO. Freezing follows this record.",
+    "execution_note": "The measurement was executed in the analyst environment using a local mirror carrying identical parameters and identical logic. Before the freeze commit the owner runs the project file itself on the truth pages and confirms the values match. That confirmation is a freeze precondition, recorded in the freeze record."
+  },
+  "validation_set_provenance": {
+    "preregistered_set_became_unavailable": "The originally preregistered 34-page structural set could not be retrieved. The source returned 114-byte error responses in place of images, which the byte-integrity check flagged as MISMATCH for 24 of the 34 pages. Those pages were never fed to the extractor.",
+    "original_selection_record_not_rewritten": "The original selection stands as recorded. This record documents the replacement rather than editing history.",
+    "replacement_pool": "179 pages already cached in the working environment from earlier declination-related structural sampling: the pilot fractions, the constancy first/middle/last rule, and the bracketing candidates.",
+    "why_the_pool_is_independent_of_RA": "Every page in the pool entered it through a selection rule that referenced run boundaries, page indices or file size. No page was ever selected using a right ascension value, and no RA value had been read from any of them at selection time.",
+    "replacement_selection_rule": "From the pool, the lowest, middle and highest cached page index per run, giving 45 pages across all 15 runs. Every fourth entry of that list was then taken as the truth set, giving 12 pages spread across runs and across the observed RA range.",
+    "no_RA_based_candidate_selection_occurred": "CONFIRMED"
+  },
+  "truth_reading_method": {
+    "problem_solved": "An earlier scoring attempt aligned truth to extractor output by matching values. That is unsound: it produced an apparent 3 incorrect readings on one page which were in fact a one-row shift. That result is recorded as INVALIDATED_VALIDATION_RESULT and is never reused.",
+    "method_used_here": "For each page the extractor's own row bands were computed first. A labelled strip was rendered showing the RA field with every detected band marked by its exact row_y. Truth values were then read against those labels and stored keyed by row_y.",
+    "pairing_rule": "Truth and extractor output are paired ONLY by exact row_y identity. No value matching, no cadence, no nearest neighbour, no inferred ordering. A truth value with no extractor row at that y counts as UNPAIRED.",
+    "truth_read_before_extractor_output_examined": "YES"
+  },
+  "truth_set": {
+    "pages": 9,
+    "values": 91,
+    "pages_yielding_no_rows_in_the_band": "013-083 and 013-411 are blank in the sampled band and carry no truth values.",
+    "ra_range_covered": "00h, 04h, 07h twice, 08h, 15h, 18h, 20h, 22h. The sample spans most of the day rather than clustering near any particular right ascension.",
+    "runs_covered": "R-03, R-04, R-07, R-08, R-11, R-12, R-13, R-15, R-16"
+  },
+  "result": {
+    "pairing": "GEOMETRIC_ROW_Y_ONLY",
+    "truth_values": 91,
+    "UNPAIRED": 0,
+    "CORRECT_TRANSCRIPTION": 65,
+    "INCORRECT_TRANSCRIPTION": 0,
+    "MANUAL_REVIEW_REQUIRED": 22,
+    "UNREADABLE": 2,
+    "STRUCTURALLY_INVALID": 2,
+    "SOURCE_INPUT_INVALID": 0,
+    "RA_COLUMN_UNRESOLVED": 0,
+    "coverage_numeric_value_produced_percent": 73.6,
+    "accuracy_conditional_on_numeric_output_percent": 97.0,
+    "accuracy_conditional_on_gate_passing_value_percent": 100.0,
+    "the_two_invalid_cases": [
+      {"page": "014-033", "row_y": 748, "truth": "22 39 54", "extractor": "22 39 84", "gate": "rejected, second component 84"},
+      {"page": "014-221", "row_y": 815, "truth": "08 33 00", "extractor": "68 33 00", "gate": "rejected, hour component 68"}
+    ],
+    "interpretation": "Every value that passed both the extractor consensus and the structural gate was correct on this set. The two wrong readings were both caught by the gate, which is exactly the role it exists for. The failure mode is abstention and rejection rather than silent error.",
+    "what_this_does_not_establish": [
+      "Accuracy across the whole population. Nine pages is a small set.",
+      "That a wrong value which happens to be a possible right ascension would be caught. The gate rejects impossible values only, and cannot bound the rate of plausible-but-wrong ones.",
+      "Coverage on pages with the geometry or capture quality of 012-456, which yields materially fewer transcriptions and is preserved as an unresolved singular case rather than optimised for."
+    ]
+  },
+  "mechanisms_verified_in_execution": {
+    "adaptive_column_localisation": "Located per page from the ink profile alone. Observed windows range from x 1074-1184 to x 1102-1206 across the truth pages, confirming that a fixed window was never viable.",
+    "geometric_header_exclusion": "Before exclusion, page 013-085 produced a spurious leading value of 19 50 20, derived from the printed column header (1950.0). After geometric exclusion it begins correctly at 14 46 22. No value-based removal is performed anywhere.",
+    "SOURCE_INPUT_INVALID": "Triggered correctly on a 114-byte error response, which is reported as a source problem and never as unreadable scientific data.",
+    "RA_COLUMN_UNRESOLVED": "Triggered on page 014-369 with no silent fallback to a guessed window."
+  },
+  "cadence_statement": "The 12 second cadence of the records was observed but was NOT used to repair values, choose between conflicting reads, reject values, align rows or resolve any disagreement. It remains diagnostic only."
+}
