@@ -1,0 +1,56 @@
+{
+  "artifact": "JOIN_RADEC_V1_FREEZE",
+  "artifact_kind": "operational_instrument_freeze_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-08-19",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record freezes the row-pairing tool before it is used on production output.",
+  "position_in_chain": "frozen DEC v1 + DEC gate -> frozen RA v1 + RA gate -> THIS JOINER -> FK4(B1950) to FK5(J2000) per row -> sealed B1 comparison -> eligible manifest",
+  "why_it_is_frozen_before_use": "The joiner decides which declination and which right ascension belong to the same physical observation. A wrong pairing would put a real declination next to another row's right ascension, and the epoch transform would then produce a coordinate that never existed. That error would be invisible downstream, so the pairing rule is fixed before it sees production data.",
+  "the_key": {
+    "primary": "(source_page, row_y), where row_y is the full band [y0, y1] and equality is exact",
+    "secondary": "row_index, recorded and compared, never used to pair",
+    "why_not_index": "The two extractors segment each page independently, so the same index can denote different physical rows. The project already lost a validation result to index-shift ambiguity in a scoring harness; the rule exists because of that.",
+    "explicitly_forbidden": ["nearest-neighbour matching", "cadence matching", "inferred offset", "value matching", "any tolerance window on row_y"]
+  },
+  "verdict_vocabulary": {
+    "PAIRED": "same page and identical row_y on both sides",
+    "PAIRING_UNRESOLVED": "row_y duplicated on either side; every copy is unresolved",
+    "UNPAIRED_DEC_ONLY": "declination row with no right ascension row at that exact row_y",
+    "UNPAIRED_RA_ONLY": "right ascension row with no declination row at that exact row_y",
+    "PAGE_MISSING_ON_OTHER_SIDE": "the page itself is absent from the other side"
+  },
+  "design_stance": "The joiner prefers to leave a hundred rows unresolved over pairing one physical row wrongly. Differing row counts on a page are NOT treated as an error in themselves; each row_y is evaluated individually.",
+  "fixture_suite": {
+    "file": "tools/test_join_radec_v1.py",
+    "fixtures": 10,
+    "result": "ALL PASS",
+    "cases": [
+      "perfect one to one",
+      "missing RA row",
+      "extra RA row",
+      "row_y shifted block of two pixels: zero pairings, six unpaired",
+      "same row_index but different row_y",
+      "duplicated row_y",
+      "rows out of order: paired by geometry, three index disagreements recorded",
+      "page present on one side only",
+      "page-level record with no row_y, skipped and counted separately",
+      "differing row counts with exact overlap"
+    ],
+    "most_important": "The shifted-block fixture. A systematic two-pixel offset produces zero pairings rather than twelve wrong ones. That is the failure the joiner exists to prevent.",
+    "synthetic_only": "The fixtures contain no archive data and make no scientific statement."
+  },
+  "hashes": {
+    "join_radec_v1_py_sha256": "143154ff82fd271eebc9f1ef173d6719cd296bd708575039c482c7d0aae658f7",
+    "computed_by": "Owner, Get-FileHash on the project copy, 2026-08-19. Recorded here in lowercase; same digest.",
+    "committed_in": "git commit 63f8ad3, tools: add exact geometric RA-Dec row pairing"
+  },
+  "what_it_does_not_do": [
+    "No coordinate transform.",
+    "No comparison against the sealed B1 window.",
+    "No eligibility decision.",
+    "No scientific classification of any kind."
+  ],
+  "immutability_rule": "This version is never modified in place. Any change is a new version with its own freeze record and its own fixture run, so that joined output remains attributable to the exact pairing rule that produced it."
+}
