@@ -1,0 +1,63 @@
+{
+  "artifact": "ROW_SEGMENTER_V1_VALIDATION",
+  "artifact_kind": "operational_validation_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record measures the row segmenter before it is frozen and used to join the existing population output.",
+  "what_the_segmenter_is_for": {
+    "problem": "The declination and right ascension extractors each computed row bands from their own column window. A row band derived from a column is a property of that column's ink profile, not of the page. An exact join on those bands paired 798 rows out of 82525.",
+    "solution": "One row identity per page, derived from both fields' bands merged by interval overlap, so that exact equality becomes a meaningful test.",
+    "what_was_not_done": "No tolerance window was added to the join. The join rule was correct and refused to pair; the key was the error."
+  },
+  "no_re_extraction_required": {
+    "finding": "The segmenter recomputes declination bands with exactly the parameters frozen in dec_extractor_v1, and right ascension bands with the column locator frozen in ra_extractor_v1. It therefore reproduces the bands already stored in the population output.",
+    "measured": "On page 013-085 the segmenter produced (96,110) (112,125) (129,142) (162,175) (178,192) (195,208) as its first six declination bands, identical to the row_y values stored in dec_rows.jsonl for that page.",
+    "consequence": "The segmenter acts as a mapping layer over the existing 82525 declination rows and 59859 right ascension rows. No new extractor version is built, no page is read again, and no new validation surface is introduced. The frozen v1 instruments and their output remain untouched."
+  },
+  "method_summary": {
+    "canonical_row": "The interval spanned by one or more overlapping bands from either field. Two bands overlapping by at least one pixel describe the same printed line.",
+    "relation_used": "Interval overlap only. No tolerance window, no pitch model, no cadence, no assumption of regular line spacing.",
+    "ambiguity_rule": "A canonical row receiving more than one band from the same side is CANONICAL_AMBIGUOUS. Two printed lines have merged and geometry cannot say which declination belongs to which right ascension. Such rows are flagged, never resolved by choosing."
+  },
+  "rejected_alternative": {
+    "approach": "A single wide reference window spanning the whole table body, x 1000 to 1900.",
+    "why_it_failed": "Ink from many columns fills the inter-line gaps, so bands merge. Measured on three pages it yielded 12, 1 and 0 bands where roughly 87 rows exist. A threshold sweep from 0.02 to 0.30 gave at best 52 bands against 87.",
+    "recorded_because": "The wide window is the intuitive design. It is recorded as measured and rejected rather than quietly not chosen."
+  },
+  "validation": {
+    "page_selection": "One page per run at the 45 percent position through each of the fifteen B3-eligible runs. Depends only on run boundaries and page index, established long before this tool existed.",
+    "pages": 15,
+    "canonical_rows": 1161,
+    "results": {
+      "CANONICAL_CLEAN": {"rows": 1069, "percent": 92.1},
+      "CANONICAL_AMBIGUOUS": {"rows": 86, "percent": 7.4},
+      "CANONICAL_DEC_ONLY": {"rows": 5, "percent": 0.4},
+      "CANONICAL_RA_ONLY": {"rows": 1, "percent": 0.1}
+    },
+    "page_level_outcomes": "014-181 returned RA_COLUMN_UNRESOLVED and produced no rows. The segmenter refused to locate the column rather than guessing.",
+    "per_page": "012-499 65 rows 51 clean · 013-033 85/78 · 013-077 88/84 · 013-086 90/90 · 013-113 89/87 · 013-185 73/60 · 013-316 80/71 · 013-432 88/85 · 013-461 87/82 · 014-027 91/90 · 014-098 84/76 · 014-255 67/48 · 014-328 85/79 · 014-368 89/88"
+  },
+  "visual_verification_of_the_ambiguity_flag": {
+    "method": "On 014-255, the worst page in the sample with 19 ambiguous rows, five ambiguous and five clean canonical rows were rendered as image strips and read directly.",
+    "result": "Every row flagged CANONICAL_AMBIGUOUS visibly contained TWO printed lines within one band. Every row flagged CANONICAL_CLEAN contained exactly one.",
+    "significance": "The flag is not a heuristic proxy. It identifies the physical condition it names."
+  },
+  "known_limit_header_rows": {
+    "observation": "The column header block is classified CANONICAL_CLEAN. The segmenter performs no header exclusion.",
+    "three_rejected_approaches": [
+      "A fixed skip constant: header position varies between pages and some pages appear to have no header block, so a constant would discard real data rows.",
+      "Content-based location during development: OCR flagged genuine data rows as header-like on two of eight pages, so the measurement was too noisy to fix a constant.",
+      "Ink in the column separator: on pages where the right ascension field is located narrower, the separator captures ink from neighbouring fields and data rows reach the same level as the header."
+    ],
+    "why_this_is_acceptable": "A header row yields the declination text (1950.0), which reads as -19 50. The declination gate's declared plausible band of -35 to -20 already rejects it, and those rejections were observed in the population. D2 eligibility requires BOTH fields, so a row whose declination is structurally invalid can never become an eligible record.",
+    "what_this_means_for_ra_v1": "The constant HEADER_SKIP_Y = 260 in ra_extractor_v1 worked but was never measured. It is not inherited by anything here.",
+    "recorded_rather_than_solved": "Inventing a fourth geometric rule after three measured failures would add a fragile mechanism to a problem that already has a declared downstream protection."
+  },
+  "what_this_does_not_establish": [
+    "Fifteen pages is a small sample against 918.",
+    "The clean rate on pages with the capture quality of 012-456 is lower, and that page class is preserved as a known weaker case rather than optimised for.",
+    "Nothing here measures whether a field value is correct. The segmenter reads no values."
+  ]
+}

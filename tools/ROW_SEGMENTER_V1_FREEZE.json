@@ -1,0 +1,44 @@
+{
+  "artifact": "ROW_SEGMENTER_V1_FREEZE",
+  "artifact_kind": "operational_instrument_freeze_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record freezes the row segmenter before it is used to join the population output.",
+  "position_in_chain": "frozen DEC v1 + gate and frozen RA v1 + gate produced the population. THIS SEGMENTER establishes shared row identity over that existing output. Then join on canonical row, then FK4(B1950) to FK5(J2000) per pair, then sealed B1, then eligible manifest.",
+  "why_it_exists": "The first join key, (source_page, row_y), paired 798 rows of 82525. Each extractor had computed its bands from its own column window, so row_y was a property of the column rather than of the page. The join rule was correct and refused to pair; the key was the error.",
+  "no_re_extraction": {
+    "claim": "The frozen v1 instruments and their 82525 declination rows and 59859 right ascension rows are used as they stand. No page is read again and no v2 extractor is built.",
+    "basis": "The segmenter recomputes bands with exactly the frozen v1 parameters, so it reproduces the bands already stored. Measured on 013-085: first six declination bands identical to the stored row_y values.",
+    "consequence": "No new validation surface is introduced beyond this one tool."
+  },
+  "hashes": {
+    "row_segmenter_v1_py_sha256": "057032b07aff2f3f96fd3fa23e137606c51277d283102a2cce3dee2573fbdafb",
+    "row_segmenter_v1_validation_json_sha256": "da9e10d27c6fb690aac6440eaeee2ecc8ffbfbbd7f618af39831ddd3acaf5d57",
+    "computed_by": "Owner, Get-FileHash on the project copies, 2026-09-24. Recorded here in lowercase; same digests."
+  },
+  "measured_validation_summary": {
+    "pages": 15,
+    "selection": "one page per run at the 45 percent position, depending only on run boundaries and page index",
+    "canonical_rows": 1161,
+    "CANONICAL_CLEAN": "1069, 92.1 percent",
+    "CANONICAL_AMBIGUOUS": "86, 7.4 percent",
+    "CANONICAL_DEC_ONLY": 5,
+    "CANONICAL_RA_ONLY": 1,
+    "page_level": "014-181 returned RA_COLUMN_UNRESOLVED and produced no rows",
+    "ambiguity_flag_verified_visually": "On the worst page in the sample, every flagged row visibly contained two printed lines and every clean row exactly one."
+  },
+  "binding_rules": {
+    "overlap_only": "Canonical rows are formed by interval overlap. No tolerance window, no pitch model, no cadence, no assumption of regular line spacing.",
+    "ambiguity_is_never_resolved": "A canonical row with more than one band from the same side is CANONICAL_AMBIGUOUS and is excluded from pairing. It is never resolved by choosing one band.",
+    "no_values_read": "The segmenter performs no OCR and reads no field value."
+  },
+  "declared_limits": [
+    "Fifteen pages against a population of 918.",
+    "Header rows are classified CANONICAL_CLEAN; the segmenter performs no header exclusion. Three approaches were measured and rejected, and the declination gate's declared plausible band already rejects the header artifact, which suffices because D2 eligibility requires both fields.",
+    "Pages with the capture quality of 012-456 yield a lower clean rate and are preserved as a known weaker case."
+  ],
+  "immutability_rule": "This version is never modified in place. Any change is a new version with its own freeze record and its own validation, so joined output remains attributable to the exact segmentation that produced it.",
+  "commit_intent": "research: freeze row segmenter establishing shared canonical row identity"
+}
