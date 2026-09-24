@@ -1,0 +1,54 @@
+{
+  "artifact": "NOVELTY_GATE_TRANSCRIPTION_v1",
+  "artifact_kind": "operational_novelty_gate_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record holds a public-exposure check performed before committing to a large manual review.",
+  "what_this_gate_is_and_is_not": {
+    "is": "A check of whether the row-level verification evidence this project would produce is ALREADY PUBLICLY AVAILABLE, so that a thousand manual readings would merely reproduce it.",
+    "is_not": "A novelty check on a scientific candidate. No candidate exists. D2 candidate generation has not begun and this gate does not touch it.",
+    "measures": "PUBLIC EXPOSURE only.",
+    "cannot_establish": "That no such dataset exists privately. Exposure event X-2 already records that the PHL/Arecibo team holds unpublished work."
+  },
+  "question_asked": "Has anyone publicly exposed the row-level evidence chain this project builds: source image, stored right ascension and declination, verification status, correction, transform, resulting region membership, with explicit transcription-risk per field and stated population coverage?",
+  "what_was_found": {
+    "public_dataset": {
+      "location": "github.com/planetaryhablab/Ohio-SETI",
+      "contents": "Five files plus a README. One printout page, oseti_19770815_220410, dated 1977-08-15, as jpg, txt, csv, extended pdf and an IDL save file.",
+      "scope": "82 rows, one observation. All arrays are Array[82] or Array[50,82].",
+      "fields_relevant_here": "RA_PRINT and DC_PRINT hold the printed values; RA_1950_SEX, DC_1950_SEX, RA_2000_SEX and DC_2000_SEX hold corrected coordinates.",
+      "licence": "Creative Commons Attribution 4.0 International, PHL at UPR Arecibo.",
+      "transcription_lineage_stated_by_them": "The README credits MichaelHotaling for the original transcription, which PHL then corrected and calibrated.",
+      "what_it_does_not_contain": "No per-row verification status, no record of which stored values were checked against the source image, no correction log, no statement of transcription error rate, and no coverage beyond this single page."
+    },
+    "published_method": {
+      "source": "Arecibo Wow! II, arXiv 2508.10657, Mendez et al.",
+      "relevant_statement": "The team transcribed Ohio SETI data from 13 to 17 August 1977 using OCR and machine learning with human validation, and re-verified the dataset against the original frames.",
+      "consequence": "Transcription of part of our date window has been done by another team and described in a paper. The resulting row-level data is not publicly exposed.",
+      "date_overlap_with_this_project": "The sealed D2 window is 8 to 22 August 1977. Their stated 13 to 17 August overlaps runs R-09 through R-12 of our population.",
+      "methodological_difference": "Their positional work in places recomputes positions from printout time and calibration rather than relying on the printed coordinates. This project reads the printed coordinates and measures whether the transcription of those printed values is correct."
+    }
+  },
+  "gate_outcome": {
+    "verdict": "PUBLISHED_METHOD_OVERLAP_ONLY",
+    "reasoning": "Another team has performed and described human-validated transcription covering part of the same date range, but the row-level evidence is not publicly exposed. Only a single page of 82 rows is public, and that page carries no verification status, no correction log and no error measurement.",
+    "not_PUBLIC_ROW_LEVEL_OVERLAP": "The public data covers one page outside our population's folders, with no verification evidence.",
+    "not_NO_PUBLIC_OVERLAP_FOUND": "It would be wrong to claim nothing public exists. The single page and the published method both exist and are cited here."
+  },
+  "consequence_for_the_population_sample": {
+    "decision_input": "The planned sample of roughly 1000 rows would not reproduce any publicly available result. Nothing public states how often the printed coordinates are transcribed correctly, or how often a transcription error changes region membership.",
+    "residual_risk": "If the PHL team's unpublished dataset contains equivalent row-level verification for 13 to 17 August, part of this measurement duplicates private work we cannot see. That risk cannot be eliminated by searching and is recorded rather than resolved.",
+    "what_the_contribution_appears_to_be": "Not a better astronomical coordinate. The contribution is auditability of archival transcription and its measured effect on region membership."
+  },
+  "exposure_event": {
+    "id": "X-7",
+    "scope": "PUBLIC_LITERATURE_AND_REPOSITORY_METADATA",
+    "what_was_read": "The PHL repository README in full, including its variable table, and public abstracts and summaries of Arecibo Wow! I and II.",
+    "what_was_not_read": "No row values from the PHL csv, txt or IDL save file were opened. No signal, channel or flux values from any source were inspected.",
+    "eligibility_consequence": "Everything described in those public sources is PRIOR PUBLISHED and is INELIGIBLE to support NOVEL_CANDIDATE_FOUND.",
+    "why_this_is_not_a_candidate_novelty_check": "No candidate has been generated. The sealed protocol's rule that literature may only accept or reject a candidate after candidate sealing is untouched by this gate."
+  },
+  "attribution_note": "Any use of the PHL dataset requires CC BY 4.0 attribution to PHL at UPR Arecibo. Any use of the N50CH scans requires attribution to the OSU Radio Observatory and NAAPO per the custodian's written statement."
+}
