@@ -1,0 +1,40 @@
+{
+  "artifact": "B1_CLASS1_ANCHOR_v1",
+  "artifact_kind": "operational_anchor_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record binds the identities under which the class-1 finding was frozen.",
+  "what_is_anchored": "The finding B1_MEMBERSHIP_IS_RA_SENSITIVE, established on a measured instance and recorded in B1_CLASS1_VERIFICATION_v1.json.",
+  "identities": {
+    "record_path": "research/v2_b1/B1_CLASS1_VERIFICATION_v1.json",
+    "record_sha256": "00a6091e95768d04c587e4faf6757162e5578016d006d382778233362845fced",
+    "record_bytes": 5907,
+    "commit": "7102688fe6d0a9221506f8ec3a24907759bab92d",
+    "tree": "a4c0f7e7e2c23df6c2b7bcfdccfb1af9c3257d89",
+    "remote": "https://github.com/elekto-energy/eve-wow-discovery.git",
+    "computed_by": "Owner, 2026-09-24, in D:\\EVE11\\Projects\\043_wow_discovery. Recorded in lowercase; same digests."
+  },
+  "instruments_frozen_in_the_same_commit": {
+    "join_radec_v2.py": "The exact version that produced radec_rows_v3.jsonl with 48913 paired rows. Staged as an untracked new file, never previously committed and unmodified since the run.",
+    "transform_b1_v1.py": "The exact version that produced b1_rows_v1.jsonl with 11718 rows inside the sealed window. Same condition.",
+    "verified_how": "git status --short showed both as ?? rather than M before staging, and git diff --cached --stat showed insertions only, 646 lines across three files with no deletions."
+  },
+  "provenance_incident_recorded": {
+    "what_happened": "The identity commands were first run in D:\\EVE11\\Projects\\042_wow, the closed WOW v1 project, because an earlier instruction moved the shell there for the sealed epoch tool and never moved it back.",
+    "effect": "The file paths did not exist there, so nothing was written and nothing was read from the wrong project into this record. git rev-parse HEAD did return a valid value, e80d5c47b5fb2c2ba9e175b0b445d28817d512d1, which is the WOW v1 release commit behind tag wow-v1.0.",
+    "why_it_is_recorded": "The command succeeded and produced a well-formed commit id. Nothing in the tooling would have objected if that identity had been written into a WOW v2 freeze record. Working directory is an unverified input to every git identity command, and the chain does not check it.",
+    "generalisation": "Same class as the earlier date error: an artifact can be internally consistent and hash-verifiable while describing the wrong thing. Hash verification establishes what the bytes are, not what they are about."
+  },
+  "uncommitted_at_time_of_anchor": {
+    "note": "Four tracked files showed as modified and were deliberately not staged, so that this commit contains only the class-1 record and the two instruments that produced the result.",
+    "files": ["docs/EVE_WOW_METHOD_REPORT.md", "tools/JOIN_RADEC_V1_FREEZE.json", "tools/RA_EXTRACTOR_V1_FREEZE.json", "tools/run_ra_population_par.py"],
+    "also_untracked": "sources/ , holding the external reuse provenance record and the intended location for the preserved email thread."
+  },
+  "what_this_anchor_does_not_establish": [
+    "Any population-wide transcription error rate.",
+    "The reliability of the remaining B1 rows.",
+    "Coverage of the source population; 138 of 918 pages remain RA_COLUMN_UNRESOLVED."
+  ]
+}

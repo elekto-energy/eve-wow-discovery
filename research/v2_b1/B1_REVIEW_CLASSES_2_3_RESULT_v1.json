@@ -1,0 +1,107 @@
+{
+  "artifact": "B1_REVIEW_CLASSES_2_3_RESULT_v1",
+  "artifact_kind": "operational_source_verification_result",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record holds the source-image review of the preregistered class 2 and class 3 union.",
+  "preregistration": {
+    "artifact": "research/v2_b1/B1_REVIEW_PREREGISTRATION_v1.json",
+    "sha256": "6ccca63cf9c4be64563f3e5a7c2baa3ef3d437c6410fde47a5fbed5f56682e81",
+    "bytes": 18292,
+    "commit": "22ba9b91988c6fce3949556a702e84f29ecc9caa",
+    "membership_sha256": "48b356207c1d754e805aabbc13e2c44e998572ec9fdd9ef902b3552861a9084a",
+    "frozen_before_any_new_image_was_opened": true
+  },
+  "method": {
+    "pages": 14,
+    "byte_integrity": "All 14 pages retrieved fresh and verified against the published folder SHA1SUM. Zero failures.",
+    "reading": "Each canonical band rendered with two rows of context above and below, across both fields, and read directly from the image.",
+    "transform": "Every established correction converted with the sealed WOW v1 tool 042_wow/scripts/wow2_epoch.py, unmodified, run by the owner. Provenance: astropy 8.0.1 / numpy 2.5.2 ; FK4(equinox=B1950, obstime=B1950) -> FK5(equinox=J2000).",
+    "sealed_b1_window_arcmin": [-1637.0, -1597.0],
+    "no_rule_changed_during_review": true,
+    "no_extraction_code_or_stored_row_altered": true
+  },
+  "outcome_totals_union": {
+    "reviewed": 24,
+    "SOURCE_CONFIRMED": 10,
+    "TRANSCRIPTION_ERROR_B1_CHANGING": 8,
+    "TRANSCRIPTION_ERROR_NON_B1_CHANGING": 6,
+    "NOT_ESTABLISHED": 0
+  },
+  "faulty_field_among_the_eight_membership_changing_errors": {
+    "right_ascension": 5,
+    "declination": 3,
+    "note": "The RA sensitivity established in class 1 is not a single event. Five of the eight rows that sat inside the sealed window did so because of a right ascension misreading."
+  },
+  "hypotheses_scored_separately": {
+    "H2": {
+      "statement": "Rare stored declination values, fewer than 10 occurrences in the B1 subset, carry elevated transcription and false-B1-membership risk.",
+      "reviewed": 21,
+      "transcription_errors": 14,
+      "b1_changing": 8,
+      "state_after_review": "SUPPORTED within the reviewed class"
+    },
+    "H3": {
+      "statement": "Source pages producing 3 or fewer B1 rows carry elevated transcription and false-B1-membership risk.",
+      "reviewed": 15,
+      "transcription_errors": 8,
+      "b1_changing": 5,
+      "state_after_review": "SUPPORTED within the reviewed class"
+    },
+    "overlap": "13 rows belong to both classes. The two are scored separately so it is clear which signal carried the result. H2 is the stronger of the two on this material."
+  },
+  "selection_boundary": {
+    "statement": "This population was deliberately risk-selected. The classes were defined because low frequency was suspected to indicate error, and the suspicion arose from two artifacts found earlier.",
+    "consequence": "No proportion from this review may be described as a general transcription or OCR error rate. Not 58 percent, not 33 percent, not any figure derived from these 24 rows.",
+    "what_it_does_support": "Low-frequency features are usable for PRIORITISATION. They can be computed over the whole population without reading a single image."
+  },
+  "two_distinct_truth_questions": {
+    "B1_MEMBERSHIP_CORRECT": "Does the row belong inside the sealed window?",
+    "COORDINATE_CORRECT": "Is the stored coordinate the value printed on the page?",
+    "why_they_must_be_kept_apart": "The six non-membership-changing errors are rows that belong in the region but carry a wrong coordinate. A frozen manifest that only asserts membership would carry six known-wrong coordinates without saying so.",
+    "all_six": "Each was a declination misread by a few arcminutes: -26 48 read as -26 49 twice, -26 46 as -26 49 and as -26 46 variants, -26 38 as -26 48, -26 37 as -26 47, -27 21 as -27 21 with an RA error. In every case the corrected value still falls inside the window."
+  },
+  "rows": [
+    {"page": "013-284", "row_id": 20, "run": "R-09", "stored_ra": "19 52 29", "stored_dec": "-26 46", "source_ra": "19 52 29", "source_dec": "-26 44", "faulty_field": "DEC", "corrected_j2000_arcmin": -1596.027, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-300", "row_id": 33, "run": "R-09", "stored_ra": "06 18 11", "stored_dec": "-26 48", "source_ra": "00 18 11", "source_dec": "-26 48", "faulty_field": "RA", "corrected_j2000_arcmin": -1591.353, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-308", "row_id": 35, "run": "R-09", "stored_ra": "07 30 12", "stored_dec": "-26 46", "source_ra": "02 30 12", "source_dec": "-26 46", "faulty_field": "RA", "corrected_j2000_arcmin": -1592.803, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-323", "row_id": 59, "run": "R-09", "stored_ra": "06 41 49", "stored_dec": "-26 48", "source_ra": "06 41 49", "source_dec": "-26 38", "faulty_field": "DEC", "corrected_j2000_arcmin": -1601.103, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "013-360", "row_id": 62, "run": "R-09", "stored_ra": "16 49 44", "stored_dec": "-26 47", "source_ra": "16 49 44", "source_dec": "-26 37", "faulty_field": "DEC", "corrected_j2000_arcmin": -1601.935, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "013-371", "row_id": 79, "run": "R-09", "stored_ra": "19 53 49", "stored_dec": "-26 46", "source_ra": "19 53 49", "source_dec": "-26 44", "faulty_field": "DEC", "corrected_j2000_arcmin": -1595.942, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-372", "row_id": 57, "run": "R-09", "stored_ra": "20 05 27", "stored_dec": "-26 46", "source_ra": "20 05 27", "source_dec": "-26 44", "faulty_field": "DEC", "corrected_j2000_arcmin": -1595.210, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-395", "row_id": 80, "run": "R-09", "stored_ra": "07 28 34", "stored_dec": "-26 46", "source_ra": "02 28 34", "source_dec": "-26 46", "faulty_field": "RA", "corrected_j2000_arcmin": -1592.731, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-395", "row_id": 81, "run": "R-09", "stored_ra": "07 28 46", "stored_dec": "-26 46", "source_ra": "02 28 46", "source_dec": "-26 46", "faulty_field": "RA", "corrected_j2000_arcmin": -1592.739, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true},
+    {"page": "013-407", "row_id": 47, "run": "R-09", "stored_ra": "05 39 18", "stored_dec": "-26 49", "source_ra": "05 39 18", "source_dec": "-26 40", "faulty_field": "DEC", "corrected_j2000_arcmin": -1598.565, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "013-407", "row_id": 55, "run": "R-09", "stored_ra": "05 40 54", "stored_dec": "-26 46", "source_ra": "05 40 54", "source_dec": "-26 40", "faulty_field": "DEC", "corrected_j2000_arcmin": -1598.681, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "013-407", "row_id": 83, "run": "R-09", "stored_ra": "05 46 30", "stored_dec": "-26 49", "source_ra": "05 46 30", "source_dec": "-26 40", "faulty_field": "DEC", "corrected_j2000_arcmin": -1599.088, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "013-455", "row_id": 12, "run": "R-10", "stored_ra": "17 53 49", "stored_dec": "-26 59", "source_ra": "17 53 49", "source_dec": "-26 59", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": false, "in_class_3": true},
+    {"page": "013-455", "row_id": 16, "run": "R-10", "stored_ra": "17 54 49", "stored_dec": "-27 00", "source_ra": "17 54 49", "source_dec": "-27 00", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": false, "in_class_3": true},
+    {"page": "013-455", "row_id": 19, "run": "R-10", "stored_ra": "17 55 37", "stored_dec": "-27 00", "source_ra": "17 55 37", "source_dec": "-27 00", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": false, "in_class_3": true},
+    {"page": "014-138", "row_id": 17, "run": "R-13", "stored_ra": "05 01 55", "stored_dec": "-27 21", "source_ra": "05 01 55", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": true},
+    {"page": "014-138", "row_id": 19, "run": "R-13", "stored_ra": "05 02 30", "stored_dec": "-27 21", "source_ra": "05 02 30", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": true},
+    {"page": "014-244", "row_id": 46, "run": "R-15", "stored_ra": "18 04 43", "stored_dec": "-27 14", "source_ra": "15 04 43", "source_dec": "-27 14", "faulty_field": "RA", "corrected_j2000_arcmin": -1645.489, "outcome": "TRANSCRIPTION_ERROR_B1_CHANGING", "in_class_2": true, "in_class_3": true, "note": "The page carries a printed annotation line reading 0443,DC-2714,LAT 26.3,LN which independently confirms the declination. The declination was correct; the right ascension was misread."},
+    {"page": "014-291", "row_id": 60, "run": "R-15", "stored_ra": "04 56 20", "stored_dec": "-27 21", "source_ra": "04 56 20", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": false},
+    {"page": "014-291", "row_id": 61, "run": "R-15", "stored_ra": "04 56 37", "stored_dec": "-27 21", "source_ra": "04 56 32", "source_dec": "-27 21", "faulty_field": "RA", "corrected_j2000_arcmin": -1636.502, "outcome": "TRANSCRIPTION_ERROR_NON_B1_CHANGING", "in_class_2": true, "in_class_3": false},
+    {"page": "014-291", "row_id": 70, "run": "R-15", "stored_ra": "04 59 44", "stored_dec": "-27 21", "source_ra": "04 59 44", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": false},
+    {"page": "014-291", "row_id": 74, "run": "R-15", "stored_ra": "05 00 32", "stored_dec": "-27 21", "source_ra": "05 00 32", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": false},
+    {"page": "014-292", "row_id": 15, "run": "R-15", "stored_ra": "05 02 10", "stored_dec": "-27 21", "source_ra": "05 02 10", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": true},
+    {"page": "014-292", "row_id": 20, "run": "R-15", "stored_ra": "05 03 22", "stored_dec": "-27 21", "source_ra": "05 03 22", "source_dec": "-27 21", "faulty_field": null, "outcome": "SOURCE_CONFIRMED", "in_class_2": true, "in_class_3": true}
+  ],
+  "conclusion": {
+    "ESTABLISHED": [
+      "Low-frequency features are empirically associated with elevated transcription risk within the preregistered reviewed classes.",
+      "Right ascension misreadings cause false B1 membership repeatedly, not once: 5 of the 8 membership-changing errors were RA.",
+      "Transcription errors occur that do NOT change membership: 6 rows belong in the region while carrying a wrong coordinate."
+    ],
+    "NOT_ESTABLISHED": [
+      "The magnitude of that association in the remaining B1 population.",
+      "Any population-wide transcription error rate.",
+      "Any population-wide false-B1-membership rate.",
+      "Completeness of B1, because 138 of 918 pages remain RA_COLUMN_UNRESOLVED."
+    ]
+  },
+  "next_step_required": "A preregistered random sample drawn from the approximately 11690 unreviewed rows. Only such a sample can give the base rate that these deliberately risk-selected classes cannot.",
+  "class_1_not_folded_in": "The two class-1 rows, 013-063 and 013-193, are excluded from every count above. They generated the hypotheses and are recorded in B1_CLASS1_VERIFICATION_v1.json."
+}
