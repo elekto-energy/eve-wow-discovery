@@ -1,0 +1,534 @@
+{
+  "artifact": "B1_REVIEW_PREREGISTRATION_v1",
+  "artifact_kind": "operational_pre_registration",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. Written before any new source image is opened.",
+  "written_before_any_new_image_opened": "YES",
+  "input": {
+    "file": "D:\\EVE11\\Projects\\043_wow_discovery\\outputs\\b1\\b1_rows_v1.jsonl",
+    "sha256": "ca86b787209d0e6a4274f5f67d3741133304e86d8be0b6759a15633eaf4a6d02",
+    "rows_inside_sealed_b1": 11718,
+    "distinct_pages": 311,
+    "distinct_dec_values": 45
+  },
+  "class_definitions": {
+    "class_2": "stored declination value occurs fewer than 10 times among rows inside the sealed B1 window",
+    "class_3": "source page contributes at most 3 rows inside the sealed B1 window",
+    "scope": "CURRENTLY_ESTABLISHED_PAIRED_SUBSET only"
+  },
+  "counts": {
+    "class_2_total": 22,
+    "class_3_total": 17,
+    "intersection_total": 13,
+    "union_total": 26,
+    "already_reviewed_in_union": 2,
+    "class_2_new": 21,
+    "class_3_new": 15,
+    "union_new": 24
+  },
+  "already_reviewed_excluded": {
+    "rows": [
+      "013-063 row 27",
+      "013-193 row 85"
+    ],
+    "why": "Both were verified in class 1 and both proved to be transcription errors. They generated the hypotheses under test, so scoring them again would score the test on the observations that produced it."
+  },
+  "hypotheses": {
+    "H2": {
+      "statement": "Rare stored declination values, fewer than 10 occurrences in the B1 subset, carry elevated transcription and false-B1-membership risk.",
+      "state_before_review": "NOT_ESTABLISHED",
+      "scored_on": "class 2 new rows only"
+    },
+    "H3": {
+      "statement": "Source pages producing 3 or fewer B1 rows carry elevated transcription and false-B1-membership risk.",
+      "state_before_review": "NOT_ESTABLISHED",
+      "scored_on": "class 3 new rows only"
+    },
+    "kept_separate": "The two populations overlap. They are scored separately so that it is afterwards clear which signal carried any result."
+  },
+  "per_row_outcome_states": {
+    "SOURCE_CONFIRMED": "stored right ascension and declination match the source image sufficiently to preserve the stored coordinate",
+    "TRANSCRIPTION_ERROR_B1_CHANGING": "the source image establishes that a stored value is wrong AND correction changes B1 membership",
+    "TRANSCRIPTION_ERROR_NON_B1_CHANGING": "an established transcription error whose correction does not change B1 membership",
+    "NOT_ESTABLISHED": "the source image cannot support a reliable reading"
+  },
+  "reading_rule": {
+    "primary": "The verdict rests on the source image alone.",
+    "context": "Neighbouring rows may be cited as contextual support only. They may never override an ambiguous source image, and no cadence-based reconstruction may substitute for source evidence.",
+    "correction": "Where a correction is established, the corrected B1950 pair is converted with the sealed WOW v1 tool, unmodified, and the resulting B1 membership is recorded.",
+    "no_changes_during_review": "No extraction code, gate, segmenter or stored row is altered during the review."
+  },
+  "pre_existing_context": {
+    "013-455": "A prior constant-test sample found this page blank in the measured mid-page band. This is recorded as pre-existing context only. It does not alter membership, the reading rule or any verdict."
+  },
+  "membership_hash": {
+    "rows_to_review_sha256": "48b356207c1d754e805aabbc13e2c44e998572ec9fdd9ef902b3552861a9084a",
+    "covers": "the union of class 2 and class 3, excluding already reviewed rows"
+  },
+  "what_this_cannot_establish": [
+    "Any error rate for the full 11718 row population.",
+    "That frequency is a valid risk measure outside these two classes.",
+    "Anything about the 138 RA_COLUMN_UNRESOLVED pages."
+  ],
+  "rows_to_review": [
+    {
+      "page": "013-284",
+      "row_id": 20,
+      "run": "R-09",
+      "canonical_y": [
+        405,
+        420
+      ],
+      "stored_ra_b1950": "19 52 29",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1598.027,
+      "distance_to_nearest_edge_arcmin": 1.027,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "eb0103093bed7d014b915b0fcf8b1123e7e51e39edcb4b2435ecdf6140bf8a89",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-284.jpg"
+    },
+    {
+      "page": "013-300",
+      "row_id": 33,
+      "run": "R-09",
+      "canonical_y": [
+        611,
+        627
+      ],
+      "stored_ra_b1950": "06 18 11",
+      "stored_dec_b1950": "-26 48",
+      "dec_value_occurrences_in_b1": 2,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1609.396,
+      "distance_to_nearest_edge_arcmin": 12.396,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "c998e02b68e8b32546b24dda180ccd73715757516510ef8b637c5a78496809d3",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-300.jpg"
+    },
+    {
+      "page": "013-308",
+      "row_id": 35,
+      "run": "R-09",
+      "canonical_y": [
+        652,
+        668
+      ],
+      "stored_ra_b1950": "07 30 12",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1612.475,
+      "distance_to_nearest_edge_arcmin": 15.475,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "2c39e99c285fd6efb0e222af50a4c148fa5be4f29e16c404685abbaf994d1d78",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-308.jpg"
+    },
+    {
+      "page": "013-323",
+      "row_id": 59,
+      "run": "R-09",
+      "canonical_y": [
+        1053,
+        1067
+      ],
+      "stored_ra_b1950": "06 41 49",
+      "stored_dec_b1950": "-26 48",
+      "dec_value_occurrences_in_b1": 2,
+      "page_b1_hits": 63,
+      "dec_j2000_arcmin": -1611.103,
+      "distance_to_nearest_edge_arcmin": 14.103,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "98985f5e46a301afb825578f833cfcd5ed34d5b38cfefd934cf0362775278582",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-323.jpg"
+    },
+    {
+      "page": "013-360",
+      "row_id": 62,
+      "run": "R-09",
+      "canonical_y": [
+        1115,
+        1131
+      ],
+      "stored_ra_b1950": "16 49 44",
+      "stored_dec_b1950": "-26 47",
+      "dec_value_occurrences_in_b1": 1,
+      "page_b1_hits": 54,
+      "dec_j2000_arcmin": -1611.935,
+      "distance_to_nearest_edge_arcmin": 14.935,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "8a736ab37d97a6e0667dd50da8021e0da43dbbc6b5e6543a61dd52974b59bfbb",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-360.jpg"
+    },
+    {
+      "page": "013-371",
+      "row_id": 79,
+      "run": "R-09",
+      "canonical_y": [
+        1412,
+        1428
+      ],
+      "stored_ra_b1950": "19 53 49",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1597.942,
+      "distance_to_nearest_edge_arcmin": 0.942,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "3261b3840deb56ffd854ea95ef1af30cfa22e756224d0822d7f0925cd5b5d8d4",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-371.jpg"
+    },
+    {
+      "page": "013-372",
+      "row_id": 57,
+      "run": "R-09",
+      "canonical_y": [
+        1018,
+        1033
+      ],
+      "stored_ra_b1950": "20 05 27",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1597.21,
+      "distance_to_nearest_edge_arcmin": 0.21,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "93b0e7fff75a20a0512fe203fa9f9a999af824a8df3fcea10f93d9ccb5a62100",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-372.jpg"
+    },
+    {
+      "page": "013-395",
+      "row_id": 80,
+      "run": "R-09",
+      "canonical_y": [
+        1381,
+        1396
+      ],
+      "stored_ra_b1950": "07 28 34",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1612.365,
+      "distance_to_nearest_edge_arcmin": 15.365,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "de790304508bdd68db6f76fc7ed586d5f865bedfc10b2e0d948e6e5348e0f826",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-395.jpg"
+    },
+    {
+      "page": "013-395",
+      "row_id": 81,
+      "run": "R-09",
+      "canonical_y": [
+        1398,
+        1413
+      ],
+      "stored_ra_b1950": "07 28 46",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1612.378,
+      "distance_to_nearest_edge_arcmin": 15.378,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "de790304508bdd68db6f76fc7ed586d5f865bedfc10b2e0d948e6e5348e0f826",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-395.jpg"
+    },
+    {
+      "page": "013-407",
+      "row_id": 47,
+      "run": "R-09",
+      "canonical_y": [
+        833,
+        848
+      ],
+      "stored_ra_b1950": "05 39 18",
+      "stored_dec_b1950": "-26 49",
+      "dec_value_occurrences_in_b1": 2,
+      "page_b1_hits": 59,
+      "dec_j2000_arcmin": -1607.565,
+      "distance_to_nearest_edge_arcmin": 10.565,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "e57a5abb10d94e0663c2be71bcee52e0d478243fd35bbb1c8e3f7625d294b2f7",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-407.jpg"
+    },
+    {
+      "page": "013-407",
+      "row_id": 55,
+      "run": "R-09",
+      "canonical_y": [
+        965,
+        979
+      ],
+      "stored_ra_b1950": "05 40 54",
+      "stored_dec_b1950": "-26 46",
+      "dec_value_occurrences_in_b1": 7,
+      "page_b1_hits": 59,
+      "dec_j2000_arcmin": -1604.681,
+      "distance_to_nearest_edge_arcmin": 7.681,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "e57a5abb10d94e0663c2be71bcee52e0d478243fd35bbb1c8e3f7625d294b2f7",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-407.jpg"
+    },
+    {
+      "page": "013-407",
+      "row_id": 83,
+      "run": "R-09",
+      "canonical_y": [
+        1431,
+        1445
+      ],
+      "stored_ra_b1950": "05 46 30",
+      "stored_dec_b1950": "-26 49",
+      "dec_value_occurrences_in_b1": 2,
+      "page_b1_hits": 59,
+      "dec_j2000_arcmin": -1608.088,
+      "distance_to_nearest_edge_arcmin": 11.088,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "e57a5abb10d94e0663c2be71bcee52e0d478243fd35bbb1c8e3f7625d294b2f7",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-407.jpg"
+    },
+    {
+      "page": "013-455",
+      "row_id": 12,
+      "run": "R-10",
+      "canonical_y": [
+        280,
+        296
+      ],
+      "stored_ra_b1950": "17 53 49",
+      "stored_dec_b1950": "-26 59",
+      "dec_value_occurrences_in_b1": 222,
+      "page_b1_hits": 3,
+      "dec_j2000_arcmin": -1619.337,
+      "distance_to_nearest_edge_arcmin": 17.663,
+      "in_class_2": false,
+      "in_class_3": true,
+      "local_sha256": "dd7101e52613e265d9b7e8312152fc98ab158c67209b108b6dd7d89e417434c9",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-455.jpg"
+    },
+    {
+      "page": "013-455",
+      "row_id": 16,
+      "run": "R-10",
+      "canonical_y": [
+        363,
+        380
+      ],
+      "stored_ra_b1950": "17 54 49",
+      "stored_dec_b1950": "-27 00",
+      "dec_value_occurrences_in_b1": 110,
+      "page_b1_hits": 3,
+      "dec_j2000_arcmin": -1620.264,
+      "distance_to_nearest_edge_arcmin": 16.736,
+      "in_class_2": false,
+      "in_class_3": true,
+      "local_sha256": "dd7101e52613e265d9b7e8312152fc98ab158c67209b108b6dd7d89e417434c9",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-455.jpg"
+    },
+    {
+      "page": "013-455",
+      "row_id": 19,
+      "run": "R-10",
+      "canonical_y": [
+        430,
+        446
+      ],
+      "stored_ra_b1950": "17 55 37",
+      "stored_dec_b1950": "-27 00",
+      "dec_value_occurrences_in_b1": 110,
+      "page_b1_hits": 3,
+      "dec_j2000_arcmin": -1620.205,
+      "distance_to_nearest_edge_arcmin": 16.795,
+      "in_class_2": false,
+      "in_class_3": true,
+      "local_sha256": "dd7101e52613e265d9b7e8312152fc98ab158c67209b108b6dd7d89e417434c9",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.013/013-455.jpg"
+    },
+    {
+      "page": "014-138",
+      "row_id": 17,
+      "run": "R-13",
+      "canonical_y": [
+        339,
+        356
+      ],
+      "stored_ra_b1950": "05 01 55",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1636.881,
+      "distance_to_nearest_edge_arcmin": 0.119,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "2544748d3dd25e0c493e17773554b2fc9bc51a648100f71a8b9ec8d3315ec901",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-138.jpg"
+    },
+    {
+      "page": "014-138",
+      "row_id": 19,
+      "run": "R-13",
+      "canonical_y": [
+        389,
+        406
+      ],
+      "stored_ra_b1950": "05 02 30",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1636.922,
+      "distance_to_nearest_edge_arcmin": 0.078,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "2544748d3dd25e0c493e17773554b2fc9bc51a648100f71a8b9ec8d3315ec901",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-138.jpg"
+    },
+    {
+      "page": "014-244",
+      "row_id": 46,
+      "run": "R-15",
+      "canonical_y": [
+        873,
+        889
+      ],
+      "stored_ra_b1950": "18 04 43",
+      "stored_dec_b1950": "-27 14",
+      "dec_value_occurrences_in_b1": 1,
+      "page_b1_hits": 1,
+      "dec_j2000_arcmin": -1633.542,
+      "distance_to_nearest_edge_arcmin": 3.458,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "fdcb49576f54a18c4e03f43229c7d55a38d008e2ccbe05ea006de301051fa25b",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-244.jpg"
+    },
+    {
+      "page": "014-291",
+      "row_id": 60,
+      "run": "R-15",
+      "canonical_y": [
+        1190,
+        1207
+      ],
+      "stored_ra_b1950": "04 56 20",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 18,
+      "dec_j2000_arcmin": -1636.488,
+      "distance_to_nearest_edge_arcmin": 0.512,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "b4089a27f4043693f159cf682f227a5dc69578b051febcefd3559bbfe07600d8",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-291.jpg"
+    },
+    {
+      "page": "014-291",
+      "row_id": 61,
+      "run": "R-15",
+      "canonical_y": [
+        1207,
+        1224
+      ],
+      "stored_ra_b1950": "04 56 37",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 18,
+      "dec_j2000_arcmin": -1636.508,
+      "distance_to_nearest_edge_arcmin": 0.492,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "b4089a27f4043693f159cf682f227a5dc69578b051febcefd3559bbfe07600d8",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-291.jpg"
+    },
+    {
+      "page": "014-291",
+      "row_id": 70,
+      "run": "R-15",
+      "canonical_y": [
+        1474,
+        1490
+      ],
+      "stored_ra_b1950": "04 59 44",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 18,
+      "dec_j2000_arcmin": -1636.727,
+      "distance_to_nearest_edge_arcmin": 0.273,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "b4089a27f4043693f159cf682f227a5dc69578b051febcefd3559bbfe07600d8",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-291.jpg"
+    },
+    {
+      "page": "014-291",
+      "row_id": 74,
+      "run": "R-15",
+      "canonical_y": [
+        1539,
+        1555
+      ],
+      "stored_ra_b1950": "05 00 32",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 18,
+      "dec_j2000_arcmin": -1636.783,
+      "distance_to_nearest_edge_arcmin": 0.217,
+      "in_class_2": true,
+      "in_class_3": false,
+      "local_sha256": "b4089a27f4043693f159cf682f227a5dc69578b051febcefd3559bbfe07600d8",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-291.jpg"
+    },
+    {
+      "page": "014-292",
+      "row_id": 15,
+      "run": "R-15",
+      "canonical_y": [
+        314,
+        330
+      ],
+      "stored_ra_b1950": "05 02 10",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1636.899,
+      "distance_to_nearest_edge_arcmin": 0.101,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "c2c739576ca45dfab8e4fda223a4751ad709246841991d3da4c75f55f40b34fb",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-292.jpg"
+    },
+    {
+      "page": "014-292",
+      "row_id": 20,
+      "run": "R-15",
+      "canonical_y": [
+        412,
+        429
+      ],
+      "stored_ra_b1950": "05 03 22",
+      "stored_dec_b1950": "-27 21",
+      "dec_value_occurrences_in_b1": 8,
+      "page_b1_hits": 2,
+      "dec_j2000_arcmin": -1636.983,
+      "distance_to_nearest_edge_arcmin": 0.017,
+      "in_class_2": true,
+      "in_class_3": true,
+      "local_sha256": "c2c739576ca45dfab8e4fda223a4751ad709246841991d3da4c75f55f40b34fb",
+      "source_url": "http://naapo.org/~rchilders/N50CH_data/scans/jpg/folder.014/014-292.jpg"
+    }
+  ]
+}
