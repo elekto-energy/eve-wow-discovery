@@ -1,0 +1,284 @@
+{
+  "artifact": "B1_POPULATION_REVIEW_ORDER_PREREGISTRATION_v1",
+  "artifact_kind": "operational_pre_registration",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. Written before any sampled source image is opened.",
+  "no_source_image_opened_by_this_step": "YES",
+  "what_this_is": "An operational review ORDER over the frozen statistical sample. It changes no membership, no inclusion probability and no weight.",
+  "why": "The frozen sample file is written grouped by stratum. Reading it in file order would make early batches almost entirely one run, so any interim figure would not represent the population. This ordering makes every batch carry approximately the frozen stratum proportions.",
+  "input": {
+    "sample_file": "research/v2_b1/B1_POPULATION_SAMPLE_v1.jsonl",
+    "sample_sha256": "9b917c430af55df51321af416a4345e1f388abe3913f5a9e96c372f4129f1fe0",
+    "sample_rows": 978
+  },
+  "ordering_rule": {
+    "score": "SHA256(\"B1_REVIEW_ORDER_V1|\" + sample_sha256 + \"|\" + source_page + \"|\" + row_id)",
+    "within": "each run, ascending",
+    "batching": "each run's ordered rows split across the batches by largest remainder, so batch composition approximates the frozen n_h proportions",
+    "determinism": "no RNG, no image information, no cadence, no value dependence"
+  },
+  "batch_size_target": 100,
+  "batches": 10,
+  "batch_table": [
+    {
+      "batch": 1,
+      "rows": 100,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 4,
+        "R-12": 15,
+        "R-13": 4,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 2,
+      "rows": 99,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 4,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 3,
+      "rows": 99,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 4,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 4,
+      "rows": 99,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 4,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 5,
+      "rows": 99,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 4,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 6,
+      "rows": 98,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 3,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 7,
+      "rows": 98,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 3,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 2,
+        "R-15": 11,
+        "R-16": 11
+      }
+    },
+    {
+      "batch": 8,
+      "rows": 96,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 3,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 1,
+        "R-15": 11,
+        "R-16": 10
+      }
+    },
+    {
+      "batch": 9,
+      "rows": 96,
+      "by_run": {
+        "R-09": 38,
+        "R-10": 15,
+        "R-11": 3,
+        "R-12": 15,
+        "R-13": 3,
+        "R-14": 1,
+        "R-15": 11,
+        "R-16": 10
+      }
+    },
+    {
+      "batch": 10,
+      "rows": 94,
+      "by_run": {
+        "R-09": 37,
+        "R-10": 15,
+        "R-11": 3,
+        "R-12": 14,
+        "R-13": 3,
+        "R-14": 1,
+        "R-15": 11,
+        "R-16": 10
+      }
+    }
+  ],
+  "per_run_per_batch": {
+    "R-09": [
+      38,
+      38,
+      38,
+      38,
+      38,
+      38,
+      38,
+      38,
+      38,
+      37
+    ],
+    "R-10": [
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "R-11": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "R-12": [
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      14
+    ],
+    "R-13": [
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "R-14": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "R-15": [
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11
+    ],
+    "R-16": [
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      10,
+      10,
+      10
+    ]
+  },
+  "proofs": {
+    "sample_rows": 978,
+    "ordered_rows": 978,
+    "distinct_ordered_keys": 978,
+    "duplicates": 0,
+    "missing_from_order": 0,
+    "extra_in_order": 0,
+    "set_equality_with_frozen_sample": true
+  },
+  "review_states": [
+    "SOURCE_CONFIRMED",
+    "TRANSCRIPTION_ERROR_B1_CHANGING",
+    "TRANSCRIPTION_ERROR_NON_B1_CHANGING",
+    "NOT_ESTABLISHED"
+  ],
+  "per_field_rule": "Right ascension and declination are judged independently. Where a stored field is wrong, the corrected value is established from the source image and the sealed transform is rerun. A correction is never inferred from cadence.",
+  "interim_reporting_rule": "An interim figure after any batch is a partial result over the frozen sample and must be reported as such, with the batches completed and the rows reviewed stated explicitly.",
+  "order_file": "research/v2_b1/B1_POPULATION_REVIEW_ORDER_v1.jsonl",
+  "order_sha256": "b5cd170c07fd8271222c80b8d2287a06d6079444708bae183b883aa040f401ec"
+}
