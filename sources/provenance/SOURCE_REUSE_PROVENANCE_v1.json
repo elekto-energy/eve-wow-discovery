@@ -1,0 +1,47 @@
+{
+  "artifact": "SOURCE_REUSE_PROVENANCE_v1",
+  "artifact_kind": "external_provenance_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-13",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record preserves what an external party stated about reuse of the source material, and the limits of that statement.",
+  "why_this_exists": "Access gap G-8 recorded that licence and reuse terms for the N50CH scan archive were UNRESOLVED. Rather than inferring terms from silence, the question was put to the archive custodian and answered in writing. This record preserves the answer and its exact scope.",
+  "archive": "naapo.org/~rchilders/N50CH_data/scans/",
+  "custodian": {
+    "name": "Russ Childers",
+    "role_as_stated_by_him": "former Chief Observer, OSU Radio Observatory",
+    "contact": "email, address retained in the raw thread"
+  },
+  "exchange": {
+    "enquiry_sent": "2026-09-11",
+    "written_response_received": "2026-09-12 or 2026-09-13, exact header timestamp in the raw thread",
+    "raw_source": "sources/provenance/russ_childers_thread.txt, the full thread preserved verbatim",
+    "what_was_disclosed_in_the_enquiry": "That the 1977 N50CH printouts are being used in a methodology study on verifiable evidence handling, that the study is not primarily about the Wow! signal, that 918 pages from folders 012-014 had already been processed for the declination column, and that each page was checked against the published SHA1SUM values."
+  },
+  "reuse_statement": {
+    "verbatim": "There is no copyright or restrictions on the use of the scans.",
+    "attribution_requested_verbatim": "Please credit the OSU Radio Observatory and NAAPO."
+  },
+  "attribution_requirement": {
+    "text_to_use": "OSU Radio Observatory and NAAPO",
+    "applies_to": "any published artifact, dataset, derived image or report built on this material"
+  },
+  "scope_caveat": {
+    "what_was_asked": "The enquiry explicitly noted the understanding that the folder.wow scans are owned by Ohio History Connection, and asked what material may or may not be reproduced.",
+    "what_was_answered": "The reply addressed the scans generally and did not expressly address folder.wow or the Ohio History Connection ownership.",
+    "consequence": "The statement is taken as covering the archive generally. The folder.wow material is treated as a SEPARATE unresolved question, and nothing from it will be reproduced without asking again. This does not affect the D2 population, which lies in folders 012 to 014.",
+    "recorded_as": "PARTIALLY_ANSWERED"
+  },
+  "what_this_record_does_not_establish": [
+    "It is a statement by the person who digitised and hosts the material, not a legal opinion and not an institutional licence from Ohio State University.",
+    "It does not establish the copyright status of the underlying 1977 paper records, only that the custodian places no restriction on the scans.",
+    "It does not cover folder.wow."
+  ],
+  "gap_status_change": {
+    "gap": "G-8, licence and reuse rights for the archive",
+    "previous": "UNRESOLVED",
+    "now": "RESOLVED for folders 012-014 and the archive generally; folder.wow remains open",
+    "basis": "Written statement from the custodian, preserved verbatim above and in the raw thread."
+  }
+}
