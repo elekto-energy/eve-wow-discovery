@@ -1,0 +1,173 @@
+{
+  "artifact": "B1_POPULATION_SAMPLE_PREREGISTRATION_v1",
+  "artifact_kind": "operational_pre_registration",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. Written before any sampled source image is opened.",
+  "no_source_image_opened_by_this_step": "YES",
+  "sampling_frame": {
+    "started_from": "rows classified INSIDE_SEALED_B1 in the established paired subset",
+    "inside_rows_total": 11718,
+    "excluded_already_reviewed": 26,
+    "excluded_detail": "2 class-1 rows and 24 rows of the preregistered class 2 and 3 union; all 26 were deliberately risk-selected and may never contribute to a population estimate",
+    "duplicate_keys_found": 0,
+    "N": 11692,
+    "distinct_keys": 11692,
+    "counts_by_run": {
+      "R-15": 1313,
+      "R-12": 1785,
+      "R-13": 374,
+      "R-16": 1281,
+      "R-14": 203,
+      "R-11": 420,
+      "R-09": 4530,
+      "R-10": 1786
+    },
+    "distinct_source_pages": 299,
+    "dec_frequency_bands_fixed_before_sampling": [
+      "10-49",
+      "50-199",
+      "200+"
+    ],
+    "page_hit_bands_fixed_before_sampling": [
+      "4-9",
+      "10-49",
+      "50+"
+    ],
+    "dec_freq_band_counts": {
+      "200+": 10502,
+      "50-199": 1190
+    },
+    "page_hit_band_counts": {
+      "50+": 4877,
+      "10-49": 6719,
+      "4-9": 96
+    }
+  },
+  "sample_size": {
+    "target": "95 percent confidence, absolute margin of error at most 0.03",
+    "z": 1.96,
+    "p_conservative": 0.5,
+    "e": 0.03,
+    "formula": "n = N z^2 p(1-p) / ( e^2 (N-1) + z^2 p(1-p) )",
+    "n": 978
+  },
+  "stratification": {
+    "primary_stratum": "RUN",
+    "why": "observable before any image is inspected, historically meaningful, and unaffected by later reading",
+    "no_cross_product_strata": true,
+    "allocation": "proportional, resolved by largest remainder so the parts sum exactly to n",
+    "strata": [
+      {
+        "run": "R-09",
+        "N_h": 4530,
+        "n_h": 379,
+        "inclusion_probability": 0.083664,
+        "weight": 11.952507
+      },
+      {
+        "run": "R-10",
+        "N_h": 1786,
+        "n_h": 150,
+        "inclusion_probability": 0.083987,
+        "weight": 11.906667
+      },
+      {
+        "run": "R-11",
+        "N_h": 420,
+        "n_h": 35,
+        "inclusion_probability": 0.083333,
+        "weight": 12.0
+      },
+      {
+        "run": "R-12",
+        "N_h": 1785,
+        "n_h": 149,
+        "inclusion_probability": 0.083473,
+        "weight": 11.979866
+      },
+      {
+        "run": "R-13",
+        "N_h": 374,
+        "n_h": 31,
+        "inclusion_probability": 0.082888,
+        "weight": 12.064516
+      },
+      {
+        "run": "R-14",
+        "N_h": 203,
+        "n_h": 17,
+        "inclusion_probability": 0.083744,
+        "weight": 11.941176
+      },
+      {
+        "run": "R-15",
+        "N_h": 1313,
+        "n_h": 110,
+        "inclusion_probability": 0.083778,
+        "weight": 11.936364
+      },
+      {
+        "run": "R-16",
+        "N_h": 1281,
+        "n_h": 107,
+        "inclusion_probability": 0.083528,
+        "weight": 11.971963
+      }
+    ],
+    "sum_n_h": 978
+  },
+  "selection": {
+    "method": "deterministic, no interactive RNG",
+    "seed": "75187352b33897ceed745d28f589f8bc856b4249",
+    "seed_origin": "full commit identity of the frozen pre-sampling repository state, supplied by the owner",
+    "score": "SHA256(seed | source_page | row_id), ascending, first n_h within each run",
+    "reproducible_without_python_rng": true
+  },
+  "row_level_review_states": [
+    "SOURCE_CONFIRMED",
+    "TRANSCRIPTION_ERROR_B1_CHANGING",
+    "TRANSCRIPTION_ERROR_NON_B1_CHANGING",
+    "NOT_ESTABLISHED"
+  ],
+  "per_field_states_preserved_separately": "RA and DEC each recorded as confirmed, error or not established. A correction is never inferred from cadence where the source image does not establish the value.",
+  "primary_measures": [
+    "P(any transcription error)",
+    "P(B1-changing transcription error)",
+    "P(coordinate error AND B1 membership remains correct)"
+  ],
+  "additional_measure": {
+    "measure": "P(coordinate error | B1 membership remains correct)",
+    "caveat": "Its precision depends on the observed denominator and is not guaranteed by the sample size above."
+  },
+  "estimation": {
+    "per_stratum": "observed proportions with Wilson 95 percent intervals",
+    "overall": "p_hat = sum_h (N_h/N) p_h, with stratified design-based finite-population variance for the primary interval",
+    "explicit_prohibition": "An ordinary Wilson interval must NOT be applied to the weighted stratified total and labelled design-correct."
+  },
+  "preregistered_secondary_analysis": "Outcomes reported by DEC-frequency band, page-hit-count band and run, without changing the primary estimator. The 26 previously reviewed rows remain external and may appear only as a separate risk-selected comparison group.",
+  "scope_boundary": {
+    "applies_to": "established-paired, currently classified inside B1, previously unreviewed rows",
+    "does_not_establish": [
+      "error rate on the 138 RA_COLUMN_UNRESOLVED pages",
+      "completeness of B1",
+      "error rate for the complete Ohio SETI archive",
+      "error rate in the PHL/Arecibo private dataset",
+      "correctness or incorrectness of Arecibo Wow! II"
+    ]
+  },
+  "sample_file": "research/v2_b1/B1_POPULATION_SAMPLE_v1.jsonl",
+  "sample_sha256": "9b917c430af55df51321af416a4345e1f388abe3913f5a9e96c372f4129f1fe0",
+  "sample_rows": 978,
+  "proof_no_reviewed_row_entered": {
+    "reviewed_keys": 26,
+    "intersection_with_sample": 0
+  },
+  "proof_no_duplicate_keys": {
+    "duplicates_in_frame": 0,
+    "sample_keys": 978,
+    "distinct_sample_keys": 978
+  }
+}
