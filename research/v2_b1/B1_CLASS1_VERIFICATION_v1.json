@@ -1,0 +1,74 @@
+{
+  "artifact": "B1_CLASS1_VERIFICATION_v1",
+  "artifact_kind": "operational_source_verification_record",
+  "project": "043_wow_discovery",
+  "record_version": 1,
+  "created_utc": "2026-09-24",
+  "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
+  "status_semantics": "No field named status. This record holds the source-image verification of the two class-1 rows and the finding it produced.",
+  "path_note": "Authored under outputs/b1 during the run and copied here unchanged for version control. outputs/ is gitignored; only the path changed, not the content.",
+  "why_class_1": "The B1 comparison over the established paired subset produced 11718 rows inside the sealed window. Two runs contributed exactly one row each, R-04 and R-08, while the rest of those runs lay far outside the band. A single hit in an otherwise distant run is the signature of a misreading, so these two were verified first.",
+  "method": {
+    "pages_retrieved": "Fresh from the archive, byte-verified against the folder SHA1SUM before use.",
+    "013-063": {"local_sha1": "6e6d5e99a3aef0dba95d54d7dcf4088e2606425c", "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM"},
+    "013-193": {"local_sha1": "9198449f09c34487f4331b8a4d294abd9c292a34", "byte_integrity": "CONSISTENT_WITH_SOURCE_PUBLISHED_CHECKSUM"},
+    "reading": "The canonical band was rendered with two rows of context above and below, across both fields, and read directly from the image.",
+    "transform": "Both readings were converted with the sealed WOW v1 tool 042_wow/scripts/wow2_epoch.py, unmodified, run by the owner. Provenance: astropy 8.0.1 / numpy 2.5.2 ; FK4(equinox=B1950, obstime=B1950) -> FK5(equinox=J2000)."
+  },
+  "case_1": {
+    "page": "013-063", "run": "R-04", "row_id": 27, "canonical_y": [512, 527],
+    "stored_ra_b1950": "06 45 12",
+    "stored_dec_b1950": "-26 57",
+    "source_ra_b1950": "06 45 12",
+    "source_dec_b1950": "-25 57",
+    "context_rows_read": "06 44 48 / 06 45 00 / [band] 06 45 12 / 06 45 24 / 06 45 36, declination -25 57 throughout",
+    "fault": "DECLINATION_TRANSCRIPTION_ERROR, 25 read as 26",
+    "ra_was_correct": true,
+    "verdict": "OCR_TRANSCRIPTION_ERROR",
+    "consequence": "True declination -25 57 lies outside the sealed B1 window. This row is not a B1 member.",
+    "analyst_inference_that_was_wrong": "Before verification the analyst inferred that the right ascension was probably misread, reasoning from R-04's other rows reading 00 45 xx. The source shows the right ascension was correct and the declination was wrong. The inference was recorded as inference and not as fact, and is preserved here as an incorrect one."
+  },
+  "case_2": {
+    "page": "013-193", "run": "R-08", "row_id": 85, "canonical_y": [1527, 1543],
+    "stored_ra_b1950": "12 39 00",
+    "stored_dec_b1950": "-26 23",
+    "source_ra_b1950": "19 23 00",
+    "source_dec_b1950": "-26 23",
+    "context_rows_read": "19 22 36 / 19 22 48 / [band] 19 23 00, declination -26 23 throughout",
+    "fault": "RIGHT_ASCENSION_TRANSCRIPTION_ERROR",
+    "dec_was_correct": true,
+    "verdict": "OCR_TRANSCRIPTION_ERROR",
+    "measured_effect_of_the_misreading": {
+      "with_true_ra_19_23_00": "B1950 19h23m00s -26d23m00s -> J2000 19h26m04.63s -26d16m58.6s = -1576.976 arcmin -> OUTSIDE the sealed window",
+      "with_misread_ra_12_39_00": "B1950 12h39m00s -26d23m00s -> J2000 12h41m39.60s -26d39m26.9s = -1599.449 arcmin -> INSIDE the sealed window",
+      "difference": "22 arcmin 28.3 arcsec = 22.4717 arcmin, caused by the right ascension alone",
+      "sealed_window_arcmin": [-1637.0, -1597.0]
+    },
+    "consequence": "This row is not a B1 member. It appeared inside the window solely because of a right ascension misreading, with a correctly read declination."
+  },
+  "finding": {
+    "id": "B1_MEMBERSHIP_IS_RA_SENSITIVE",
+    "state": "ESTABLISHED, on a measured instance",
+    "statement": "A transcription error in right ascension alone can move a row into the sealed B1 window while its declination is read correctly. Measured displacement in case 2: 22.4717 arcmin, against a window 40 arcmin wide.",
+    "mechanism": "The B1950 to J2000 declination shift depends on right ascension. Measured earlier with the same sealed tool at one declination, the shift ranged from -12.49 arcmin at RA 14h45m to +16.16 arcmin at RA 23h00m, a spread of 28.65 arcmin that changes sign.",
+    "consequence_for_review_planning": "Risk classification cannot rest on distance from the window edge alone. A row lying well inside the window can be there solely because of a right ascension error. Both fields' transcription confidence govern membership.",
+    "consequence_for_any_future_claim": "No B1 membership claim may rest on transcription alone for any row. The review classes must be defined over both fields."
+  },
+  "epistemic_boundary": {
+    "established": [
+      "Existence of a declination transcription failure in the B1 result set.",
+      "Existence of a right ascension transcription failure capable of creating false B1 membership.",
+      "The magnitude of that second failure's effect, measured with the sealed transform."
+    ],
+    "not_established": [
+      "Any population-wide right ascension error rate.",
+      "Any population-wide declination error rate.",
+      "The reliability of any remaining B1 row.",
+      "The correctness of any unreviewed B1 candidate."
+    ],
+    "no_extrapolation": "Two observations do not support an error rate. Nothing here may be used to estimate one."
+  },
+  "both_class_1_rows_fall": "Neither R-04 nor R-08 contributes a B1 member. The inside-window count of 11718 is reduced by these two once the review is consolidated; no such consolidation is performed here.",
+  "scope": "This record verifies two rows. It makes no statement about the remaining rows, about coverage, or about the 138 RA_COLUMN_UNRESOLVED pages.",
+  "no_final_manifest_produced": true
+}
