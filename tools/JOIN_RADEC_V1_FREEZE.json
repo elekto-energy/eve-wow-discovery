@@ -3,7 +3,13 @@
   "artifact_kind": "operational_instrument_freeze_record",
   "project": "043_wow_discovery",
   "record_version": 1,
-  "created_utc": "2026-08-19",
+  "created_utc": "2026-09-13",
+  "date_correction": {
+    "previous_value": "2026-08-19",
+    "corrected_value": "2026-09-13",
+    "reason": "The joiner was built, tested and frozen after the project resumed on 2026-09-13. The August date was carried forward from the earlier work period and was wrong.",
+    "corrected_on": "2026-09-13"
+  },
   "pre_seal_status": "OPERATIONAL-WORK-RECORD-NOT-FOR-SEALING",
   "status_semantics": "No field named status. This record freezes the row-pairing tool before it is used on production output.",
   "position_in_chain": "frozen DEC v1 + DEC gate -> frozen RA v1 + RA gate -> THIS JOINER -> FK4(B1950) to FK5(J2000) per row -> sealed B1 comparison -> eligible manifest",

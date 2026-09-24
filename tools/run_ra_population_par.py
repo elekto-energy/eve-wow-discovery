@@ -45,6 +45,16 @@ USAGE
     venv_v2\\Scripts\\python.exe tools\\run_ra_population_par.py --out outputs\\ra_population
     Add --workers N to control parallelism, --limit N to stop early.
     Rerun the same command to resume from the checkpoint.
+
+IMAGE RETENTION
+    Downloaded pages are KEPT by default, under <out>/pages. The archive
+    host has proved unreliable, and a retained page can be re-read for any
+    later field without contacting the origin again. Retention is safe
+    because every row records the page's SHA-1 and SHA-256, so a retained
+    file can be proved to be the one that was processed.
+    Pass --discard-images to delete each page after extraction. The
+    declination run used the opposite default and its 918 pages were lost,
+    which is the reason this default is reversed.
 """
 import argparse
 import hashlib
@@ -135,7 +145,7 @@ def page_list():
 
 
 def work(task):
-    run, folder, stem, published, img_dir = task
+    run, folder, stem, published, img_dir, discard = task
     url = "%s/folder.%s/%s.jpg" % (BASE, folder, stem)
     base = {"run": run, "folder": folder, "page": stem, "source_url": url,
             "transport": "PLAIN_HTTP_NO_TLS"}
@@ -168,10 +178,11 @@ def work(task):
             pass
         return dict(base, ok=False, failure="EXTRACTION",
                     detail="%s: %s" % (type(e).__name__, e))
-    try:
-        os.remove(local)
-    except OSError:
-        pass
+    if discard:
+        try:
+            os.remove(local)
+        except OSError:
+            pass
 
     return dict(base, ok=True, page_state=page_state, column=column,
                 published_sha1=published, local_sha1=local_sha1,
@@ -183,6 +194,9 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=0)
+    ap.add_argument("--discard-images", action="store_true",
+                    help="delete each page after extraction; pages are KEPT "
+                         "by default so the origin need not be contacted again")
     args = ap.parse_args()
 
     check_tools()
@@ -206,6 +220,8 @@ def main():
         todo = todo[:args.limit]
     print("population %d pages, already done %d, processing %d with %d workers"
           % (len(pages), len(done), len(todo), workers))
+    print("images: %s" % ("DISCARDED after extraction"
+                          if args.discard_images else "KEPT under %s" % img))
     sys.stdout.flush()
 
     sha1_tables = {}
@@ -213,7 +229,8 @@ def main():
     for run, folder, stem in todo:
         if folder not in sha1_tables:
             sha1_tables[folder] = load_sha1(folder, out)
-        tasks.append((run, folder, stem, sha1_tables[folder].get(stem + ".jpg"), img))
+        tasks.append((run, folder, stem, sha1_tables[folder].get(stem + ".jpg"),
+                      img, args.discard_images))
 
     processed = 0
     t0 = time.time()

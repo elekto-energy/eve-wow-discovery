@@ -3,7 +3,13 @@
 **Status:** post-closure documentation for WOW v1 and progress documentation for WOW v2 Phase A.
 It describes work already recorded elsewhere and modifies no sealed or pinned artifact.
 
-**Date:** 2026-08-19
+**Date:** 2026-09-13
+**Date correction:** this report was first written carrying 2026-08-19, a date
+carried forward from the August work period. The August work described below
+really did occur on 18–19 August 2026; the report itself, and the joiner and
+verification work in section 4, were produced after the project resumed on
+13 September 2026. The wrong date is recorded here rather than silently
+replaced.
 **Chain identities:** WOW v1 closure pin `679e3e48…`, WOW v2 genesis seal `17c4258d…`, D2 amendment seal `d33f79c5…`
 
 ---
@@ -243,6 +249,16 @@ frequency.
 - Cryptographic reproducibility and computational reproducibility were shown to be different
   properties: the chain verified perfectly at a point when a dependency required to re-run one of
   its own transforms was no longer installed.
+- **Hash verification is not timestamp verification.** Every record in this chain carries a
+  self-declared creation date, and nothing in the chain checks it. A hash proves that these are the
+  bytes that were sealed; it says nothing about whether the date inside those bytes is true.
+  Append-only ordering proves that one layer was sealed after another, not that either happened when
+  it claims. This limitation was found the ordinary way: several records written after a three-week
+  pause carried the date of the earlier work period, and only an external email thread revealed it.
+  The corrections are visible in the records themselves. A future version should distinguish at
+  least four distinct times — record creation, claimed event time, verification time, and
+  source-observed time — and must not treat a self-declared `created_utc` as verified temporal
+  provenance merely because the artifact is hashed.
 
 ---
 
